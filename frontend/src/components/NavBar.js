@@ -7,19 +7,15 @@ function NavBar() {
   return (
     <>
     <div className="text-center" style={{ backgroundColor: "#484848", color: "white", width:'100vw'}}>
-        <Container className='row' style={{textAlign: 'center'}}>
-            <div className='col-md-auto'><h1 style={{ color: "blue"}}>Asobi</h1></div>
-            <Nav.Link className='col-md-auto' href='/home'>Home</Nav.Link>
-            <Nav.Link className='col-md-auto' href='/profile'>Profile</Nav.Link>
-            <Nav.Link className='col-md-auto' href='/discover'>Discover</Nav.Link>
-            <Nav.Link className='col-md-auto' href='/movie'>Movie Page</Nav.Link>
-            <Col className='row' md={{offset:6}}>
+        <Container fluid className='row' style={{textAlign: 'center'}}>
+            <div className='col'><h1 style={{ color: "blue"}}>Asobi</h1></div>
+            <Nav.Link className='col' href='/home'>Home</Nav.Link>
+            <Nav.Link className='col' href='/profile'>Profile</Nav.Link>
+            <Nav.Link className='col' href='/discover'>Discover</Nav.Link>
+            <Nav.Link className='col' href='/movie'>Movie Page</Nav.Link>
+            <Button className="col" style={{ margin: 5, padding: 5 }} href='/' >Login</Button>
+            <Button className="col" style={{ margin: 5, padding: 5 }} href='/register'>Sign Up</Button>
                 
-                    <Form.Control className='m-1' onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", textAlign: 'center', borderColor: 'black'}} ref={SearchRef} type="text" placeholder="Search"/>
-                    <Button className="col-md-auto" href='/' >Login</Button>
-                    <Button className="col-md-auto" href='/register'>Sign Up</Button>
-                
-            </Col>
         </Container>
     </div>
     
