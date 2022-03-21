@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useRef } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -10,8 +9,6 @@ function Login()
     var loginPassword;
     
     const [message,setMessage] = useState('');
-    const userNameRef = useRef();
-    const passRef = useRef();
 
     const app_name = 'asobi-test1'
     function buildPath(route)

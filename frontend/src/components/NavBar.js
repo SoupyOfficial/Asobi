@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Navbar, Dropdown, Container} from 'react-bootstrap'
+import { Navbar, Dropdown, Container} from 'react-bootstrap'
 import Login from './Login'
 import Register from './Register';
 
