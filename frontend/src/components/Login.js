@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRef } from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Login()
@@ -8,6 +10,8 @@ function Login()
     var loginPassword;
     
     const [message,setMessage] = useState('');
+    const userNameRef = useRef();
+    const passRef = useRef();
 
     const app_name = 'asobi-test1'
     function buildPath(route)
@@ -58,18 +62,16 @@ function Login()
 
     return(
       <div id="loginDiv">
-        <form onSubmit={doLogin}>
+        <Container className="justify-content-center">
+        <Form onSubmit={doLogin}>
         <span id="inner-title">PLEASE LOG IN</span><br />
-        <input type="text" id="loginName" placeholder="Username" 
-            ref={(c) => loginName = c} /><br />
-        <input type="password" id="loginPassword" placeholder="Password" 
-            ref={(c) => loginPassword = c} /><br />
-        <input type="submit" id="loginButton" class="buttons" value = "Do It"
-          onClick={doLogin} />
+        <Form.Control onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", width: '45vw', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginName = c} type="text" placeholder="Username"/>
+        <Form.Control type="password" style={{backgroundColor: "#484848", color: "white", width: '45vw', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginPassword = c} placeholder="Password"/>
+        <Button className="m-3" onClick={doLogin}>Login</Button>
         <Link to="/register">Register</Link>
-        </form>
+        </Form>
         <span id="loginResult">{message}</span>
-        
+        </Container>
      </div>
     );
 };

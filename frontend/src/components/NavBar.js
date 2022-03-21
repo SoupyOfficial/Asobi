@@ -17,7 +17,7 @@ function NavBar() {
                 
                     <Form.Control className='m-1' onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", textAlign: 'center', borderColor: 'black'}} ref={SearchRef} type="text" placeholder="Search"/>
                     <Button className="col-md-auto" href='/' >Login</Button>
-                    <Button className="col-md-auto">Sign Up</Button>
+                    <Button className="col-md-auto" href='/register'>Sign Up</Button>
                 
             </Col>
         </Container>
