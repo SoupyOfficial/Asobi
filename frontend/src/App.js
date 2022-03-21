@@ -8,7 +8,6 @@ import RegisterPage from './pages/RegisterPage';
 import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
-import MovieUI from './components/MovieUI';
 import DiscoverPage from './pages/DiscoverPage';
 
 function App() {

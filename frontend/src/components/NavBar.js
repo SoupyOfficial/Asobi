@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
-import { Button, Grid, Col, Container, Form, Navbar} from 'react-bootstrap'
+import React, { useRef } from 'react';
+import { Button, Col, Navbar, Dropdown} from 'react-bootstrap'
+import Login from './Login'
 
 function NavBar() {
 
@@ -19,8 +20,13 @@ function NavBar() {
 
             <Navbar.Brand style={{ color: "white"}} href='/movie'>Movie Page</Navbar.Brand>
             <Col md={{offset: 3}}>
-                <Button className='position-sticky top-0 end-0' style={{ margin: 5, padding: 5 }} href='/' >Login</Button>
-                <Button className='position-sticky top-0 end-0' style={{ margin: 5, padding: 5 }} href='/register'>Sign Up</Button>
+                <Dropdown>
+                  <Dropdown.Toggle>Login</Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Login/>
+                  </Dropdown.Menu>
+                  <Button className='position-sticky top-0 end-0' style={{ margin: 5, padding: 5 }} href='/register'>Sign Up</Button>
+                </Dropdown>
             </Col>
         </Navbar>
     </div>
