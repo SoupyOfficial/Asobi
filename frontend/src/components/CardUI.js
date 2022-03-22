@@ -16,7 +16,7 @@ function CardUI()
     var firstName = ud.firstName;
     var lastName = ud.lastName;
 
-    const app_name = 'asobi-test1'
+    const app_name = 'asobi-1'
     function buildPath(route)
     {
         if (process.env.NODE_ENV === 'production') 
