@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../App.css'
 
@@ -63,8 +63,12 @@ function Login()
         <Container>
         <Form className='secondaryBackground' onSubmit={doLogin}>
         <span id="inner-title">PLEASE LOG IN</span><br />
+        <Col md={{offset: 4}}>
+        
         <Form.Control onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", width: 'auto', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginName = c} type="text" placeholder="Username"/>
         <Form.Control type="password" style={{backgroundColor: "#484848", color: "white", width: 'auto', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginPassword = c} placeholder="Password"/>
+        
+        </Col>
         <Button className="m-3" onClick={doLogin}>Login</Button>
         <Link to="/register">Register</Link>
         </Form>

@@ -1,15 +1,16 @@
 import React from 'react';
-import { Navbar, Dropdown, Container} from 'react-bootstrap'
+import { Navbar, Dropdown, Container, Col} from 'react-bootstrap'
 import Login from './Login'
 import Register from './Register';
 import '../App.css'
+import LoggedInName from './LoggedInName';
 
 function NavBar() {
 
   return (
     <>
-    <div className='secondaryBackground'>
-        <Navbar fluid>
+    <div >
+        <Navbar className='secondaryBackground' fluid>
                 <Navbar.Brand href='/home'>
                     <h1 style={{ color: "blue"}}>Asobi</h1>
                 </Navbar.Brand>            
@@ -17,7 +18,11 @@ function NavBar() {
             
                 <Navbar.Brand style={{ color: "white"}} href='/discover'>Discover</Navbar.Brand>
 
-            <Navbar.Brand style={{ color: "white"}} href='/movie'>Movie Page</Navbar.Brand>
+                <Navbar.Brand style={{ color: "white"}} href='/movie'>Movie Page</Navbar.Brand>
+            
+                <Col md={{span: 'auto', offset: 3}}>
+                  <LoggedInName/>
+                </Col>
             <Container>
                 <Dropdown align='end'>
                   <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Login</Dropdown.Toggle>
