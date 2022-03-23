@@ -6,7 +6,9 @@ function MoviePage() {
   return (
     <>
         <div><NavBar/></div>
-        <div className="text-center" style={{ backgroundColor: "#212121", color: "white", height: '100vh'}}><MovieUI/></div>
+        <div className="primaryBackground">
+          <MovieUI/>
+        </div>
     </>
   )
 }

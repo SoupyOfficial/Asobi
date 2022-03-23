@@ -2,12 +2,13 @@ import React from 'react';
 import { Navbar, Dropdown, Container} from 'react-bootstrap'
 import Login from './Login'
 import Register from './Register';
+import '../App.css'
 
 function NavBar() {
 
   return (
     <>
-    <div style={{ backgroundColor: "#484848", color: "white"}}>
+    <div className='secondaryBackground'>
         <Navbar fluid>
                 <Navbar.Brand href='/home'>
                     <h1 style={{ color: "blue"}}>Asobi</h1>

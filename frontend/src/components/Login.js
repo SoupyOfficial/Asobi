@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../App.css'
 
 function Login()
 {
@@ -58,12 +59,12 @@ function Login()
     };
 
     return(
-      <div id="loginDiv" style={{ alignContent:'center', borderRadius: 10, padding: 25, backgroundColor: "#484848", color: "white"}}>
-        <Container className="justify-content-center">
-        <Form onSubmit={doLogin}>
+      <div id="loginDiv" >
+        <Container>
+        <Form className='secondaryBackground' onSubmit={doLogin}>
         <span id="inner-title">PLEASE LOG IN</span><br />
-        <Form.Control onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", width: '25vw', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginName = c} type="text" placeholder="Username"/>
-        <Form.Control type="password" style={{backgroundColor: "#484848", color: "white", width: '25vw', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginPassword = c} placeholder="Password"/>
+        <Form.Control onSubmit="event.preventDefault()" autoFocus style={{backgroundColor: "#484848", color: "white", width: 'auto', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginName = c} type="text" placeholder="Username"/>
+        <Form.Control type="password" style={{backgroundColor: "#484848", color: "white", width: 'auto', textAlign: 'center', borderColor: 'black'}} ref={(c) => loginPassword = c} placeholder="Password"/>
         <Button className="m-3" onClick={doLogin}>Login</Button>
         <Link to="/register">Register</Link>
         </Form>

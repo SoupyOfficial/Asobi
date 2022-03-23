@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.primaryBackground {
+  background-color: #212121;
+  color: white;
+  height: 100vh;
+  text-align: center;
+}
+
+.secondaryBackground {
+  background-color: #484848;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  align-content: center;
+}
+
+.formStyle {
+  background-color: #484848 !important;
+  color: white !important;
+  width: 25vw !important;
+  text-align: center !important;
+  border-color: black !important;
+}
