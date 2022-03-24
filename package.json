@@ -19,6 +19,7 @@
         "react": "^17.0.2",
         "react-bootstrap": "^2.2.1",
         "react-scripts": "^5.0.0",
-        "uuidv4": "^6.2.12"
+        "uuidv4": "^6.2.12",
+        "validator": "^13.7.0"
     }
 }

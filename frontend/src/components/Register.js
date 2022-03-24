@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import validator from 'validator';
 
 function Register()
 {
@@ -12,6 +13,16 @@ function Register()
     var phoneNumber;
     
     const [message,setMessage] = useState('');
+    const [emailError, setEmailError] = useState('')
+    const validateEmail = (e) => {
+    var email = e.target.value
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email :)')
+    } else {
+      setEmailError('Enter valid Email!')
+    }
+  }
 
     const app_name = 'asobi-1'
     function buildPath(route)
@@ -67,8 +78,8 @@ function Register()
             ref={(c) => firstName = c} /><br />
         <input type="text" id="lastName" placeholder="Last Name" 
             ref={(c) => lastName = c} /><br />
-        <input type="text" id="email" placeholder="Email" 
-            ref={(c) => email = c} /><br />
+        <input type="text" id="email" placeholder="Email" onChange={(e) => validateEmail(e)}
+            ref={(c) => email = c} />{emailError}<br />
         <input type="text" id="phoneNumber" placeholder="Phone Number" 
             ref={(c) => phoneNumber = c} /><br />
         <input type="submit" id="registerButton" class="buttons" value = "Do It"
