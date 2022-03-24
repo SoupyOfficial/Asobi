@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { TextField } from './TextField';
 import * as Yup from 'yup';
+import doRegister from './Register';
 
 function Signup() {
+  const phoneRegExp = (/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/);
+  const [message,setMessage] = useState('');
+
   const validate = Yup.object({
+    userName: Yup.string()
+      .max(15, 'Must be 15 characters or less')
+      .min(5, 'Must be 5 characters or more')
+      .required('Required'),
     firstName: Yup.string()
       .max(15, 'Must be 15 characters or less')
       .required('Required'),
@@ -20,39 +28,13 @@ function Signup() {
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Password must match')
       .required('Confirm password is required'),
+    phoneNumber: Yup.string()
+      .matches(phoneRegExp, 'Phone number is not valid')
+      .required('Required'),
   })
   return (
     <>
-    <Formik
-        initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-        }}
-        validationSchema={validate}
-        onSubmit={values => {
-            console.log(values)
-        }}
-        >
-        {formik => (
-            <div>
-            <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
-            <Form>
-                <TextField className="formStyle" label="Username" placeholder="Johnny123" name="userName" type="text" />
-                <TextField className="formStyle" label="First Name" placeholder="John" name="firstName" type="text" />
-                <TextField className="formStyle" label="Last Name" placeholder="Smith" name="lastName" type="text" />
-                <TextField className="formStyle" label="Email" placeholder="JohnSmith@email.com" name="email" type="email" />
-                <TextField className="formStyle" label="Password" placeholder="********" name="password" type="password" />
-                <TextField className="formStyle" label="Confirm Password" placeholder="********" name="confirmPassword" type="password" />
-                <TextField className="formStyle" label="Phone Number" placeholder="321-555-5555" name="phoneNumber" type="text" />
-                <button className="btn btn-dark mt-3" type="submit">Register</button>
-                <button className="btn btn-danger mt-3 ml-3" type="reset">Reset</button>
-            </Form>
-            </div>
-        )}
-        </Formik>
+    
     </>
   )
 }
