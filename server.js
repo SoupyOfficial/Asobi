@@ -106,26 +106,26 @@ app.post('/api/login', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
-app.post('/api/searchcards', async (req, res, next) => 
+app.post('/api/searchmedias', async (req, res, next) => 
 {
-  // incoming: userId, search
+  // incoming: search
   // outgoing: results[], error
 
   var error = '';
 
-  const { userId, search } = req.body;
-  
+  const { search } = req.body;
+
   var _search = search.trim();
-  
+
   const db = client.db();
-  const results = await db.collection('Cards').find({"Card":{$regex:_search+'.*', $options:'r'}}).toArray();
+  const results = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
 
   var _ret = [];
   for( var i=0; i<results.length; i++ )
   {
-    _ret.push( results[i].Card );
+    _ret.push( results[i].Title );
   }
-  
+
   var ret = {results:_ret, error:error};
   res.status(200).json(ret);
 });
