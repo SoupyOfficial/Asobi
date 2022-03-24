@@ -40,11 +40,13 @@ function Signup() {
             <div>
             <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
             <Form>
-                <TextField label="First Name" name="firstName" type="text" />
-                <TextField label="last Name" name="lastName" type="text" />
-                <TextField label="Email" name="email" type="email" />
-                <TextField label="password" name="password" type="password" />
-                <TextField label="Confirm Password" name="confirmPassword" type="password" />
+                <TextField className="formStyle" label="Username" placeholder="Johnny123" name="userName" type="text" />
+                <TextField className="formStyle" label="First Name" placeholder="John" name="firstName" type="text" />
+                <TextField className="formStyle" label="Last Name" placeholder="Smith" name="lastName" type="text" />
+                <TextField className="formStyle" label="Email" placeholder="JohnSmith@email.com" name="email" type="email" />
+                <TextField className="formStyle" label="Password" placeholder="********" name="password" type="password" />
+                <TextField className="formStyle" label="Confirm Password" placeholder="********" name="confirmPassword" type="password" />
+                <TextField className="formStyle" label="Phone Number" placeholder="321-555-5555" name="phoneNumber" type="text" />
                 <button className="btn btn-dark mt-3" type="submit">Register</button>
                 <button className="btn btn-danger mt-3 ml-3" type="reset">Reset</button>
             </Form>
