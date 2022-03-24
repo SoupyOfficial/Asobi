@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import validator from 'validator';
+import emailjs from 'emailjs-com';
+
+emailjs.init("hEbhp0TDCQpMccQ5c");
 
 function Register()
 {
@@ -18,7 +21,7 @@ function Register()
     var email = e.target.value
   
     if (validator.isEmail(email)) {
-      setEmailError('Valid Email :)')
+      setEmailError('Valid Email')
     } else {
       setEmailError('Enter valid Email!')
     }
@@ -44,12 +47,19 @@ function Register()
         var obj = {userId:uuid(),login:login.value,password:password.value,firstName:firstName.value,lastName:lastName.value,email:email.value,phoneNumber:phoneNumber.value};
         var js = JSON.stringify(obj);
 
+        emailjs.send("service_f0xdcct","template_9zrlzdr",{
+            firstName: firstName.value,
+            email: email.value,
+            });
+
         try
         {    
             const response = await fetch(buildPath('api/register'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());
+
+           
             
             if( res.error.length > 0 )
             {
@@ -65,6 +75,24 @@ function Register()
             setMessage(e.toString());
         }    
     };
+
+    function sendEmail(e) {
+        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+    
+        emailjs.sendForm('service_f0xdcct', 'template_9zrlzdr', e.target, 'hEbhp0TDCQpMccQ5c')
+          .then((result) => {
+              window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
+
+    function submitForm(email) {
+        var submit = true;
+        submit &= sendEmail(email);
+        submit &= doRegister();
+        return submit;
+    }
 
     return(
       <div id="registerDiv">
