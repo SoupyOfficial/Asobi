@@ -44,12 +44,15 @@ function Register()
     {
         event.preventDefault();
 
-        var obj = {userId:uuid(),login:login.value,password:password.value,firstName:firstName.value,lastName:lastName.value,email:email.value,phoneNumber:phoneNumber.value};
+        const verifyCode = uuid();
+
+        var obj = {userId:uuid(),login:login.value,password:password.value,firstName:firstName.value,lastName:lastName.value,email:email.value,phoneNumber:phoneNumber.value,code:verifyCode};
         var js = JSON.stringify(obj);
 
         emailjs.send("service_f0xdcct","template_9zrlzdr",{
             firstName: firstName.value,
             email: email.value,
+            code: verifyCode,
             });
 
         try
@@ -75,24 +78,6 @@ function Register()
             setMessage(e.toString());
         }    
     };
-
-    function sendEmail(e) {
-        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-    
-        emailjs.sendForm('service_f0xdcct', 'template_9zrlzdr', e.target, 'hEbhp0TDCQpMccQ5c')
-          .then((result) => {
-              window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-          }, (error) => {
-              console.log(error.text);
-          });
-      }
-
-    function submitForm(email) {
-        var submit = true;
-        submit &= sendEmail(email);
-        submit &= doRegister();
-        return submit;
-    }
 
     return(
       <div id="registerDiv">
