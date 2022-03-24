@@ -21,7 +21,8 @@ function NavBar() {
                 <Navbar.Brand style={{ color: "white"}} href='/movie'>Movie Page</Navbar.Brand>
             
                 <Col md={{span: 'auto', offset: 3}}>
-                  <LoggedInName/>
+                  /*LoggedInName*/
+
                 </Col>
             <Container>
                 <Dropdown align='end'>

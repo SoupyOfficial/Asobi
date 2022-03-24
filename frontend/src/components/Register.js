@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
 import validator from 'validator';
 import emailjs from 'emailjs-com';
+import { Formik, Form } from 'formik';
+import * as yup from 'yup';
 
 emailjs.init("hEbhp0TDCQpMccQ5c");
 
@@ -17,15 +20,44 @@ function Register()
     
     const [message,setMessage] = useState('');
     const [emailError, setEmailError] = useState('')
-    const validateEmail = (e) => {
-    var email = e.target.value
-  
-    if (validator.isEmail(email)) {
-      setEmailError('Valid Email')
-    } else {
-      setEmailError('Enter valid Email!')
+
+    const schema = yup.object().shape({
+        login: yup.string().required(),
+        password: yup.string().required(),
+        firstName: yup.string().required(),
+        lastName: yup.string().required(),
+        email: yup.string().required(),
+        phoneNumber: yup.string().required(),
+        terms : yup.bool().required().oneOf([true], "term must be accepted")
+    });
+
+    const doSubmit = (e) => {
+        const email = e.target.value;
+        if(validateEmail(email)) {
+            console.log('Valid')
+            doRegister();
+        }
+        else
+        console.log('Invalid')
+
     }
-  }
+
+    const valid = (e) => {
+        const email = e.target.value;
+
+    }
+    
+    const validateEmail = (e) => {
+        const email = e.target.value;
+  
+        if (validator.isEmail(email)) {
+            setEmailError('Valid Email :)')
+            return true;
+          } else {
+            setEmailError('Invalid Email!')
+            return false;
+          }
+        }
 
     const app_name = 'asobi-1'
     function buildPath(route)
@@ -43,6 +75,11 @@ function Register()
     const doRegister = async event => 
     {
         event.preventDefault();
+        if (validator.isEmail(email.value)) {
+            console.log('Valid')
+          } else {
+            return;
+          }
 
         var ID = uuid();
 
@@ -97,8 +134,11 @@ function Register()
             ref={(c) => phoneNumber = c} /><br />
         <input type="submit" id="registerButton" class="buttons" value = "Do It"
           onClick={doRegister} />
+          <Button className="m-3" onClick={doSubmit}>Register</Button>
         </form>
         <span id="registerResult">{message}</span>
+
+        
      </div>
     );
 };
