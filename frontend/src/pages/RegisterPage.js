@@ -9,6 +9,7 @@ const RegisterPage = () =>
     return(
       <div className="primaryBackground">
         <NavBar/>
+        <Register/>
         <Signup />
       </div>
     );
