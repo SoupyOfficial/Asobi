@@ -44,15 +44,15 @@ function Register()
     {
         event.preventDefault();
 
-        const verifyCode = uuid();
+        var ID = uuid();
 
-        var obj = {userId:uuid(),login:login.value,password:password.value,firstName:firstName.value,lastName:lastName.value,email:email.value,phoneNumber:phoneNumber.value,code:verifyCode};
+        var obj = {userId:ID,login:login.value,password:password.value,firstName:firstName.value,lastName:lastName.value,email:email.value,phoneNumber:phoneNumber.value};
         var js = JSON.stringify(obj);
 
         emailjs.send("service_f0xdcct","template_9zrlzdr",{
             firstName: firstName.value,
             email: email.value,
-            code: verifyCode,
+            code: ID,
             });
 
         try
