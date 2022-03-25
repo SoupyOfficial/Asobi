@@ -106,7 +106,7 @@ app.post('/api/login', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
-app.post('/api/searchmedias', async (req, res, next) => 
+app.post('/api/search', async (req, res, next) => 
 {
   // incoming: search
   // outgoing: results[], error
@@ -114,18 +114,28 @@ app.post('/api/searchmedias', async (req, res, next) =>
   var error = '';
 
   const { search } = req.body;
-
+  
   var _search = search.trim();
-
+  
   const db = client.db();
-  const results = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const movieResults = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const actorResults = await db.collection('Actors').find({"Name":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const userResults = await db.collection('Users').find({"Login":{$regex:_search+'.*', $options:'ri'}}).toArray();
 
   var _ret = [];
-  for( var i=0; i<results.length; i++ )
+  for( var i=0; i < movieResults.length; i++ )
   {
-    _ret.push( results[i].Title );
+    _ret.push( movieResults[i].Title );
   }
-
+  for( var i=0; i < actorResults.length; i++ )
+  {
+    _ret.push( actorResults[i].Name );
+  }
+  for( var i=0; i < userResults.length; i++ )
+  {
+    _ret.push( userResults[i].Login );
+  }
+  
   var ret = {results:_ret, error:error};
   res.status(200).json(ret);
 });
