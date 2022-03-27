@@ -9,6 +9,7 @@ import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route path="/movie" exact>
           <MoviePage/>
+        </Route>
+        <Route path="/search" exact>
+          <SearchPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  
