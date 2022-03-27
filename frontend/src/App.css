@@ -40,7 +40,7 @@
 .primaryBackground {
   background-color: #212121;
   color: white;
-  height: 100vh;
+  min-height: 93vh;
   text-align: center;
 }
 
@@ -51,6 +51,15 @@
   border-radius: 10px;
   padding: 5px;
   align-content: center;
+}
+
+.NavBackground {
+  background-color: #484848;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  align-content: center;
+  height: 7vh;
 }
 
 .formStyle {

@@ -113,14 +113,14 @@ app.post('/api/search', async (req, res, next) =>
 
   var error = '';
 
-  const { search } = req.body;
+  const { Title } = req.body;
   
-  var _search = search.trim();
+  var _search = Title.trim();
   
   const db = client.db();
   const movieResults = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
   const actorResults = await db.collection('Actors').find({"Name":{$regex:_search+'.*', $options:'ri'}}).toArray();
-  const userResults = await db.collection('Users').find({"Login":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const userResults = await db.collection('Users').find({"Login":{$regex:_search+'.*', $options:'ri'}}).toArray(); 
 
   var _ret = [];
   for( var i=0; i < movieResults.length; i++ )
