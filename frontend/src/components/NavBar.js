@@ -7,7 +7,7 @@ import LoggedInName from './LoggedInName';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
-  
+
   var search = '';
 
   const doSearch = async event =>
@@ -21,8 +21,8 @@ function NavBar() {
 
   return (
     <>
-    <div >
-        <Navbar className='NavBackground' fluid>
+    <div className='NavBackground'>
+        <Navbar fluid="true">
                 <Navbar.Brand href='/home'>
                     <h1 style={{ color: "blue"}}>Asobi</h1>
                 </Navbar.Brand>            
@@ -34,13 +34,10 @@ function NavBar() {
 
                 <Navbar.Brand style={{ color: "white"}} href='/search'>Search Page</Navbar.Brand>
             
-                <Col md={{span: 'auto', offset: 3}}>
-                  <div className='LoggedIn'>
+            <div className="navbar-nav ms-auto">
+            <div className='LoggedIn'>
                     {localStorage.getItem('user_data') ? <LoggedInName/> : "Not Logged In"}
                   </div>
-
-                </Col>
-            <Container>
                 <Dropdown align='end'>
                   <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Login</Dropdown.Toggle>
                   <Dropdown.Menu style={{ borderRadius: 10, borderColor: '484848' }}>
@@ -53,7 +50,7 @@ function NavBar() {
                     <Register/>
                   </Dropdown.Menu>
                 </Dropdown>
-                </Container>
+                </div>
         </Navbar>
     </div>
     
