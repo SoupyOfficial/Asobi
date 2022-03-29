@@ -9,11 +9,15 @@ import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Router >
       <Switch>
+      <Route path="/home" exact>
+          <HomePage/>
+        </Route>
         <Route path="/" exact>
           <LoginPage/>
         </Route>
