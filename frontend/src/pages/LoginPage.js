@@ -5,12 +5,9 @@ import NavBar from '../components/NavBar';
 const LoginPage = () =>
 {
     return(
-      <div  className="primaryBackground">
-        <NavBar/>
-        <div style={{ margin: 25}}>
-        <Login />
+        <div className='vh-100 bg-dark'>
+        <Login/>
         </div>
-      </div>
     );
 };
 export default LoginPage;

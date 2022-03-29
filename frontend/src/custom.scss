@@ -1,0 +1,18 @@
+$gray-900: #212121;
+$gray-100: #484848;
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 5,
+  7: $spacer * 7,
+  8: $spacer * 9,
+  9: $spacer * 11,
+) !default;
+
+@import '~bootstrap/scss/bootstrap.scss'
