@@ -140,6 +140,73 @@ app.post('/api/search', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
+app.post('/api/loadmovie', async (req, res, next) => 
+{
+
+ var error = '';
+
+ const { imdbid } = req.body;
+
+ const db = client.db();
+ const results = await db.collection('Medias').find({imdbID:imdbid}).toArray();
+
+  var title = '';
+  var poster = '';
+  var genre = '';
+  var rated = '';
+  var runtime = '';
+  var imdbrating = '';
+  var type = '';
+  var released = '';
+  var actors = '';
+  var plot = '';
+  var year = '';
+  var director = '';
+  var writer = '';
+  var language = '';
+  var country = '';
+  var awards = '';
+  var ratings = '';
+  var metascore = '';
+  var imdbvotes = '';
+  var dvd = '';
+  var boxoffice = '';
+  var production = '';
+  var website = '';
+  var totalseasons = '';
+
+  if( results.length > 0 )
+  {
+    title = results[0].Title;
+    poster = results[0].Poster;
+    genre = results[0].Genre;
+    rated = results[0].Rated;
+    runtime = results[0].Runtime;
+    imdbrating = results[0].imdbRating;
+    type = results[0].Type;
+    released = results[0].Released;
+    actors = results[0].Acotrs;
+    plot = results[0].Plot;
+    year = results[0].Year;
+    director = results[0].Director;
+    writer = results[0].Writer;
+    language = results[0].Language;
+    country = results[0].Country;
+    awards = results[0].Awards;
+    ratings = results[0].Ratings;
+    metascore = results[0].Metascore;
+    imdbvotes = results[0].imdbVotes;
+    dvd = results[0].DVD;
+    boxoffice = results[0].BoxOffice;
+    production = results[0].Production;
+    website = results[0].Website;
+    totalseasons = results[0].totalSeasons;
+  }
+
+  var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
+  res.status(200).json(ret);
+});
+
 app.use((req, res, next) => 
 {
   res.setHeader('Access-Control-Allow-Origin', '*');
