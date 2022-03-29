@@ -11,7 +11,7 @@ export default function
             >
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://m.media-amazon.com/images/M/MV5BYTExZTdhY2ItNGQ1YS00NjJlLWIxMjYtZTI1MzNlMzY0OTk4XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg" width="200" height="300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://m.media-amazon.com/images/M/MV5BYTExZTdhY2ItNGQ1YS00NjJlLWIxMjYtZTI1MzNlMzY0OTk4XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg" alt="placeholder" style={{width: '100%', aspectRatio: '2:3'}} />
                     </div>
                 </div>
                 <div>
