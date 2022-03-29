@@ -16,37 +16,37 @@ export default function
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%', aspectRatio: '2:3'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                        <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
                     </div>
                 </div>
             </Carousel>
