@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
 import SearchPage from './pages/SearchPage';
+import CarouselPage from './pages/CarouselPage';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path="/search" exact>
           <SearchPage/>
+        </Route>
+        <Route path="/carousel" exact>
+          <CarouselPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  
