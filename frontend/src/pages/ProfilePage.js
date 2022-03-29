@@ -4,8 +4,8 @@ import NavBar from '../components/NavBar'
 export default function Profile() {
   return (
     <>
+    <NavBar/>
       <div className="primaryBackground">
-          <NavBar/>
           Profile            
         </div>
     </>

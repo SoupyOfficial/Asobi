@@ -35,25 +35,32 @@ function NavBar() {
                 <Navbar.Brand style={{ color: "white"}} href='/search'>Search Page</Navbar.Brand>
             
             <div className="navbar-nav ms-auto">
+              {/* Check Login Status */}
             <div className='LoggedIn'>
-                    {localStorage.getItem('user_data') ? <LoggedInName/> : "Not Logged In"}
-                  </div>
-                <Dropdown align='end'>
-                  <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Login</Dropdown.Toggle>
-                  <Dropdown.Menu style={{ borderRadius: 10, borderColor: '484848' }}>
-                    <Login/>
-                  </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown align='end' style={{ position: 'sticky'}}>
-                <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Sign Up</Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Register/>
-                  </Dropdown.Menu>
-                </Dropdown>
+                    {localStorage.getItem('user_data') ? <LoggedInName/> : 
+                  
+                <div className="navbar-nav ms-auto">
+                    {/* Login Button */} 
+                  <Dropdown align='end'>
+                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Login</Dropdown.Toggle>
+                    <Dropdown.Menu style={{ borderRadius: 10, borderColor: '484848' }}>
+                      <Login/>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
+                  {/* Register Button */} 
+                  <Dropdown align='end' style={{ position: 'sticky'}}>
+                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Sign Up</Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Register/>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
+                    }
+            </div>
+          </div>     
         </Navbar>
-    </div>
-    
+    </div>  
     </>
   )
 }
