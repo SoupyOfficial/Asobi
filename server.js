@@ -94,15 +94,25 @@ app.post('/api/login', async (req, res, next) =>
   var id = -1;
   var fn = '';
   var ln = '';
+  var email = '';
+  var phone = '';
+  var following = '';
+  var reviews = '';
+  var watchlist = '';
 
   if( results.length > 0 )
   {
     id = results[0].UserId;
     fn = results[0].FirstName;
     ln = results[0].LastName;
+    email = results[0].Email;
+    phone = results[0].PhoneNumber;
+    following = results[0].Following;
+    reviews = results[0].Reviews;
+    watchlist = results[0].WatchList;
   }
 
-  var ret = { id:id, firstName:fn, lastName:ln, error:''};
+  var ret = { id:id, firstName:fn, lastName:ln, email:email, phoneNumber:phone, following:following, reviews:reviews, watchList:watchlist, error:''};
   res.status(200).json(ret);
 });
 
