@@ -145,10 +145,12 @@ app.post('/api/loadmovie', async (req, res, next) =>
 
  var error = '';
 
- const { imdbid } = req.body;
+ const { ID } = req.body;
 
+console.log(ID)
  const db = client.db();
- const results = await db.collection('Medias').find({imdbID:imdbid}).toArray();
+ const results = await db.collection('Medias').findOne({imdbID:ID});
+ console.log(results)
 
   var title = '';
   var poster = '';
@@ -175,32 +177,32 @@ app.post('/api/loadmovie', async (req, res, next) =>
   var website = '';
   var totalseasons = '';
 
-  if( results.length > 0 )
+  if(true)
   {
-    title = results[0].Title;
-    poster = results[0].Poster;
-    genre = results[0].Genre;
-    rated = results[0].Rated;
-    runtime = results[0].Runtime;
-    imdbrating = results[0].imdbRating;
-    type = results[0].Type;
-    released = results[0].Released;
-    actors = results[0].Acotrs;
-    plot = results[0].Plot;
-    year = results[0].Year;
-    director = results[0].Director;
-    writer = results[0].Writer;
-    language = results[0].Language;
-    country = results[0].Country;
-    awards = results[0].Awards;
-    ratings = results[0].Ratings;
-    metascore = results[0].Metascore;
-    imdbvotes = results[0].imdbVotes;
-    dvd = results[0].DVD;
-    boxoffice = results[0].BoxOffice;
-    production = results[0].Production;
-    website = results[0].Website;
-    totalseasons = results[0].totalSeasons;
+    title = results.Title;
+    poster = results.Poster;
+    genre = results.Genre;
+    rated = results.Rated;
+    runtime = results.Runtime;
+    imdbrating = results.imdbRating;
+    type = results.Type;
+    released = results.Released;
+    actors = results.Acotrs;
+    plot = results.Plot;
+    year = results.Year;
+    director = results.Director;
+    writer = results.Writer;
+    language = results.Language;
+    country = results.Country;
+    awards = results.Awards;
+    ratings = results.Ratings;
+    metascore = results.Metascore;
+    imdbvotes = results.imdbVotes;
+    dvd = results.DVD;
+    boxoffice = results.BoxOffice;
+    production = results.Production;
+    website = results.Website;
+    totalseasons = results.totalSeasons;
   }
 
   var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
