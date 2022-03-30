@@ -177,7 +177,7 @@ console.log(ID)
   var website = '';
   var totalseasons = '';
 
-  if( results.length > 0 )
+  if(true)
   {
     title = results.Title;
     poster = results.Poster;

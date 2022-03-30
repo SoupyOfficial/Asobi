@@ -40,6 +40,9 @@ function App() {
         <Route path="/carousel" exact>
           <CarouselPage/>
         </Route>
+        <Route path="/settings" exact>
+          <SettingsPage/>
+        </Route>
         <Redirect to="/" />
       </Switch>  
     </Router>
