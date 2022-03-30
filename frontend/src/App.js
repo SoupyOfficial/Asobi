@@ -11,6 +11,7 @@ import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
   return (
