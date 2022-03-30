@@ -11,7 +11,7 @@ import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
-import SettingsPage from './components/SettingsPage';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
   return (
@@ -40,6 +40,9 @@ function App() {
         </Route>
         <Route path="/carousel" exact>
           <CarouselPage/>
+        </Route>
+        <Route path="/settings" exact>
+          <SettingsPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  
