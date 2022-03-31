@@ -27,6 +27,11 @@ const MovieUI = ({imdbID}) => {
         const queryParams = new URLSearchParams(window.location.search);
 
         const imdbID = queryParams.get('imdbID');
+
+        if(imdbID == null) {
+            window.location = '/search'
+        }
+
         console.log(imdbID)
         
         var obj = {ID:imdbID};
@@ -68,7 +73,7 @@ const MovieUI = ({imdbID}) => {
                 <Col>
                     <Row>
                         <Col >
-                            <div id="title"></div>
+                            <h3 id="title"></h3>
                         </Col>
                         <Col md={{ yoffset:10, span: 10, offset: 5}}>
                             Rating
