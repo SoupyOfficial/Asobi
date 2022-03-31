@@ -21,32 +21,6 @@ function Register()
     
     const [message,setMessage] = useState('');
     const [emailError, setEmailError] = useState('')
-    const phoneRegExp = (/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/);
-
-    const validate = Yup.object({
-        userName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .min(5, 'Must be 5 characters or more')
-        .required('Required'),
-        firstName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
-        lastName: Yup.string()
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-        email: Yup.string()
-        .email('Email is invalid')
-        .required('Email is required'),
-        password: Yup.string()
-        .min(6, 'Password must be at least 6 charaters')
-        .required('Password is required'),
-        confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Password must match')
-        .required('Confirm password is required'),
-        phoneNumber: Yup.string()
-        .matches(phoneRegExp, 'Phone number is not valid')
-        .required('Required'),
-    })
 
     const app_name = 'asobi-1'
     function buildPath(route)
@@ -92,7 +66,9 @@ function Register()
             }
             else
             {
-                setMessage("Successfully registered");
+                var user = {firstName:firstName.value,lastName:lastName.value}
+                localStorage.setItem('user_data', JSON.stringify(user));
+                window.location.href = '/profile';
             }
         }
         catch(e)
@@ -102,7 +78,8 @@ function Register()
     };
 
     return(
-      <div id="registerDiv">
+        <>
+      {/* <div id="registerDiv">
         <form onSubmit={doRegister}>
         <span id="inner-title">PLEASE REGISTER</span><br />
         <input type="text" id="login" placeholder="Username" 
@@ -122,7 +99,6 @@ function Register()
           <Button className="m-3" onClick={doRegister}>Register</Button>
         </form>
         <span id="registerResult">{message}</span> 
-
         <Formik
         initialValues={{
             userName: '',
@@ -159,7 +135,125 @@ function Register()
         )}
         </Formik>
         
-     </div>
+     </div> */}
+
+    <div class="row d-flex justify-content-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
+                <h2 class="fw-bold mb-5">Sign up now</h2>
+                    <form onSubmit={doRegister}>
+                    {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input
+                                type="text"
+                                id="form3Example1"
+                                class="form-control"
+                                ref={(c) => firstName = c}
+                                placeholder="John"
+                                />
+                            <label class="form-label" for="form3Example1"
+                                >First name</label>
+                        </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input
+                                type="text"
+                                id="form3Example2"
+                                class="form-control"
+                                ref={(c) => lastName = c}
+                                placeholder="Smith"
+                                />
+                            <label class="form-label" for="form3Example2"
+                                >Last name</label>
+                        </div>
+                        </div>
+                    </div>
+
+                    {/* <!-- Email input --> */}
+                    <div class="form-outline mb-4">
+                        <input
+                            type="email"
+                            id="form3Example3"
+                            class="form-control"
+                            ref={(c) => email = c}
+                            placeholder="JohnSmith@email.com"
+                            />
+                        <label class="form-label" for="form3Example3"
+                            >Email address</label>
+                    </div>
+
+                    {/* <!-- Username input --> */}
+                    <div class="form-outline mb-4">
+                        <input
+                            type="username"
+                            id="form3Example4"
+                            class="form-control"
+                            ref={(c) => login = c}
+                            placeholder="Johnny123"
+                            />
+                        <label class="form-label" for="form3Example4"
+                            >Username</label>
+                    </div>
+
+                    {/* <!-- Phone Number input --> */}
+                    <div class="form-outline mb-4">
+                        <input
+                            type="username"
+                            id="form3Example4"
+                            class="form-control"
+                            ref={(c) => phoneNumber = c}
+                            placeholder="321-555-5555"
+                            />
+                        <label class="form-label" for="form3Example4"
+                            >Phone Number</label>
+                    </div>
+
+                    {/* <!-- Password input --> */}
+                    <div class="form-outline mb-4">
+                        <input
+                            type="password"
+                            id="form3Example4"
+                            class="form-control"
+                            ref={(c) => password = c}
+                            placeholder="********"
+                            />
+                        <label class="form-label" for="form3Example4"
+                            >Password</label>
+                    </div>
+
+                    {/* <!-- Checkbox --> */}
+                    <div class="form-check d-flex justify-content-center mb-4">
+                        <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form2Example33"
+                            checked
+                            />
+                        <label class="form-check-label" for="form2Example33">
+                        Subscribe to our newsletter
+                        </label>
+                    </div>
+
+                    {/* <!-- Submit button --> */}
+                    <button
+                            type="submit"
+                            id="registerButton"
+                            class="btn btn-primary btn-block mb-4"
+                            onClick={doRegister}>
+                        Sign up
+                    </button>
+                    <br/>
+                    <span id="registerResult">{message}</span>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+     </>
     );
 };
 

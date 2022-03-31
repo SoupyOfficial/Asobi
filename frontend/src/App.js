@@ -9,20 +9,23 @@ import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
 import DiscoverPage from './pages/DiscoverPage';
+import SearchPage from './pages/SearchPage';
+import CarouselPage from './pages/CarouselPage';
+import SettingsPage from './pages/SettingsPage';
 import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Router >
       <Switch>
-      <Route path="/home" exact>
-          <HomePage/>
-        </Route>
         <Route path="/" exact>
           <LoginPage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
+        </Route>
+        <Route path="/home" exact>
+          <HomePage/>
         </Route>
         <Route path="/register" exact>
           <RegisterPage />
@@ -33,8 +36,17 @@ function App() {
         <Route path="/discover" exact>
           <DiscoverPage/>
         </Route>
-        <Route path="/movie" exact>
+        <Route path="/movie">
           <MoviePage/>
+        </Route>
+        <Route path="/search" exact>
+          <SearchPage/>
+        </Route>
+        <Route path="/carousel" exact>
+          <CarouselPage/>
+        </Route>
+        <Route path="/settings" exact>
+          <SettingsPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  
