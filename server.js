@@ -155,6 +155,70 @@ app.post('/api/search', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
+app.post('/api/editlogin', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newlogin} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Login:newlogin}},{returnNewDocument: "true"} );
+ 
+  var ret = {Login:newlogin, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editpassword', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newpassword} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Password:newpassword}},{returnNewDocument: "true"} );
+ 
+  var ret = {Password:newpassword, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editphone', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newphone} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{PhoneNumber:newphone}},{returnNewDocument: "true"} );
+ 
+  var ret = {PhoneNumber:newphone, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editemail', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newemail} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Email:newemail}},{returnNewDocument: "true"} );
+ 
+  var ret = {Email:newemail, error: ''};
+  res.status(200).json(ret);
+});
+
 app.post('/api/loadmovie', async (req, res, next) => 
 {
 
