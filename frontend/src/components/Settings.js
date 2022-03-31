@@ -66,10 +66,6 @@ function Settings() {
     <div className="App">
       <header className="App-header">
         <button type="button" className="btn btn-primary">Primary</button>
-<<<<<<< HEAD
-=======
-
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
         <img src={logo} className="App-logo" alt="logo" />
         
         <p>
@@ -89,8 +85,4 @@ function Settings() {
   );
 }
 
-<<<<<<< HEAD
 export default Settings;
-=======
-export default Settings;
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed

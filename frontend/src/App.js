@@ -12,10 +12,7 @@ import DiscoverPage from './pages/DiscoverPage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
 import SettingsPage from './pages/SettingsPage';
-<<<<<<< HEAD
 import HomePage from './pages/HomePage';
-=======
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
 
 function App() {
   return (

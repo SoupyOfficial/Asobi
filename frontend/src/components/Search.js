@@ -59,8 +59,4 @@ export default function Search() {
             <div className='movies' style={{ height:'auto'}}></div><br /><br />
         </div>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed

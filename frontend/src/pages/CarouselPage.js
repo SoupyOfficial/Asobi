@@ -16,72 +16,40 @@ export default function
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%', aspectRatio: '2:3'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
                 <div>
                     <div style={{padding: 8}}>
-<<<<<<< HEAD
-                        <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-=======
                         <img src="https://via.placeholder.com/200x300" alt="placeholder" style={{width: '100%'}} />
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
                     </div>
                 </div>
             </Carousel>
     </div>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed
