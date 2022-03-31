@@ -36,8 +36,9 @@ export default function Search() {
             var txt = await response.text();
             var res = JSON.parse(txt);
             var _results = res.results;
-            _results.map((movie) => {document.querySelector('.movies').innerHTML += `${movie}` + "<br/>";})
-            setResults('Media:');
+            console.log(_results)
+            _results.map((movie) => {document.querySelector('.movies').innerHTML += `<a href="/movie?imdbID=${movie.imdbID}">${movie.title}</a>` + "<br/>"})
+            setResults(`${_results.length} results found`);
             
         }
         catch(e)
