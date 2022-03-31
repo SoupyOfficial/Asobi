@@ -122,6 +122,8 @@ app.post('/api/search', async (req, res, next) =>
   // outgoing: results[], error
 
   var error = '';
+  var imdbID = '';
+  var title = '';
 
   const { Title } = req.body;
   
@@ -135,7 +137,10 @@ app.post('/api/search', async (req, res, next) =>
   var _ret = [];
   for( var i=0; i < movieResults.length; i++ )
   {
-    _ret.push( movieResults[i].Title );
+    _ret.push( {
+      title:movieResults[i].Title, 
+      imdbID:movieResults[i].imdbID 
+    });
   }
   for( var i=0; i < actorResults.length; i++ )
   {
@@ -157,10 +162,8 @@ app.post('/api/loadmovie', async (req, res, next) =>
 
  const { ID } = req.body;
 
-console.log(ID)
  const db = client.db();
  const results = await db.collection('Medias').findOne({imdbID:ID});
- console.log(results)
 
   var title = '';
   var poster = '';

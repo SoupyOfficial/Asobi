@@ -22,8 +22,12 @@ const MovieUI = ({imdbID}) => {
 
     const searchMovie = async event => 
     {
-        console.log(imdbID)
+        
         event.preventDefault();
+        const queryParams = new URLSearchParams(window.location.search);
+
+        const imdbID = queryParams.get('imdbID');
+        console.log(imdbID)
         
         var obj = {ID:imdbID};
         var js = JSON.stringify(obj);
@@ -43,7 +47,7 @@ const MovieUI = ({imdbID}) => {
             document.querySelector("#director").innerHTML = res.director
             document.querySelector("#genre").innerHTML = res.genre
             console.log(res.ratings)
-            res.ratings.map((rating) => {document.querySelector('ratings').innerHTML += rating.Value + "<br/>";}) 
+            res.ratings.map((rating) => {document.querySelector('#ratings').innerHTML += rating.Source + ': ' + rating.Value + "<br/>";})
             
         }
         catch(e)
