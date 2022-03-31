@@ -8,6 +8,7 @@ function LoggedInName()
     var userId = ud.id;
     var firstName = ud.firstName;
     var lastName = ud.lastName;
+    console.log(firstName);
 
     const doLogout = event => 
     {
@@ -20,7 +21,7 @@ function LoggedInName()
       
   return(
    <div id="loggedInDiv">
-   <span id="userName">Logged In As {firstName} {lastName}</span><br />
+   <span id="userName">Logged In As {firstName}</span><br />
    <button type="button" id="logoutButton" class="buttons" 
      onClick={doLogout}> Log Out </button>
    </div>

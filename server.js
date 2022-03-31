@@ -94,39 +94,195 @@ app.post('/api/login', async (req, res, next) =>
   var id = -1;
   var fn = '';
   var ln = '';
+  var email = '';
+  var phone = '';
+  var following = '';
+  var reviews = '';
+  var watchlist = '';
 
   if( results.length > 0 )
   {
     id = results[0].UserId;
     fn = results[0].FirstName;
     ln = results[0].LastName;
+    email = results[0].Email;
+    phone = results[0].PhoneNumber;
+    following = results[0].Following;
+    reviews = results[0].Reviews;
+    watchlist = results[0].WatchList;
   }
 
-  var ret = { id:id, firstName:fn, lastName:ln, error:''};
+  var ret = { id:id, firstName:fn, lastName:ln, email:email, phoneNumber:phone, following:following, reviews:reviews, watchList:watchlist, error:''};
   res.status(200).json(ret);
 });
 
-app.post('/api/searchmedias', async (req, res, next) => 
+app.post('/api/search', async (req, res, next) => 
 {
   // incoming: search
   // outgoing: results[], error
 
   var error = '';
+  var imdbID = '';
+  var title = '';
 
-  const { search } = req.body;
-
-  var _search = search.trim();
-
+  const { Title } = req.body;
+  
+  var _search = Title.trim();
+  
   const db = client.db();
-  const results = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const movieResults = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const actorResults = await db.collection('Actors').find({"Name":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  const userResults = await db.collection('Users').find({"Login":{$regex:_search+'.*', $options:'ri'}}).toArray(); 
 
   var _ret = [];
-  for( var i=0; i<results.length; i++ )
+  for( var i=0; i < movieResults.length; i++ )
   {
-    _ret.push( results[i].Title );
+    _ret.push( {
+      title:movieResults[i].Title, 
+      imdbID:movieResults[i].imdbID 
+    });
+  }
+  for( var i=0; i < actorResults.length; i++ )
+  {
+    _ret.push( actorResults[i].Name );
+  }
+  for( var i=0; i < userResults.length; i++ )
+  {
+    _ret.push( userResults[i].Login );
+  }
+  
+  var ret = {results:_ret, error:error};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editlogin', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newlogin} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Login:newlogin}},{returnNewDocument: "true"} );
+ 
+  var ret = {Login:newlogin, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editpassword', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newpassword} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Password:newpassword}},{returnNewDocument: "true"} );
+ 
+  var ret = {Password:newpassword, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editphone', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newphone} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{PhoneNumber:newphone}},{returnNewDocument: "true"} );
+ 
+  var ret = {PhoneNumber:newphone, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/editemail', async (req, res, next) =>
+{
+  var error = '';
+
+  const {userid, newemail} = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Email:newemail}},{returnNewDocument: "true"} );
+ 
+  var ret = {Email:newemail, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/loadmovie', async (req, res, next) => 
+{
+
+ var error = '';
+
+ const { ID } = req.body;
+
+ const db = client.db();
+ const results = await db.collection('Medias').findOne({imdbID:ID});
+
+  var title = '';
+  var poster = '';
+  var genre = '';
+  var rated = '';
+  var runtime = '';
+  var imdbrating = '';
+  var type = '';
+  var released = '';
+  var actors = '';
+  var plot = '';
+  var year = '';
+  var director = '';
+  var writer = '';
+  var language = '';
+  var country = '';
+  var awards = '';
+  var ratings = '';
+  var metascore = '';
+  var imdbvotes = '';
+  var dvd = '';
+  var boxoffice = '';
+  var production = '';
+  var website = '';
+  var totalseasons = '';
+
+  if(true)
+  {
+    title = results.Title;
+    poster = results.Poster;
+    genre = results.Genre;
+    rated = results.Rated;
+    runtime = results.Runtime;
+    imdbrating = results.imdbRating;
+    type = results.Type;
+    released = results.Released;
+    actors = results.Acotrs;
+    plot = results.Plot;
+    year = results.Year;
+    director = results.Director;
+    writer = results.Writer;
+    language = results.Language;
+    country = results.Country;
+    awards = results.Awards;
+    ratings = results.Ratings;
+    metascore = results.Metascore;
+    imdbvotes = results.imdbVotes;
+    dvd = results.DVD;
+    boxoffice = results.BoxOffice;
+    production = results.Production;
+    website = results.Website;
+    totalseasons = results.totalSeasons;
   }
 
-  var ret = {results:_ret, error:error};
+  var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
   res.status(200).json(ret);
 });
 

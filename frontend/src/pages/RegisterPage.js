@@ -6,10 +6,11 @@ const RegisterPage = () =>
 {
     
     return(
-      <div className="primaryBackground">
-        <NavBar/>
-        <Register/>
-      </div>
+      <>
+        <div className="primaryBackground" style={{minHeight: "100vh"}}>        
+          <Register/>
+        </div>
+      </>
     );
 };
 

@@ -10,4 +10,8 @@ export default function SettingsPage() {
       <Settings/>
     </div>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 628959bd62da1269de2e85ccafe663ae3e3126ed

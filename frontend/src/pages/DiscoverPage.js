@@ -5,8 +5,8 @@ import NavBar from '../components/NavBar'
 export default function Discover() {
   return (
     <>
+    <NavBar/>
       <div className="primaryBackground">
-        <NavBar/>
         Discover
       </div>
       
