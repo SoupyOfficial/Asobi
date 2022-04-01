@@ -334,6 +334,31 @@ app.post('/api/loadmovie', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
+app.post('/api/loadactor', async (req, res, next) => 
+{
+
+ var error = '';
+
+ const { ID } = req.body;
+
+ const db = client.db();
+ const results = await db.collection('Actors').findOne({actorID:ID});
+
+  var ascharacter = '';
+  var image = '';
+  var name = '';
+
+  if(true)
+  {
+    ascharacter = results.asCharacter;
+    image = results.Image;
+    name = results.name;
+  }
+
+  var ret = { asCharacter:ascharacter, image:image, name:name, error:''};
+  res.status(200).json(ret);
+});
+
 app.use((req, res, next) => 
 {
   res.setHeader('Access-Control-Allow-Origin', '*');
