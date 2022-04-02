@@ -5,6 +5,7 @@ import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
 import { Link } from 'react-router-dom';
+import Asobi from '../Asobi.png';
 
 function NavBar() {
 
@@ -24,7 +25,7 @@ function NavBar() {
     <div className='NavBackground'>
         <Navbar fluid="true">
                 <Navbar.Brand href='/home'>
-                    <h1 style={{ color: "blue"}}>Asobi</h1>
+                    <img src={Asobi} style={{ height:"3rem", width: "10rem"}}/>
                 </Navbar.Brand>            
                 <Navbar.Brand style={{ color: "white"}} href='/profile'>Profile</Navbar.Brand>
             
