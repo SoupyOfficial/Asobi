@@ -124,6 +124,7 @@ app.post('/api/search', async (req, res, next) =>
   var error = '';
   var imdbID = '';
   var title = '';
+  var poster = '';
 
   const { Title } = req.body;
   
@@ -139,7 +140,8 @@ app.post('/api/search', async (req, res, next) =>
   {
     _ret.push( {
       title:movieResults[i].Title, 
-      imdbID:movieResults[i].imdbID 
+      imdbID:movieResults[i].imdbID,
+      poster: movieResults[i].Poster
     });
   }
   for( var i=0; i < actorResults.length; i++ )
