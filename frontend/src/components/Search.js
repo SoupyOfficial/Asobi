@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button } from 'react-bootstrap';
 
 export default function Search() {
     
@@ -51,12 +52,12 @@ export default function Search() {
     };
 
   return (
-    <div className='primaryBackground' id="cardUIDiv" >
+    <div className='primaryBackground' id="cardUIDiv">
             <br />
-            <input type="text" id="searchText" placeholder="Movie To Search For" 
-                ref={(c) => search = c} />
-            <button type="button" id="searchCardButton" class="buttons" 
-                onClick={searchMovie}> Search Media</button><br />
+            <input type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
+                ref={(c) => search = c} /><br/>
+            <Button type="button" id="searchCardButton" class="buttons" 
+                onClick={searchMovie}> Search Media</Button><br />
                 {/*<div className='movies' style={{ height:'auto'}}></div><br /><br />*/}
                 <div className='container'>
                     <div id="movies" className="row">
@@ -64,8 +65,7 @@ export default function Search() {
                         (movie) =>                        
                             <>
                             
-                            <div className='col p-2 ms-md-4' style={{maxWidth:"12rem"}}>
-                                <h3 id='cardTitle' className='d-flex p-2'>{movie.title}</h3>
+                            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11.4rem"}}>                                
                                 <img
                                     className={`row_poster ${"row_posterLarge"}`}
                                     src={movie.poster}
@@ -74,6 +74,7 @@ export default function Search() {
                                     onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
                                     style={{width:"auto", height:"auto"}}
                                 />
+                                <h3 id='cardTitle' className='d-flex p-2'>{movie.title}</h3>
                             </div>
                             </>                        
                         )}

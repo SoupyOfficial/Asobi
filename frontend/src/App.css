@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .App {
   text-align: center;
 }
@@ -160,6 +162,7 @@
   object-fit: contain;
   width: 100%;
   max-height: 100px;
+  height: auto;
   margin-right: 10px;
   transition: transform 450ms;
 }
@@ -177,15 +180,18 @@
 }
 
 #cardTitle { 
-  display: block;
+  display: flex;
   max-width: auto;
-  justify-content: center;
+  white-space: pre-line;
   align-items: center;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  height: 130px;
+  justify-content: center;
   margin-bottom: 5px;
-  font-family: Courier, Lucidatypewriter, monospace;
-  font-size: auto;
-  border: 1px solid white;
+  font-family: 'Open Sans', sans-serif, monospace;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+#searchText {
+  text-align: center;
+  margin: 10px;
 }
