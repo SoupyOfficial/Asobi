@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import '../App.css'
 import '../custom.scss'
 
@@ -83,7 +82,8 @@ function Login()
 
                         
 
-                        <Button class="btn btn-outline-light btn-lg px-5" type="submit">Login</Button>
+                        <Button class="btn btn-outline-light btn-lg px-5" type="submit">Login</Button><br/>
+                        <div className='pt-3'>{message}</div>
                       </form>
                     </div>
                     <div>

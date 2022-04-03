@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, CardImg } from 'react-bootstrap';
 
 export default function Search() {
     
 
     var search = '';
 
-    const [searchResults,setResults] = useState('');
+    //Number of Search Results
+    //const [searchResults,setResults] = useState('');
     const [movies, setMovies] = useState([]);
 
     const app_name = 'asobi-1'
@@ -38,16 +39,15 @@ export default function Search() {
             var txt = await response.text();
             var res = JSON.parse(txt);
             var _results = res.results;
-            console.log(_results)
-            //_results.map((movie) => {document.querySelector('.movies').innerHTML += `<a href="/movie?imdbID=${movie.imdbID}">${movie.title}</a>` + "<br/>"})
-            setResults(`${_results.length} results found`);
+            //Number of Search Results
+            //setResults(`${_results.length} results found`);
             setMovies(_results)
             
         }
         catch(e)
         {
             console.log(e.toString());
-            setResults(e.toString());
+            //setResults(e.toString());
         }
     };
 
@@ -58,23 +58,24 @@ export default function Search() {
                 ref={(c) => search = c} /><br/>
             <Button type="button" id="searchCardButton" class="buttons" 
                 onClick={searchMovie}> Search Media</Button><br />
-                {/*<div className='movies' style={{ height:'auto'}}></div><br /><br />*/}
                 <div className='container'>
                     <div id="movies" className="row">
                         {movies.map(
                         (movie) =>                        
                             <>
                             
-                            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11.4rem"}}>                                
-                                <img
-                                    className={`row_poster ${"row_posterLarge"}`}
-                                    src={movie.poster}
-                                    alt={movie.title}
-                                    key={movie.imdbID}
-                                    onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
-                                    style={{width:"auto", height:"auto"}}
-                                />
-                                <h3 id='cardTitle' className='d-flex p-2'>{movie.title}</h3>
+                            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem"}}>                                
+                                <div className='card bg-dark border-0'>
+                                    <CardImg
+                                        className={`row_poster ${"row_posterLarge"}`}
+                                        src={movie.poster}
+                                        alt={movie.title}
+                                        key={movie.imdbID}
+                                        onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
+                                        style={{width:"auto", height:"auto"}}
+                                    />
+                                    <h3 className='d-flex p-2'>{movie.title}</h3>
+                                </div>
                             </div>
                             </>                        
                         )}

@@ -168,7 +168,7 @@
 }
 
 .row_poster:hover {
-  transform: scale(1.08);
+  transform: scale(1.18);
 }
 
 .row_posterLarge {
@@ -176,7 +176,7 @@
 }
 
 .row_posterLarge:hover {
-  transform: scale(1.09);
+  transform: scale(1.19);
 }
 
 #cardTitle { 
@@ -184,6 +184,7 @@
   max-width: auto;
   white-space: pre-line;
   align-items: center;
+  word-break: break-all;
   justify-content: center;
   margin-bottom: 5px;
   font-family: 'Open Sans', sans-serif, monospace;
