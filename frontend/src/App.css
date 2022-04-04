@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .App {
   text-align: center;
 }
@@ -189,4 +191,58 @@
 .text-underline-hover:hover{
   text-decoration: underline;
   color: #18c6e8;
+}
+
+.row {
+  color: #fff;
+  margin-left: 20px;
+}
+.row_posters {
+  display: flex;
+  overflow-y: hidden;
+
+  padding: 40px;
+}
+
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row_poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  height: auto;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.row_poster:hover {
+  transform: scale(1.18);
+}
+
+.row_posterLarge {
+  max-height: 250px;
+}
+
+.row_posterLarge:hover {
+  transform: scale(1.19);
+}
+
+#cardTitle { 
+  display: flex;
+  max-width: auto;
+  white-space: pre-line;
+  align-items: center;
+  word-break: break-all;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-family: 'Open Sans', sans-serif, monospace;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+#searchText {
+  text-align: center;
+  margin: 10px;
 }

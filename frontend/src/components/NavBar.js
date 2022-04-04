@@ -1,30 +1,20 @@
 import React from 'react';
-import { Navbar, Dropdown, Container, Col} from 'react-bootstrap'
+import { Navbar, Dropdown } from 'react-bootstrap'
 import Login from './Login'
 import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
-import { Link } from 'react-router-dom';
+import Asobi from '../Asobi.png';
+import PageTitle from './PageTitle';
 
-function NavBar() {
-
-  var search = '';
-
-  const doSearch = async event =>
-   {
-    console.log(search.value);
-   
-}
-
-    
-    
+function NavBar() {    
 
   return (
     <>
     <div className='NavBackground'>
         <Navbar fluid="true">
                 <Navbar.Brand href='/home'>
-                    <h1 style={{ color: "blue"}}>Asobi</h1>
+                    <img src={Asobi} alt={PageTitle} style={{ height:"3rem", width: "10rem"}}/>
                 </Navbar.Brand>            
                 <Navbar.Brand style={{ color: "white"}} href='/profile'>Profile</Navbar.Brand>
             
