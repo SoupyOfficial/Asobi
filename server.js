@@ -304,8 +304,7 @@ app.post('/api/loadmovie', async (req, res, next) =>
   var website = '';
   var totalseasons = '';
 
-  if(true)
-  {
+  
     title = results.Title;
     poster = results.Poster;
     genre = results.Genre;
@@ -330,9 +329,42 @@ app.post('/api/loadmovie', async (req, res, next) =>
     production = results.Production;
     website = results.Website;
     totalseasons = results.totalSeasons;
-  }
 
   var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/loadprofile', async (req, res, next) => 
+{
+
+ var error = '';
+
+ const { ID } = req.body;
+
+ const db = client.db();
+ const results = await db.collection('Users').findOne({UserId:ID});
+
+  var login = '';
+  var password = '';
+  var firstName = '';
+  var lastName = '';
+  var phoneNumber = '';
+  var email = '';
+  var watchList = [];
+  var reviews = [];
+  var following = [];
+
+  login = results.Login;
+  password = results.Password;
+  firstName = results.FirstName;
+  lastName = results.LastName;
+  phoneNumber = results.PhoneNumber;
+  email = results.Email;
+  watchList = results.WatchList;
+  reviews = results.Reviews;
+  following = results.Following;
+
+  var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:tywatchListpe, reviews:reviews, following:following, error:''};
   res.status(200).json(ret);
 });
 

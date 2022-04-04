@@ -61,7 +61,7 @@ export default function Profile() {
               <div class="col-lg-100 col-md-20">
                 <h1 class="display-2 text-white">Hello, {firstName}</h1>
                 <p class="text-white mt-0 mb-5">Welcome to Your Profile</p>
-                <a href="#!" class="btn btn-info">Edit Profile</a>
+                <a href="/settings" class="btn btn-info">Edit Profile</a>
               </div>
             </div>
           </div>

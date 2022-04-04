@@ -79,65 +79,6 @@ function Register()
 
     return(
         <>
-      {/* <div id="registerDiv">
-        <form onSubmit={doRegister}>
-        <span id="inner-title">PLEASE REGISTER</span><br />
-        <input type="text" id="login" placeholder="Username" 
-            ref={(c) => login = c} /><br />
-        <input type="password" id="password" placeholder="Password" 
-            ref={(c) => password = c} /><br />
-        <input type="text" id="firstName" placeholder="First Name" 
-            ref={(c) => firstName = c} /><br />
-        <input type="text" id="lastName" placeholder="Last Name" 
-            ref={(c) => lastName = c} /><br />
-        <input type="text" id="email" placeholder="Email"
-            ref={(c) => email = c} />{emailError}<br />
-        <input type="text" id="phoneNumber" placeholder="Phone Number" 
-            ref={(c) => phoneNumber = c} /><br />
-        <input type="submit" id="registerButton" class="buttons" value = "Do It"
-          onClick={doRegister} />
-          <Button className="m-3" onClick={doRegister}>Register</Button>
-        </form>
-        <span id="registerResult">{message}</span> 
-
-        <Formik
-        initialValues={{
-            userName: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            phoneNumber: '',
-        }}
-        validationSchema={validate}
-        onSubmit={values => {
-            console.log(values)
-        }}
-        >
-        {formik => (
-            <div>
-            <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
-            <Form onSubmit={doRegister}>
-                <TextField className="formStyle" id="login" ref={(c) => login = c} label="Username" placeholder="Johnny123" name="userName" type="text" />
-                <TextField className="formStyle" id="firstName" ref={(c) => firstName = c}label="First Name" placeholder="John" name="firstName" type="text" />
-                <TextField className="formStyle" id="lastName" ref={(c) => lastName = c} label="Last Name" placeholder="Smith" name="lastName" type="text" />
-                <TextField className="formStyle" id="email" ref={(c) => email = c} label="Email" placeholder="JohnSmith@email.com" name="email" type="email" />
-                <TextField className="formStyle" id="password" ref={(c) => password = c} label="Password" placeholder="********" name="password" type="password" />
-                <TextField className="formStyle" label="Confirm Password" placeholder="********" name="confirmPassword" type="password" />
-                <TextField className="formStyle" id="phoneNumber" ref={(c) => phoneNumber = c} label="Phone Number" placeholder="321-555-5555" name="phoneNumber" type="text" />
-                <input type="submit" id="registerButton" class="buttons" value = "Register"
-          onClick={doRegister} />
-                <button id="registerButton" className="btn btn-dark mt-3" onClick={doRegister} type="submit">Register</button>
-                <button className="btn btn-danger mt-3 ml-3" type="reset">Reset</button>
-            </Form>
-            <span id="registerResult">{message}</span>
-            </div>
-        )}
-        </Formik>
-        
-     </div> */}
-
     <div class="row d-flex justify-content-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
