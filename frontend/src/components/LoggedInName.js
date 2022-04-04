@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 function LoggedInName()
 {
@@ -22,8 +23,8 @@ function LoggedInName()
   return(
    <div id="loggedInDiv">
    <span id="userName">Logged In As {firstName}</span><br />
-   <button type="button" id="logoutButton" class="buttons" 
-     onClick={doLogout}> Log Out </button>
+   <Button type="button" id="logoutButton" class="buttons" 
+     onClick={doLogout}> Log Out </Button>
    </div>
   );
 
