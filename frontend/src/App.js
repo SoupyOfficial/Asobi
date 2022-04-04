@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import MoviePage from './pages/MoviePage';
@@ -18,10 +17,13 @@ function App() {
     <Router >
       <Switch>
         <Route path="/" exact>
-          <LoginPage/>
+          <SearchPage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
+        </Route>
+        <Route path="/login" exact>
+          <LoginPage/>
         </Route>
         <Route path="/register" exact>
           <RegisterPage />
