@@ -141,3 +141,52 @@
       display: none;
   }
 }
+
+.picture-container{
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.picture{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #18c6e8;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.picture-src{
+  width: 100%;
+}
+
+.gutters-sm{
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 100px;
+}
+
+#card1{
+  background-color:#484848;
+  border: 2px solid #18c6e8;
+  border-radius: 1%;
+}
+
+#card2{
+  background-color:#484848;
+  border: 2px solid #18c6e8;
+  border-radius: 1%;
+}
+
+.text-underline-hover{
+  text-decoration: none;
+  color: white;
+  font-size: large;
+}
+
+.text-underline-hover:hover{
+  text-decoration: underline;
+  color: #18c6e8;
+}
