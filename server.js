@@ -157,6 +157,74 @@ app.post('/api/search', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
+app.post('/api/searchmovie', async (req, res, next) => 
+{
+  // incoming: search
+  // outgoing: results[], error
+
+  var error = '';
+  var imdbID = '';
+  var title = '';
+  var poster = '';
+
+  const { Title } = req.body;
+  
+  var _search = Title.trim();
+  
+  const db = client.db();
+  const movieResults = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  
+  var _ret = [];
+  for( var i=0; i < movieResults.length; i++ )
+  {
+    if(movieResults[i].Type == "movie")
+    {
+      _ret.push( {
+        title:movieResults[i].Title, 
+        imdbID:movieResults[i].imdbID,
+        poster: movieResults[i].Poster
+      });
+    }
+  }
+  
+  var ret = {results:_ret, error:error};
+  res.status(200).json(ret);
+});
+
+app.post('/api/searchseries', async (req, res, next) => 
+{
+  // incoming: search
+  // outgoing: results[], error
+
+  var error = '';
+  var imdbID = '';
+  var title = '';
+  var poster = '';
+
+  const { Title } = req.body;
+  
+  var _search = Title.trim();
+  
+  const db = client.db();
+  const movieResults = await db.collection('Medias').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+  
+  var _ret = [];
+  for( var i=0; i < movieResults.length; i++ )
+  {
+    if(movieResults[i].Type == "series")
+    {
+      _ret.push( {
+        title:movieResults[i].Title, 
+        imdbID:movieResults[i].imdbID,
+        poster: movieResults[i].Poster
+      });
+    }
+  }
+
+  var ret = {results:_ret, error:error};
+  res.status(200).json(ret);
+});
+
 app.post('/api/editlogin', async (req, res, next) =>
 {
   var error = '';
@@ -218,6 +286,21 @@ app.post('/api/editemail', async (req, res, next) =>
   {$set:{Email:newemail}},{returnNewDocument: "true"} );
  
   var ret = {Email:newemail, error: ''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/deactivate', async (req, res, next) =>
+{
+  var error = '';
+
+  const { userid } = req.body;
+
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndDelete({"UserId":{$regex:_search+'.*', $options:'ri'}});
+ 
+  var ret = { error: ''};
   res.status(200).json(ret);
 });
 
