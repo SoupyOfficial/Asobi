@@ -60,13 +60,13 @@ function Login()
         <>
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5" style={{width:'100%'}}>
                 <div class="card bg-light text-white" style={{borderRadius: "1rem"}}>
                   <div class="card-body p-5 text-center">
 
                     <div class="mb-md-5 mt-md-4">
 
-                      <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                      <h2 class="fw-bold mb-2">Login</h2>
                       <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                       <form onSubmit={doLogin}>

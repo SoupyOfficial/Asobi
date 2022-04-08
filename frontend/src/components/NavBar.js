@@ -12,7 +12,6 @@ function NavBar() {
   return (
     <>
     <head>
-      <link rel='stylesheet' href='NavBar.css'></link>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"></link>
     </head>
 
@@ -23,9 +22,6 @@ function NavBar() {
           flexDirection: "row",
           alignItems:"center",
           padding:"5px 10px",
-          
-          //alignSelf: "stretch",
-          //justifyContent:"left", 
           
           minHeight:"8vh",
           backgroundColor: "#484848",
@@ -99,7 +95,7 @@ function NavBar() {
               flexGrow: "0",
               margin: "0px 5px",
               
-              color:"white", 
+              color:"#AAAAAA", 
               textDecoration:"none", 
               display:"block",
               padding:"8px",
@@ -114,7 +110,7 @@ function NavBar() {
               flexGrow: "0",
               margin: "0px 5px",
               
-              color:"white", 
+              color:"#AAAAAA", 
               textDecoration:"none", 
               display:"block",
               padding:"8px",
@@ -124,13 +120,12 @@ function NavBar() {
 
           </li>
 
-        </ul>
+        </ul>  
 
         <div className="navbar-nav ms-auto">
               {/* Check Login Status */}
-            <div className='LoggedIn'>
-                    {localStorage.getItem('user_data') ? <LoggedInName/> : 
-                  
+              <div className='LoggedIn'>
+              { localStorage.getItem('user_data') ? <LoggedInName/> :
                 <div className="navbar-nav ms-auto" style=
                 {{
                   display: "flex",
@@ -138,27 +133,29 @@ function NavBar() {
                   alignItems: "center",
                   padding: "0px",
                 }}>
+
                     {/* Login Button */} 
                   <Dropdown align='end'>
-                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Login</Dropdown.Toggle>
-                    <Dropdown.Menu style={{ borderRadius: 10, borderColor: '484848' }}>
+                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5}}>Login</Dropdown.Toggle>
+                    <Dropdown.Menu style={{ backgroundColor:'#fff0', borderWidth:'0',minWidth: '50vh', borderRadius: 10, borderColor: '484848', padding:'0px'}}>
                       <Login/>
                     </Dropdown.Menu>
                   </Dropdown>
-
+      
                   {/* Register Button */} 
                   <Dropdown align='end' style={{ position: 'sticky'}}>
-                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Sign Up</Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Register/>
+                    <Dropdown.Toggle style={{ borderRadius:10, margin: 5, backgroundColor:'#fff0'}}>Sign Up</Dropdown.Toggle>
+                    <Dropdown.Menu style={{backgroundColor:'#fff0', borderWidth:'0',minWidth:'50vh', padding:'0px'}}>
+                      <Register style={{flexGrow:'1', minWidth:'100vh'}}/>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
-                    }
-            </div>
-          </div>  
+                }
+          </div>
+        </div>
 
       </nav>
+
     </body> 
     </>
   )

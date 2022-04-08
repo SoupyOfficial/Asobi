@@ -79,8 +79,8 @@ function Register()
 
     return(
         <>
-    <div class="row d-flex justify-content-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="row d-flex justify-content-center h-100 w-100" style={{alignItems:'center'}}>
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5" style={{width:'100%'}}>
             <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
                 <h2 class="fw-bold mb-5">Sign up now</h2>
                     <form onSubmit={doRegister}>
@@ -165,8 +165,8 @@ function Register()
                         <label class="form-label" for="form3Example4"
                             >Password</label>
                     </div>
-
-                    {/* <!-- Checkbox --> */}
+{/*
+                    {/* <!-- Checkbox --> * /}
                     <div class="form-check d-flex justify-content-center mb-4">
                         <input
                             class="form-check-input me-2"
@@ -179,7 +179,7 @@ function Register()
                         Subscribe to our newsletter
                         </label>
                     </div>
-
+*/}
                     {/* <!-- Submit button --> */}
                     <button
                             type="submit"
