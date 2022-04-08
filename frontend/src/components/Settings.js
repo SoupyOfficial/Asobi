@@ -78,17 +78,17 @@ function Settings() {
     
                       <div className='d-flex'>
                         <label>Username:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? {login} : "Change Username"} aria-label="Change Username"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(login) : "Change Username"} aria-label="Change Username"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Password:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? {password} : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(password) : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>Email:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? {email} : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(email) : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
@@ -98,12 +98,12 @@ function Settings() {
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? {lastName} : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(lastName) : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
                         <label>Phone Number:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? {phone} : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(phone) : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
                       <Button className="m-3" type="submit">Save</Button>
