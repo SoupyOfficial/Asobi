@@ -234,19 +234,9 @@ app.post('/api/editprofile', async (req, res, next) =>
   var _search = userid.trim();
 
   const db = client.db();
-  const emailresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{Email:newemail}},{returnNewDocument: "true"} );
-  const phoneresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{PhoneNumber:newphone}},{returnNewDocument: "true"} );
-  const loginresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{Login:newlogin}},{returnNewDocument: "true"} );
-  const passwordresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{Password:newpassword}},{returnNewDocument: "true"} );
-  const fnresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{FirstName:newfn}},{returnNewDocument: "true"} );
-  const lnresults = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-  {$set:{LastName:newln}},{returnNewDocument: "true"} );
 
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$set:{Email:newemail, PhoneNumber:newphone, Login:newlogin, Password:newpassword, FirstName:newfn, LastName:newln}},{returnNewDocument: "true"} );
  
   var ret = {FirstName:newfn, LastName:newln, Login:newlogin, Password:newpassword, PhoneNumber:newphone, Email:newemail, error: ''};
   res.status(200).json(ret);
@@ -287,15 +277,36 @@ app.post('/api/addtoreviews', async (req, res, next) =>
 {
   var error = '';
 
-  const { userid, ID } = req.body;
+  const { userid, ID, rating } = req.body;
+  
+  var userrating = parseFloat(rating);
   
   var _search = userid.trim();
+  var _moviesearch = ID.trim();
 
   const db = client.db();
+
+  const movieResults = await db.collection('Medias').findOne({imdbID:ID});
+
+  let totalrating = movieResults.imdbRating;
+  let totalvotes = movieResults.imdbVotes;
+
+  var floattotalvotes = parseFloat(totalvotes.replace(/,/g, ''));
+  var floattotalrating = parseFloat(totalrating);
+  
+  floattotalvotes = floattotalvotes + 1;
+  floattotalrating = ((floattotalrating * (floattotalvotes - 1)) + userrating) / floattotalvotes;
+
+  let updatedtotalrating = floattotalrating.toString();
+  let updatedtotalvotes = floattotalvotes.toString();
+
+  const ratingresults = await db.collection('Medias').findOneAndUpdate({"imdbID":{$regex:_moviesearch+'.*', $options:'ri'}},
+  {$set:{imdbRating:updatedtotalrating,imdbVotes:updatedtotalvotes}},{returnNewDocument: "true"} );
+
   const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
   {$push:{Reviews:ID}},{returnNewDocument: "true"} );
 
-  var ret = {imdbId:ID, error:''};
+  var ret = {imdbID:ID, Rating:rating, TotalRating:updatedtotalrating, TotalVotes:updatedtotalvotes, error:''};
   res.status(200).json(ret);
 });
 
