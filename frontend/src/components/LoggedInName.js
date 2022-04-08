@@ -21,8 +21,14 @@ function LoggedInName()
     };  
       
   return(
-   <div id="loggedInDiv">
-   <span id="userName">Logged In As {firstName}</span><br />
+   <div id="loggedInDiv"style=
+   {{
+     display: "flex",
+     flexDirection: "row",
+     alignItems: "center",
+     padding: "10px",
+   }}>
+   <a id="userName" style={{color:'white', margin:'0px 10px', textDecoration:"none", fontSize:'20px'}} href='/profile'>{firstName + " " + lastName}</a><br />
    <Button type="button" id="logoutButton" class="buttons" 
      onClick={doLogout}> Log Out </Button>
    </div>

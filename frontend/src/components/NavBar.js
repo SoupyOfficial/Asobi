@@ -58,7 +58,7 @@ function NavBar() {
             margin: "0px 3px",
             }}> 
             
-            <a href="/profile" style=
+            <a href="/discover" style=
             {{
               flex: "none",
               order: "0",
@@ -88,36 +88,6 @@ function NavBar() {
               Search
             </a>
 
-            <a href="/movie" style=
-            {{
-              flex: "none",
-              order: "2",
-              flexGrow: "0",
-              margin: "0px 5px",
-              
-              color:"#AAAAAA", 
-              textDecoration:"none", 
-              display:"block",
-              padding:"8px",
-            }}>
-              Movies
-            </a>
-
-            <a href="/discover" style=
-            {{
-              flex: "none",
-              order: "3",
-              flexGrow: "0",
-              margin: "0px 5px",
-              
-              color:"#AAAAAA", 
-              textDecoration:"none", 
-              display:"block",
-              padding:"8px",
-            }}>
-              Discover
-            </a>
-
           </li>
 
         </ul>  
@@ -137,7 +107,8 @@ function NavBar() {
                     {/* Login Button */} 
                   <Dropdown align='end'>
                     <Dropdown.Toggle style={{ borderRadius:10, margin: 5}}>Login</Dropdown.Toggle>
-                    <Dropdown.Menu style={{ backgroundColor:'#fff0', borderWidth:'0',minWidth: '50vh', borderRadius: 10, borderColor: '484848', padding:'0px'}}>
+                    <Dropdown.Menu style={{ backgroundColor:'#fff0', borderWidth:'0',minWidth: '50vh', borderRadius: 10, 
+                                          borderColor: '484848', padding:'0px'}}>
                       <Login/>
                     </Dropdown.Menu>
                   </Dropdown>
