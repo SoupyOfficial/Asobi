@@ -396,7 +396,7 @@ exports.setApp = function ( app, client )
     reviews = results.Reviews;
     following = results.Following;
 
-    var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:tywatchListpe, reviews:reviews, following:following, error:''};
+    var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:watchList, reviews:reviews, following:following, error:''};
     res.status(200).json(ret);
     });
 

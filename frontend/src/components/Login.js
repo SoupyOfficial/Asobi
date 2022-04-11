@@ -11,18 +11,7 @@ function Login()
     
     const [message,setMessage] = useState('');
 
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {   
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js');    
 
     const doLogin = async event => 
     {
@@ -33,7 +22,7 @@ function Login()
 
         try
         {    
-            const response = await fetch(buildPath('api/login'),
+            const response = await fetch(bp.buildPath('api/login'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());

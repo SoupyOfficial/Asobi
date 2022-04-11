@@ -16,18 +16,7 @@ function CardUI()
     var firstName = ud.firstName;
     var lastName = ud.lastName;
 
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js'); 
 
     const addCard = async event => 
     {
@@ -38,7 +27,7 @@ function CardUI()
         
         try
         {
-            const response = await fetch(buildPath('api/addcard'),
+            const response = await fetch(bp.buildPath('api/addcard'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
@@ -69,7 +58,7 @@ function CardUI()
         
         try
         {
-            const response = await fetch(buildPath('api/searchcards'),
+            const response = await fetch(bp.buildPath('api/searchcards'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
