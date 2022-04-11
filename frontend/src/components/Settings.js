@@ -85,31 +85,43 @@ function Settings() {
 
                       <div className='d-flex'>
                         <label>Password:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(password) : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>Email:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(email) : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>First Name:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(firstName) : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(lastName) : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
                         <label>Phone Number:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(phone) : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>test {login}:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {firstName} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
