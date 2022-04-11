@@ -22,18 +22,7 @@ function Register()
     const [message,setMessage] = useState('');
     const [emailError, setEmailError] = useState('')
 
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {   
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js'); 
 
     const doRegister = async event => 
     {
@@ -53,7 +42,7 @@ function Register()
 
         try
         {    
-            const response = await fetch(buildPath('api/register'),
+            const response = await fetch(bp.buildPath('api/register'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());
