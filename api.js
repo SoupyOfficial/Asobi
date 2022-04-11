@@ -3,6 +3,110 @@ require('mongodb');
 
 exports.setApp = function ( app, client )
 {
+    app.post('/api/loadpopular100', async (req, res, next) =>
+    {
+    // incoming: search
+    // outgoing: results[], error
+
+    var error = '';
+
+    var _search = '';
+
+    const db = client.db();
+    const movieResults = await db.collection('Popular100').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+
+    var _ret = [];
+    for( var i=0; i < movieResults.length; i++ )
+    {
+        _ret.push( {
+        title:movieResults[i].Title,
+        imdbID:movieResults[i].ID,
+        poster: movieResults[i].Thumbnail
+        });
+    }
+
+    var ret = {results:_ret, error:error};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/loadpopular100tv', async (req, res, next) =>
+    {
+    // incoming: search
+    // outgoing: results[], error
+
+    var error = '';
+
+    var _search = '';
+
+    const db = client.db();
+    const movieResults = await db.collection('Popular100TV').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+
+    var _ret = [];
+    for( var i=0; i < movieResults.length; i++ )
+    {
+        _ret.push( {
+        title:movieResults[i].Title,
+        imdbID:movieResults[i].ID,
+        poster: movieResults[i].Thumbnail
+        });
+    }
+
+    var ret = {results:_ret, error:error};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/loadtop250', async (req, res, next) =>
+    {
+    // incoming: search
+    // outgoing: results[], error
+
+    var error = '';
+
+    var _search = '';
+
+    const db = client.db();
+    const movieResults = await db.collection('Top250').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+
+    var _ret = [];
+    for( var i=0; i < movieResults.length; i++ )
+    {
+        _ret.push( {
+        title:movieResults[i].Title,
+        imdbID:movieResults[i].ID,
+        poster: movieResults[i].Thumbnail
+        });
+    }
+
+    var ret = {results:_ret, error:error};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/loadtop250tv', async (req, res, next) =>
+    {
+    // incoming: search
+    // outgoing: results[], error
+
+    var error = '';
+
+    var _search = '';
+
+    const db = client.db();
+    const movieResults = await db.collection('Top250TV').find({"Title":{$regex:_search+'.*', $options:'ri'}}).toArray();
+
+    var _ret = [];
+    for( var i=0; i < movieResults.length; i++ )
+    {
+        _ret.push( {
+        title:movieResults[i].Title,
+        imdbID:movieResults[i].ID,
+        poster: movieResults[i].Thumbnail
+        });
+    }
+
+    var ret = {results:_ret, error:error};
+    res.status(200).json(ret);
+    });
+
 
     app.post('/api/addcard', async (req, res, next) =>
     {
