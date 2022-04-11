@@ -17,22 +17,11 @@ function Settings() {
 
    
     
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js'); 
 
     try
     {
-        const response = await fetch(buildPath('api/loadprofile'),
+        const response = await fetch(bp.buildPath('api/loadprofile'),
         {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         
         var txt = await response.text();

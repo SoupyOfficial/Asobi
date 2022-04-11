@@ -10,18 +10,7 @@ export default function Search() {
     //const [searchResults,setResults] = useState('');
     const [movies, setMovies] = useState([]);
 
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js'); 
 
     const searchMovie = async event => 
     {
@@ -36,7 +25,7 @@ export default function Search() {
         
         try
         {
-            const response = await fetch(buildPath('api/search'),
+            const response = await fetch(bp.buildPath('api/search'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();

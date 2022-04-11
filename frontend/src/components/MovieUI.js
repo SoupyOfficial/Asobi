@@ -5,18 +5,7 @@ import Carousel from './Carousel';
 const MovieUI = ({imdbID}) => {
     
 
-    const app_name = 'asobi-1'
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
+    let bp = require('./Path.js'); 
 
     const [searchResults,setResults] = useState('');
 
@@ -39,7 +28,7 @@ const MovieUI = ({imdbID}) => {
         
         try
         {
-            const response = await fetch(buildPath('api/loadmovie'),
+            const response = await fetch(bp.buildPath('api/loadmovie'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
