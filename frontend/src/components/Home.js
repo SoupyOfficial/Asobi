@@ -4,11 +4,11 @@ import Carousel from './Carousel';
 
 function Home(){
     return(
-        <div>
+        <div className='p-5'>
             
             <Container>
                 
-                <Row className='p-2 my-2 rounded' style={{backgroundColor:"#484848"}}>
+                <Row className='p-2 rounded' style={{backgroundColor:"#484848"}}>
                     <div>Popular Movies</div>
                     <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
                         <Carousel
