@@ -6,16 +6,14 @@ function LoggedInName()
 
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.userId;
     var firstName = ud.firstName;
-    var lastName = ud.lastName;
 
     const doLogout = event => 
     {
         event.preventDefault();
 
         localStorage.removeItem("user_data")
-        window.location.href = '/';
+        window.location.href = '/login';
 
     };  
       

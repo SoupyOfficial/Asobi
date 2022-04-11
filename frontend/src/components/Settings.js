@@ -1,19 +1,11 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { reverseMultiplyAndSum } from 'validator/lib/util/algorithms';
 
 
 function Settings() {
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
   var userId = ud.userId;    
-  var firstName = ud.firstName;
-  var lastName = ud.lastName;
-  console.log(userId)
-  var login = '';
-  var password = '';
-  var email = '';
-  var phone = '';
 
   const load = async event => 
   {
@@ -45,10 +37,12 @@ function Settings() {
         
         var txt = await response.text();
         var res = JSON.parse(txt);
-        document.getElementById("username").value = res.login;
+        document.getElementById("username").defaultValue = res.login;
         document.getElementById("password").value = res.password;
         document.getElementById("email").value = res.email;
         document.getElementById("phone").value = res.phoneNumber;
+        document.getElementById("first").value = ud.firstName;
+        document.getElementById("last").value = ud.lastName;
 
         
     }
@@ -85,49 +79,43 @@ function Settings() {
                         <label>Username:</label>
                         </div>
                         <div className='d-flex'>
-                        <input id="username" type="text" class="form-control" value= {localStorage.getItem('user_data') ? login : "Change Username"} aria-label="Change Username"/>
+                        <input id="username" type="text" class="form-control"
+                        aria-label="Change Username"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Password:</label>
                         </div>
                         <div className='d-flex'>
-                        <input id="password" type="text" class="form-control" value= {localStorage.getItem('user_data') ? password : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
+                        <input id="password" type="text" class="form-control" aria-label="Change password" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>Email:</label>
                         </div>
                         <div className='d-flex'>
-                        <input id="email" type="text" class="form-control" value= {localStorage.getItem('user_data') ? email : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
+                        <input id="email" type="text" class="form-control"   aria-label="Change Email" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>First Name:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? firstName : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
+                        <input id="first" type="text" class="form-control" aria-label="Change First Name" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? lastName : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                        <input id="last" type="text" class="form-control" aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
                         <label>Phone Number:</label>
                         </div>
                         <div className='d-flex'>
-                        <input id="phone" type="text" class="form-control" value= {localStorage.getItem('user_data') ? phone : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
-                      </div>
-
-                      <div className='d-flex'>
-                        <label>test {login}:</label>
-                        </div>
-                        <div className='d-flex'>
-                        <input type="text" class="form-control" value= {firstName} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
+                        <input id="phone" type="text" class="form-control" aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
                       <Button className="m-3" type="submit">Save</Button>
