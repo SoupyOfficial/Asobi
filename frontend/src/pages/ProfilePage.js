@@ -7,7 +7,6 @@ export default function Profile() {
   var ud = JSON.parse(_ud);
   var userId = ud.id;    
   var firstName = ud.firstName;
-  var lastName = ud.lastName;
 
   var obj = {ID:userId};
   var js = JSON.stringify(obj);
@@ -48,7 +47,7 @@ export default function Profile() {
         <div class="container-fluid d-flex align-items-center justify-content-center">
           <div class="picture-container">
             <div class="picture">
-              <img src="https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2021/08/blank-profile-picture-png.png" class="picture-src" id="picturePreview" title=""></img>
+              <img alt="placeholder" src="https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2021/08/blank-profile-picture-png.png" class="picture-src" id="picturePreview" title=""></img>
             </div>
           </div>
         </div>
@@ -72,7 +71,7 @@ export default function Profile() {
               <div class="card-body" id="card1">
                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Watchlist</i></h6>
                 <div class="p-4">
-                  <a href="#" class="text-underline-hover">Add</a>
+                  <a href="/" class="text-underline-hover">Add</a>
                 </div>
               </div>
             </div>
@@ -82,7 +81,7 @@ export default function Profile() {
               <div class="card-body" id="card2">
                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">My Top Rated</i></h6>      
                 <div class="p-4">
-                  <a href="#" class="text-underline-hover">Add</a>
+                  <a href="/" class="text-underline-hover">Add</a>
                 </div>
               </div>
             </div>

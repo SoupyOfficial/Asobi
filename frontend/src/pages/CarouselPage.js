@@ -1,7 +1,7 @@
 import React from 'react'
 import Carousel from '../components/Carousel'
 
-export default function 
+export default function CarouselPage
 () {
   return (
     <div style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto', marginTop: 64 }}>

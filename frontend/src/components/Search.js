@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, CardImg, Form } from 'react-bootstrap';
+import { Button, CardImg } from 'react-bootstrap';
 
 export default function Search() {
     
@@ -19,7 +19,7 @@ export default function Search() {
         
         var obj = {Title:search.value};
         var js = JSON.stringify(obj);
-        if(search.value == "") {
+        if(search.value === "") {
             return;
         }
         

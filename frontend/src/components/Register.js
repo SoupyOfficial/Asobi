@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
-import validator from 'validator';
 import emailjs from 'emailjs-com';
-import { Formik, Form } from 'formik';
-import { TextField } from './TextField';
-import * as Yup from 'yup';
 
 emailjs.init("hEbhp0TDCQpMccQ5c");
 
@@ -20,7 +15,6 @@ function Register()
     var phoneNumber;
     
     const [message,setMessage] = useState('');
-    const [emailError, setEmailError] = useState('')
 
     let bp = require('./Path.js'); 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import Carousel from './Carousel';
 
@@ -6,8 +6,6 @@ const MovieUI = ({imdbID}) => {
     
 
     let bp = require('./Path.js'); 
-
-    const [searchResults,setResults] = useState('');
 
     const searchMovie = async event => 
     {
@@ -41,13 +39,15 @@ const MovieUI = ({imdbID}) => {
             document.querySelector("#director").innerHTML = res.director
             document.querySelector("#genre").innerHTML = res.genre
             console.log(res.ratings)
-            res.ratings.map((rating) => {document.querySelector('#ratings').innerHTML += rating.Source + ': ' + rating.Value + "<br/>";})
+            res.ratings.map((rating) => {
+                document.querySelector('#ratings').innerHTML += rating.Source + ': ' + rating.Value + "<br/>";
+                return true;
+            })
             
         }
         catch(e)
         {
             console.log(e.toString());
-            setResults(e.toString());
         }
     };
     window.onload = searchMovie;
@@ -62,7 +62,7 @@ const MovieUI = ({imdbID}) => {
                 <Col>
                     <Row>
                         <Col >
-                            <h3 id="title"></h3>
+                            <h3 id="title">Title</h3>
                         </Col>
                         <Col md={{ yoffset:10, span: 10, offset: 5}}>
                             Rating
