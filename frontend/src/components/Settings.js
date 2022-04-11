@@ -107,7 +107,7 @@ function Settings() {
                       </div>
 
                       <div className='d-flex'>
-                        <label>test {firstName}:</label>
+                        <label>test {login}:</label>
                         <input type="text" class="form-control" value= {JSON.stringify(firstName)}aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
