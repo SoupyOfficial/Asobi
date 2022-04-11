@@ -78,6 +78,8 @@ function Settings() {
     
                       <div className='d-flex'>
                         <label>Username:</label>
+                        </div>
+                        <div className='d-flex'>
                         <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(login) : "Change Username"} aria-label="Change Username"/>
                       </div>
 
@@ -93,12 +95,12 @@ function Settings() {
                       
                       <div className='d-flex'>
                         <label>First Name:</label>
-                        <input type="text" class="input" value= {localStorage.getItem('user_data') ? JSON.stringify(firstName) : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(firstName) : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(lastName) : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {state.lastName} aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
@@ -108,7 +110,7 @@ function Settings() {
 
                       <div className='d-flex'>
                         <label>test {login}:</label>
-                        <input type="text" class="form-control" value= {JSON.stringify(firstName)}aria-label="Change Phone Number" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {firstName} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
                       <Button className="m-3" type="submit">Save</Button>
