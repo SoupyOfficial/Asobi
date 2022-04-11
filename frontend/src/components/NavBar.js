@@ -26,7 +26,7 @@ function NavBar() {
             
             <div className="navbar-nav ms-auto">
               {/* Check Login Status */}
-            <div className='LoggedIn'>
+            <div className='d-flex col'>
                     {localStorage.getItem('user_data') ? <LoggedInName/> : 
                   
                 <div className="navbar-nav ms-auto">

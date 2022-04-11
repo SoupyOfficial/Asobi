@@ -5,7 +5,7 @@ export default function Profile() {
 
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.id;    
+  var userId = ud.userId;    
   var firstName = ud.firstName;
 
   var obj = {ID:userId};
@@ -24,12 +24,14 @@ export default function Profile() {
       }
   }
 
+ const load = async event =>
+ {
   try
   {
-      const response = fetch(buildPath('api/loadprofile'),
+      const response = await fetch(buildPath('api/loadprofile'),
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       
-      var txt = response.text();
+      var txt = await response.text();
       var res = JSON.parse(txt);
       console.log(res)
       
@@ -38,6 +40,8 @@ export default function Profile() {
   {
       console.log(e.toString());
   }
+ }
+window.onload = load;
 
   return (
     <>

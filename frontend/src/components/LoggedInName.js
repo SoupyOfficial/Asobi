@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 
 function LoggedInName()
 {
@@ -18,11 +18,17 @@ function LoggedInName()
     };  
       
   return(
-   <div id="loggedInDiv">
-   <span id="userName">Logged In As {firstName}</span><br />
-   <Button type="button" id="logoutButton" class="buttons" 
+   <>
+    <div className="d-flex">
+      <Navbar.Brand className='align-items-center justify-content-center' id="userName" style={{ color: "white", textAlign: "center"}} href='/profile'>{firstName}</Navbar.Brand><br />
+    </div>
+
+    <div className="col">
+      <Button type="button" id="logoutButton" class="buttons" 
      onClick={doLogout}> Log Out </Button>
-   </div>
+    </div>
+   
+   </>
   );
 
 };
