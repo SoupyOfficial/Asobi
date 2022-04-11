@@ -8,7 +8,6 @@ export default function Profile() {
   var userId = ud.id;    
   var firstName = ud.firstName;
   var lastName = ud.lastName;
-  console.log(firstName);
 
   var obj = {ID:userId};
   var js = JSON.stringify(obj);

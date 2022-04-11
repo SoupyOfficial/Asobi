@@ -66,7 +66,8 @@ function Register()
             }
             else
             {
-                var user = {firstName:firstName.value,lastName:lastName.value}
+                var user = {userId:ID,firstName:firstName.value,lastName:lastName.value}
+                console.log(ID)
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/profile';
             }

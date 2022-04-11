@@ -1,7 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import Carousel from './Carousel';
-import NavBar from './NavBar';
 
 function Home(){
     return(

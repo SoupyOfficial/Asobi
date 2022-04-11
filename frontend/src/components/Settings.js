@@ -6,24 +6,24 @@ import { reverseMultiplyAndSum } from 'validator/lib/util/algorithms';
 function Settings() {
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.id;    
+  var userId = ud.userId;    
   var firstName = ud.firstName;
   var lastName = ud.lastName;
-  var email = ud.email;
-  var login= ud.login;
-  var password = ud.password;
-  var phone = ud.phone;
+  console.log(userId)
+  var login = '';
+  var password = '';
+  var email = '';
+  var phone = '';
 
-  console.log(firstName);
-  console.log(lastName);
-  console.log(email);
-  console.log(login);
-  console.log(password);
-  console.log(phone);
+  const load = async event => 
+  {
 
-  async function load() {
+    event.preventDefault();
+
     var obj = {ID:userId};
     var js = JSON.stringify(obj);
+
+   
     
     const app_name = 'asobi-1'
     function buildPath(route)
@@ -40,12 +40,16 @@ function Settings() {
 
     try
     {
-        const response = fetch(buildPath('api/loadprofile'),
+        const response = await fetch(buildPath('api/loadprofile'),
         {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         
-        var txt = response.text();
+        var txt = await response.text();
         var res = JSON.parse(txt);
-        console.log(res)
+        document.getElementById("username").value = res.login;
+        document.getElementById("password").value = res.password;
+        document.getElementById("email").value = res.email;
+        document.getElementById("phone").value = res.phoneNumber;
+
         
     }
     catch(e)
@@ -53,6 +57,7 @@ function Settings() {
         console.log(e.toString());
     }
   }
+  window.onload = load;
   
 
   
@@ -80,42 +85,42 @@ function Settings() {
                         <label>Username:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(login) : "Change Username"} aria-label="Change Username"/>
+                        <input id="username" type="text" class="form-control" value= {localStorage.getItem('user_data') ? login : "Change Username"} aria-label="Change Username"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Password:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(password) : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
+                        <input id="password" type="text" class="form-control" value= {localStorage.getItem('user_data') ? password : "Change Password"} aria-label="Change password" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>Email:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(email) : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
+                        <input id="email" type="text" class="form-control" value= {localStorage.getItem('user_data') ? email : "Change Email"}  aria-label="Change Email" aria-describedby="button-addon2"/>
                       </div>
                       
                       <div className='d-flex'>
                         <label>First Name:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(firstName) : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? firstName : "Change First Name"} aria-label="Change First Name" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(lastName) : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? lastName : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
                         <label>Phone Number:</label>
                         </div>
                         <div className='d-flex'>
-                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(phone) : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
+                        <input id="phone" type="text" class="form-control" value= {localStorage.getItem('user_data') ? phone : "Change Phone Number"} aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                       </div>
 
                       <div className='d-flex'>

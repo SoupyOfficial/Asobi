@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, CardImg } from 'react-bootstrap';
+import { Button, CardImg, Form } from 'react-bootstrap';
 
 export default function Search() {
     
@@ -30,6 +30,9 @@ export default function Search() {
         
         var obj = {Title:search.value};
         var js = JSON.stringify(obj);
+        if(search.value == "") {
+            return;
+        }
         
         try
         {
@@ -54,7 +57,7 @@ export default function Search() {
   return (
     <div className='primaryBackground' id="cardUIDiv">
             <br />
-            <input type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
+            <input autoFill='false' onChange={searchMovie} type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
                 ref={(c) => search = c} /><br/>
             <Button type="button" id="searchCardButton" class="buttons" 
                 onClick={searchMovie}> Search Media</Button><br />

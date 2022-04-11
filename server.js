@@ -91,7 +91,7 @@ app.post('/api/login', async (req, res, next) =>
   const db = client.db();
   const results = await db.collection('Users').find({Login:login,Password:password}).toArray();
 
-  var id = -1;
+  var userId = -1;
   var fn = '';
   var ln = '';
   var email = '';
@@ -102,7 +102,7 @@ app.post('/api/login', async (req, res, next) =>
 
   if( results.length > 0 )
   {
-    id = results[0].UserId;
+    userId = results[0].UserId;
     fn = results[0].FirstName;
     ln = results[0].LastName;
     email = results[0].Email;
@@ -112,7 +112,7 @@ app.post('/api/login', async (req, res, next) =>
     watchlist = results[0].WatchList;
   }
 
-  var ret = { id:id, firstName:fn, lastName:ln, email:email, phoneNumber:phone, following:following, reviews:reviews, watchList:watchlist, error:''};
+  var ret = { userId:userId, firstName:fn, lastName:ln, email:email, phoneNumber:phone, following:following, reviews:reviews, watchList:watchlist, error:''};
   res.status(200).json(ret);
 });
 
@@ -410,6 +410,7 @@ app.post('/api/loadprofile', async (req, res, next) =>
   var watchList = [];
   var reviews = [];
   var following = [];
+  
 
   login = results.Login;
   password = results.Password;
@@ -421,7 +422,7 @@ app.post('/api/loadprofile', async (req, res, next) =>
   reviews = results.Reviews;
   following = results.Following;
 
-  var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:tywatchListpe, reviews:reviews, following:following, error:''};
+  var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:watchList, reviews:reviews, following:following, error:''};
   res.status(200).json(ret);
 });
 

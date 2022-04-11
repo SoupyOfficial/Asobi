@@ -6,10 +6,9 @@ function LoggedInName()
 
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.id;
+    var userId = ud.userId;
     var firstName = ud.firstName;
     var lastName = ud.lastName;
-    console.log(firstName);
 
     const doLogout = event => 
     {
