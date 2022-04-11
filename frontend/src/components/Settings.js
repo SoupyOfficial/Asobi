@@ -100,7 +100,7 @@ function Settings() {
 
                       <div className='d-flex'>
                         <label>Last Name:</label>
-                        <input type="text" class="form-control" value= {state.lastName} aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                        <input type="text" class="form-control" value= {localStorage.getItem('user_data') ? JSON.stringify(lastName) : "Change Last Name"} aria-label="Change Last Name" aria-describedby="button-addon2"/>
                         </div>
                       
                       <div className='d-flex'>
