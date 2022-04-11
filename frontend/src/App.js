@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
-import DiscoverPage from './pages/DiscoverPage';
+import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
 import SettingsPage from './pages/SettingsPage';
@@ -17,7 +17,7 @@ function App() {
     <Router >
       <Switch>
         <Route path="/" exact>
-          <SearchPage/>
+          <HomePage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
@@ -31,8 +31,8 @@ function App() {
         <Route path="/profile" exact>
           <ProfilePage/>
         </Route>
-        <Route path="/discover" exact>
-          <DiscoverPage/>
+        <Route path="/home" exact>
+          <HomePage/>
         </Route>
         <Route path="/movie">
           <MoviePage/>
