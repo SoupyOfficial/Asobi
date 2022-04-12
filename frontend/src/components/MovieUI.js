@@ -1,8 +1,11 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Button } from 'react-bootstrap'
 import Carousel from './Carousel';
 
 const MovieUI = ({imdbID}) => {
+    var _ud = localStorage.getItem('user_data');
+    var ud = JSON.parse(_ud);
+    var userId = ud.userId;    
     
 
     let bp = require('./Path.js'); 
@@ -51,6 +54,36 @@ const MovieUI = ({imdbID}) => {
         }
     };
     window.onload = searchMovie;
+
+    const addToWatchlist = async event =>
+    {
+        event.preventDefault();
+        const queryParams = new URLSearchParams(window.location.search);
+
+        const imdbID = queryParams.get('imdbID');
+
+        console.log(imdbID)
+        console.log(userId)
+        
+        var obj = {userid:userId,ID:imdbID};
+        var js = JSON.stringify(obj);
+        
+        try
+        {
+            const response = await fetch(bp.buildPath('api/addtowatchlist'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            console.log(res)
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
+        }
+    }
+
   return (
     <div className='primaryBackground' style={{textAlign:"left"}}>
         
@@ -63,6 +96,7 @@ const MovieUI = ({imdbID}) => {
                     <Row>
                         <Col >
                             <h3 id="title">Title</h3>
+                            <Button onClick={addToWatchlist}>Add to Watchlist</Button>
                         </Col>
                         <Col md={{ yoffset:10, span: 10, offset: 5}}>
                             Rating
