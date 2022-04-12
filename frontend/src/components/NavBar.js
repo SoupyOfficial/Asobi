@@ -18,18 +18,18 @@ function NavBar() {
                 </Navbar.Brand>            
             
                 <Dropdown>
-                  <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Popular</Dropdown.Toggle>
+                  <Dropdown.Toggle style={{ fontSize:"1.5rem", borderRadius:10, margin: 5 }}>Popular</Dropdown.Toggle>
                   <Dropdown.Menu className='bg-light'>
-                    <Row><Navbar.Brand style={{ color: "white"}} href='/top100movies'>Movies</Navbar.Brand></Row>
-                    <Row><Navbar.Brand style={{ color: "white"}} href='/top100series'>Series</Navbar.Brand>  </Row>
+                    <Row style={{textAlign:"center"}}><Navbar.Brand style={{ color: "white"}} href='/top100movies'>Movies</Navbar.Brand></Row>
+                    <Row style={{textAlign:"center"}}><Navbar.Brand style={{ color: "white"}} href='/top100series'>Series</Navbar.Brand>  </Row>
                   </Dropdown.Menu>  
                 </Dropdown>
 
                 <Dropdown>
-                  <Dropdown.Toggle style={{ borderRadius:10, margin: 5 }}>Top Rated</Dropdown.Toggle>
+                  <Dropdown.Toggle style={{ fontSize:"1.5rem", borderRadius:10, margin: 5 }}>Top Rated</Dropdown.Toggle>
                   <Dropdown.Menu className='bg-light'>
-                    <Row><Navbar.Brand style={{ color: "white"}} href='/top250movies'>Movies</Navbar.Brand></Row>
-                    <Row><Navbar.Brand style={{ color: "white"}} href='/top250series'>Series</Navbar.Brand>  </Row>
+                    <Row style={{textAlign:"center"}}><Navbar.Brand style={{ color: "white"}} href='/top250movies'>Movies</Navbar.Brand></Row>
+                    <Row style={{textAlign:"center"}}><Navbar.Brand style={{ color: "white"}} href='/top250series'>Series</Navbar.Brand>  </Row>
                   </Dropdown.Menu>  
                 </Dropdown>
 
