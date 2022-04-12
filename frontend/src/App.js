@@ -11,6 +11,10 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
 import SettingsPage from './pages/SettingsPage';
+import Top100MoviesPage from './pages/Top100MoviesPage';
+import Top100SeriesPage from './pages/Top100SeriesPage';
+import Top250SeriesPage from './pages/Top250SeriesPage';
+import Top250MoviesPage from './pages/Top250MoviesPage';
 
 function App() {
   return (
@@ -45,6 +49,18 @@ function App() {
         </Route>
         <Route path="/settings" exact>
           <SettingsPage/>
+        </Route>
+        <Route path="/top100movies" exact>
+          <Top100MoviesPage/>
+        </Route>
+        <Route path="/top100series" exact>
+          <Top100SeriesPage/>
+        </Route>
+        <Route path="/top250movies" exact>
+          <Top250MoviesPage/>
+        </Route>
+        <Route path="/top250series" exact>
+          <Top250SeriesPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  

@@ -61,9 +61,6 @@ const MovieUI = ({imdbID}) => {
         const queryParams = new URLSearchParams(window.location.search);
 
         const imdbID = queryParams.get('imdbID');
-
-        console.log(imdbID)
-        console.log(userId)
         
         var obj = {userid:userId,ID:imdbID};
         var js = JSON.stringify(obj);

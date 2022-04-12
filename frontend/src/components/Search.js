@@ -50,26 +50,26 @@ export default function Search() {
                 ref={(c) => search = c} /><br/>
             <Button type="button" id="searchCardButton" class="buttons" 
                 onClick={searchMovie}> Search Media</Button><br />
-                <div className='container'>
+                <div className='container py-4'>
                     <div id="movies" className="row">
                         {movies.map(
-                        (movie) =>                        
-                            <>
-                            
-                            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem"}}>                                
-                                <div className='card bg-dark border-0'>
-                                    <CardImg
-                                        className={`row_poster ${"row_posterLarge"}`}
-                                        src={movie.poster}
-                                        alt={movie.title}
-                                        key={movie.imdbID}
-                                        onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
-                                        style={{width:"auto", height:"auto"}}
-                                    />
-                                    <h3 className='d-flex p-2'>{movie.title}</h3>
-                                </div>
-                            </div>
-                            </>                        
+                            (movie) =>                        
+                                <>
+                                    
+                                    <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+                                        <div className='card bg-dark border-0'>
+                                            <CardImg
+                                                className={`row_poster ${"row_posterLarge"}`}
+                                                src={movie.poster}
+                                                alt={movie.title}
+                                                key={movie.imdbID}
+                                                onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
+                                                style={{width:"auto", height:"auto"}}
+                                            />
+                                            <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
+                                        </div>
+                                    </div>
+                                </>                        
                         )}
                     </div>
                 </div>
