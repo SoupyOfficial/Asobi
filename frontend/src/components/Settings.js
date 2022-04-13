@@ -60,7 +60,7 @@ function Settings() {
       var js = JSON.stringify(obj);
       //let bp = require('./Path.js'); 
 
-
+/*
       try
       {    
           const response = await fetch(bp.buildPath('api/editprofile'),
@@ -83,7 +83,7 @@ function Settings() {
       catch(e)
       {
           setMessage(e.toString());
-      }    
+      } */   
   };
   
 
