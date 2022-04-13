@@ -56,7 +56,7 @@ function Settings() {
       var obj = {userId:userId,email:newEmail.value,phoneNumber:newPhone.value,login:newLogin.value,password:newPassword.value,firstName:newFirst.value,lastName:newLast.value};
 
       var js = JSON.stringify(obj);
-
+/*
       try
       {    
           const response = await fetch(bp.buildPath('api/editprofile'),
@@ -65,7 +65,7 @@ function Settings() {
           var res = JSON.parse(await response.text());
 
          
-          /*
+          
           if( res.error.length > 0 )
           {
               setMessage("API Error:" + res.error );
@@ -76,12 +76,12 @@ function Settings() {
               var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
               localStorage.setItem('user_data', JSON.stringify(user));
               window.location.href = '/profile';
-          }*/
+          }
       }
       catch(e)
       {
           setMessage(e.toString());
-      }    
+      }*/    
   };
   
 
