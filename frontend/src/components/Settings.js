@@ -56,7 +56,7 @@ function Settings() {
       var obj = {userId:userId,email:newEmail.value,phoneNumber:newPhone.value,login:newLogin.value,password:newPassword.value,firstName:newFirst.value,lastName:newLast.value};
 
       var js = JSON.stringify(obj);
-
+/*
       try
       {    
           const response = await fetch(bp.buildPath('api/editprofile'),
@@ -81,7 +81,7 @@ function Settings() {
       catch(e)
       {
           setMessage(e.toString());
-      }    
+      }*/    
   };
   
 
