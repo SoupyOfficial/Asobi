@@ -13,6 +13,7 @@ function Settings() {
   var newLast;
   var newEmail;
   var newPhone;    
+  let bp = require('./Path.js'); 
 
   const load = async event => 
   {
@@ -24,7 +25,7 @@ function Settings() {
 
    
     
-    let bp = require('./Path.js'); 
+    //let bp = require('./Path.js'); 
 
     try
     {
@@ -57,7 +58,7 @@ function Settings() {
       var obj = {userId:userId,email:newEmail.value,phoneNumber:newPhone.value,login:newLogin.value,password:newPassword.value,firstName:newFirst.value,lastName:newLast.value};
 
       var js = JSON.stringify(obj);
-      let bp = require('./Path.js'); 
+      //let bp = require('./Path.js'); 
 
 
       try
@@ -65,10 +66,8 @@ function Settings() {
           const response = await fetch(bp.buildPath('api/editprofile'),
           {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
           
-          var res = JSON.parse(await response.text());
-
-         
-          /*
+          var res = JSON.parse(await response.text());  
+          
           if( res.error.length > 0 )
           {
               setMessage("API Error:" + res.error );
@@ -79,7 +78,7 @@ function Settings() {
               var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
               localStorage.setItem('user_data', JSON.stringify(user));
               window.location.href = '/profile';
-          }*/
+          }
       }
       catch(e)
       {
