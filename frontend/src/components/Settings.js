@@ -6,6 +6,7 @@ function Settings() {
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
   var userId = ud.userId;
+
   var newLogin;
   var newPassword;
   var newFirst;
@@ -52,7 +53,7 @@ function Settings() {
   {
       event.preventDefault();
 
-      var obj = {userId:userId,login:newLogin.value,password:newPassword.value,firstName:newFirst.value,lastName:newLast.value,email:newEmail.value,phoneNumber:newPhone.value};
+      var obj = {userId:userId,email:newEmail.value,phoneNumber:newPhone.value,login:newLogin.value,password:newPassword.value,firstName:newFirst.value,lastName:newLast.value};
 
       var js = JSON.stringify(obj);
 
