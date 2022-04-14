@@ -6,7 +6,7 @@ function Settings() {
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
   var userId = ud.userId;
-
+//additon here in this section
   var newLogin = '';
   var newPassword = '';
   var newFirst= '';
