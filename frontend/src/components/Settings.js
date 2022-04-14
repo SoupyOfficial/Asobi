@@ -7,13 +7,14 @@ function Settings() {
   var ud = JSON.parse(_ud);
   var userId = ud.userId;
 
-  var newLogin;
-  var newPassword;
-  var newFirst;
-  var newLast;
-  var newEmail;
-  var newPhone;    
-  let bp = require('./Path.js'); 
+  var newLogin = '';
+  var newPassword = '';
+  var newFirst= '';
+  var newLast= '';
+  var newEmail= '';
+  var newPhone= '';    
+  const bp = require('./Path.js'); 
+  const [searchResults,setMessage] = useState('');
 
   const load = async event => 
   {
@@ -60,14 +61,14 @@ function Settings() {
       var js = JSON.stringify(obj);
       //let bp = require('./Path.js'); 
 
-/*
+
       try
       {    
           const response = await fetch(bp.buildPath('api/editprofile'),
           {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
           
           var res = JSON.parse(await response.text());  
-          
+          //seach js const message 
           if( res.error.length > 0 )
           {
               setMessage("API Error:" + res.error );
@@ -75,15 +76,15 @@ function Settings() {
           else
           {
 
-              var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
-              localStorage.setItem('user_data', JSON.stringify(user));
-              window.location.href = '/profile';
+              //var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
+              //localStorage.setItem('user_data', JSON.stringify(user));
+              //window.location.href = '/profile';
           }
       }
       catch(e)
       {
           setMessage(e.toString());
-      } */   
+      }  
   };
   
 
