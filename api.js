@@ -107,30 +107,6 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);
     });
 
-    app.post('/api/addcard', async (req, res, next) =>
-    {
-    // incoming: userId, color
-    // outgoing: error
-
-    const { userId, card } = req.body;
-
-    const newCard = {Card:card,UserId:userId};
-    var error = '';
-
-    try
-    {
-        const db = client.db();
-        const result = db.collection('Cards').insertOne(newCard);
-    }
-    catch(e)
-    {
-        error = e.toString();
-    }
-
-    var ret = { error: error };
-    res.status(200).json(ret);
-    });
-
     app.post('/api/register', async(req, res, next) =>
     {
     // incoming: login, password, first name, last name, email, phone number
@@ -350,6 +326,22 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);
     });
 
+    app.post('/api/deletefromwatchlist', async (req, res, next) =>
+    {
+    var error = '';
+
+    const { userid, ID } = req.body;
+
+    var _search = userid.trim();
+
+    const db = client.db();
+    const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+    {$pull:{WatchList:ID}},{returnNewDocument: "true"} );
+
+    var ret = {imdbId:ID,error:''};
+    res.status(200).json(ret);
+    });
+
     app.post('/api/addtoreviews', async (req, res, next) =>
     {
     var error = '';
@@ -398,6 +390,22 @@ exports.setApp = function ( app, client )
     const db = client.db();
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
     {$push:{Following:userid2}},{returnNewDocument: "true"} );
+
+    var ret = {Following:userid2,error:''};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/removefromfollowing', async (req, res, next) =>
+    {
+    var error = '';
+
+    const { userid, userid2 } = req.body;
+
+    var _search = userid.trim();
+
+    const db = client.db();
+    const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+    {$pull:{Following:userid2}},{returnNewDocument: "true"} );
 
     var ret = {Following:userid2,error:''};
     res.status(200).json(ret);
