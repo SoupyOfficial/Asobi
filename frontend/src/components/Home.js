@@ -41,9 +41,9 @@ function Home(){
             const response = await fetch(bp.buildPath('api/loadtop250'),
             {method:'POST',headers:{'Content-Type': 'application/json'}});
             
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            var _results = res.results;
+            txt = await response.text();
+            res = JSON.parse(txt);
+            _results = res.results;
             //Number of Search Results
             //setResults(`${_results.length} results found`);
             setTop250Movies(_results)
@@ -60,9 +60,9 @@ function Home(){
             const response = await fetch(bp.buildPath('api/loadpopular100tv'),
             {method:'POST',headers:{'Content-Type': 'application/json'}});
             
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            var _results = res.results;
+            txt = await response.text();
+            res = JSON.parse(txt);
+            _results = res.results;
             //Number of Search Results
             //setResults(`${_results.length} results found`);
             setPopular100TV(_results)
@@ -79,9 +79,9 @@ function Home(){
             const response = await fetch(bp.buildPath('api/loadtop250tv'),
             {method:'POST',headers:{'Content-Type': 'application/json'}});
             
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            var _results = res.results;
+            txt = await response.text();
+            res = JSON.parse(txt);
+            _results = res.results;
             //Number of Search Results
             //setResults(`${_results.length} results found`);
             setTop250TV(_results)

@@ -107,7 +107,6 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);
     });
 
-
     app.post('/api/addcard', async (req, res, next) =>
     {
     // incoming: userId, color
@@ -156,7 +155,6 @@ exports.setApp = function ( app, client )
     var ret = { error: error };
     res.status(200).json(ret);
     });
-
 
     app.post('/api/login', async (req, res, next) =>
     {

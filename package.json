@@ -5,7 +5,8 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
+        "test": "jest --watchAll"
     },
     "author": "",
     "license": "ISC",
@@ -16,8 +17,10 @@
         "dotenv": "^16.0.0",
         "emailjs-com": "^3.2.0",
         "env": "^0.0.2",
+        "enzyme": "^3.11.0",
         "express": "^4.17.3",
         "formik": "^2.2.9",
+        "jest": "^27.5.1",
         "mongodb": "^4.5.0",
         "react": "^17.0.2",
         "react-bootstrap": "^2.2.1",
