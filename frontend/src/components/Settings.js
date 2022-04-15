@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import React, { useEffect, useState } from "react";
-
+//added import usestate here
 
 function Settings() {
   var _ud = localStorage.getItem('user_data');
