@@ -7,13 +7,14 @@ function Settings() {
   var ud = JSON.parse(_ud);
   var userId = ud.userId;
 
-  var newLogin;
-  var newPassword;
-  var newFirst;
-  var newLast;
-  var newEmail;
-  var newPhone;    
+  var newLogin = '';
+  var newPassword = '';
+  var newFirst = '';
+  var newLast = '';
+  var newEmail = '';
+  var newPhone = '';    
   let bp = require('./Path.js'); 
+  const [searchResults,setMessage] = useState('');
 
   const load = async event => 
   {
@@ -75,9 +76,9 @@ function Settings() {
           else
           {
 
-              var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
-              localStorage.setItem('user_data', JSON.stringify(user));
-              window.location.href = '/profile';
+              //var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
+              //localStorage.setItem('user_data', JSON.stringify(user));
+              //window.location.href = '/profile';
           }
       }
       catch(e)
