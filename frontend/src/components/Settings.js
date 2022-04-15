@@ -1,7 +1,6 @@
 //import React from 'react';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-//added import usestate here
 
 function Settings() {
   var _ud = localStorage.getItem('user_data');
@@ -76,7 +75,7 @@ function Settings() {
           }
           else
           {
-
+              //add loca
               //var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
               //localStorage.setItem('user_data', JSON.stringify(user));
               //window.location.href = '/profile';
