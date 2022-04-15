@@ -1,6 +1,6 @@
-import React from 'react';
+//import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import React, { useEffect, useState } from "react";
 //added import usestate here
 
 function Settings() {
