@@ -11,12 +11,13 @@ export default function Search() {
     const [movies, setMovies] = useState([]);
 
     let bp = require('./Path.js'); 
+    
 
     const searchMovie = async event => 
     {
         event.preventDefault();
         document.querySelector('#movies').innerHTML = ''
-        
+
         var obj = {Title:search.value};
         var js = JSON.stringify(obj);
         if(search.value === "") {
@@ -25,7 +26,10 @@ export default function Search() {
         
         try
         {
-            const response = await fetch(bp.buildPath('api/search'),
+            //console.log(search.value)
+
+            document.querySelector('#movies').innerHTML = ''
+            const response = await fetch(bp.buildPath('api/searchmovie'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
@@ -34,6 +38,7 @@ export default function Search() {
             //Number of Search Results
             //setResults(`${_results.length} results found`);
             setMovies(_results)
+            
             
         }
         catch(e)
@@ -46,18 +51,16 @@ export default function Search() {
   return (
     <div className='primaryBackground' id="cardUIDiv">
             <br />
-            <input autoFill='false' onChange={searchMovie} type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
+            <input autoComplete='false' onChange={searchMovie} type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
                 ref={(c) => search = c} /><br/>
-            <Button type="button" id="searchCardButton" class="buttons" 
-                onClick={searchMovie}> Search Media</Button><br />
+            {/* <Button type="button" id="searchCardButton" class="buttons" 
+                onClick={searchMovie}> Search Media</Button> */}<br />
                 <div className='container py-4'>
                     <div id="movies" className="row">
                         {movies.map(
-                            (movie) =>                        
-                                <>
-                                    
+                            (movie) =>    
                                     <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
-                                        <div className='card bg-dark border-0'>
+                                        <div id='movie' className='card bg-dark border-0'>
                                             <CardImg
                                                 className={`row_poster ${"row_posterLarge"}`}
                                                 src={movie.poster}
@@ -68,8 +71,7 @@ export default function Search() {
                                             />
                                             <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
                                         </div>
-                                    </div>
-                                </>                        
+                                    </div>                    
                         )}
                     </div>
                 </div>
