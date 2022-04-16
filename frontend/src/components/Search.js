@@ -33,7 +33,7 @@ export default function Search() {
         event.preventDefault();
         document.querySelector('#movies').innerHTML = ''
 
-        var obj = {Title:search.value};
+        var obj = {Title:imdbID};
         var js = JSON.stringify(obj);
         
         try
@@ -41,7 +41,7 @@ export default function Search() {
             //console.log(search.value)
 
             document.querySelector('#movies').innerHTML = ''
-            const response = await fetch(bp.buildPath('api/searchmovie'),
+            const response = await fetch(bp.buildPath('api/search'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
