@@ -119,26 +119,15 @@ function Register()
                     <Form>
 
                       {/* First and Last Name */}
-<<<<<<< HEAD
                       <div className="row">
                         <div className="col-md-6 mb-2">
                           <div className="form-outline">
                           <label className="form-label" htmlFor="first name"
-=======
-                      <div class="row">
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                          <label class="form-label" for="form3Example1"
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                                     >First Name</label>
                             <Field
                               type="firstName"
                               name="firstName"
-<<<<<<< HEAD
                               placeholder="First Name"
-=======
-                              placeholder="Fisrt Name"
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                               autoComplete="off"
                               className={`mt-2 form-control
                               ${
@@ -154,15 +143,9 @@ function Register()
                             />
                           </div>
                         </div>
-<<<<<<< HEAD
                         <div className="col-md-6 mb-2">
                           <div className="form-outline">
                             <label className="form-label" htmlFor="form3Example1"
-=======
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                            <label class="form-label" for="form3Example1"
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                                     >Last Name</label>
                             <Field
                               type="lastName"
@@ -186,11 +169,7 @@ function Register()
                       </div>
 
                       {/* Username */}
-<<<<<<< HEAD
                     <div className="form-outline mb-2">
-=======
-                    <div class="form-outline mb-2">
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                       <label htmlFor="username">Username</label>
                         <Field
                           type="username"
@@ -221,10 +200,7 @@ function Register()
                         />
   
                         <ErrorMessage
-<<<<<<< HEAD
                           data-testid="emailError"
-=======
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                           component="div"
                           name="email"
                           className="invalid-feedback"
@@ -232,11 +208,7 @@ function Register()
                       </div>
 
                       {/* Phone Number */}
-<<<<<<< HEAD
                     <div className="form-outline mb-2">
-=======
-                    <div class="form-outline mb-2">
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                       <label htmlFor="phone">Phone Number</label>
                         <Field
                           type="phone"
@@ -300,13 +272,8 @@ function Register()
                       <button
                               type="submit"
                               id="registerButton"
-<<<<<<< HEAD
                               className="btn btn-primary btn-block mb-4">
                           Submit
-=======
-                              class="btn btn-primary btn-block mb-4">
-                          Sign up
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
                     </button>
                     </Form>
                   </div>
