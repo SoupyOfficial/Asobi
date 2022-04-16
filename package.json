@@ -6,11 +6,7 @@
     "scripts": {
         "start": "node server.js",
         "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-<<<<<<< HEAD
         "test": "jest --watchAll --env=jest-environment-jsdom"
-=======
-        "test": "jest --watchAll"
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
     },
     "author": "",
     "license": "ISC",
