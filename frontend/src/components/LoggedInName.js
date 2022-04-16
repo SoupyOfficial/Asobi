@@ -21,15 +21,15 @@ function LoggedInName()
     };  
       
   return(
-   <div id="loggedInDiv"style=
+   <div className="loggedInDiv" id="loggedInDiv"style=
    {{
      display: "flex",
      flexDirection: "row",
      alignItems: "center",
      padding: "10px",
    }}>
-   <a id="userName" style={{color:'white', margin:'0px 10px', textDecoration:"none", fontSize:'20px'}} href='/profile'>{firstName + " " + lastName}</a><br />
-   <Button type="button" id="logoutButton" class="buttons" 
+   <a className="navUserName" id="userName" href='/profile'>{firstName + " " + lastName}</a><br />
+   <Button type="button" id="logoutButton" className="buttons" 
      onClick={doLogout}> Log Out </Button>
    </div>
   );
