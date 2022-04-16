@@ -115,7 +115,7 @@ exports.setApp = function ( app, client )
 
     const { userId, login, password, firstName, lastName, phoneNumber, email } = req.body;
 
-    const newUser = { UserId:userId,Login:login,Password:password,FirstName:firstName,LastName:lastName,PhoneNumber:phoneNumber,Email:email};
+    const newUser = { UserId:userId,Login:login,Password:password,FirstName:firstName,LastName:lastName,PhoneNumber:phoneNumber,Email:email };
     var error = '';
 
     try
