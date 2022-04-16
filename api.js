@@ -115,7 +115,8 @@ exports.setApp = function ( app, client )
 
     const { userId, login, password, firstName, lastName, phoneNumber, email } = req.body;
 
-    const newUser = { UserId:userId,Login:login,Password:password,FirstName:firstName,LastName:lastName,PhoneNumber:phoneNumber,Email:email };
+    const newUser = { UserId:userId,Login:login,Password:password,FirstName:firstName,LastName:lastName,PhoneNumber:phoneNumber,Email:email,Validated:false};
+
     var error = '';
 
     try
@@ -129,6 +130,29 @@ exports.setApp = function ( app, client )
     }
 
     var ret = { error: error };
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/verify', async (req, res, next) =>
+    {
+    var error = '';
+
+    const { userid } = req.body;
+
+    var _search = userid.trim();
+
+    try
+    {
+        const db = client.db();
+        const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+        {$set:{Validated:true}},{returnNewDocument: "true"} );
+    }
+    catch(e)
+    {
+        error = e.toString();
+    }
+
+    var ret = { error:'' };
     res.status(200).json(ret);
     });
 
