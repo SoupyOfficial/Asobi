@@ -56,7 +56,7 @@ function Register()
                 var user = {userId:ID,firstName:formRef.current.values.firstName,lastName:formRef.current.values.lastName}
                 console.log(ID)
                 localStorage.setItem('user_data', JSON.stringify(user));
-                window.location.href = '/profile';
+                window.location.href = '/verify';
             }
         }
         catch(e)

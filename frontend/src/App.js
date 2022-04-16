@@ -15,6 +15,7 @@ import Top100MoviesPage from './pages/Top100MoviesPage';
 import Top100SeriesPage from './pages/Top100SeriesPage';
 import Top250SeriesPage from './pages/Top250SeriesPage';
 import Top250MoviesPage from './pages/Top250MoviesPage';
+import VerifyPage from './pages/VerifyPage';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/login" exact>
           <LoginPage/>
+        </Route>
+        <Route path ="/verify" exact>
+          <VerifyPage/>
         </Route>
         <Route path="/register" exact>
           <RegisterPage />
