@@ -95,15 +95,9 @@ function Register()
 
     return(
         <>
-<<<<<<< HEAD
-       <div className="row d-flex justify-content-center h-100">
-        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div className="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
-=======
        <div class="row d-flex justify-content-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
             <Formik
               initialValues={{firstName: "", lastName: "", email: "", password: "", username: "", confirmPassword: "", phone: "" }}
               validationSchema={validate}
