@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import {
   screen,
@@ -29,19 +28,10 @@ test('rendering and submitting a basic Formik form', async () => {
 })
 
 /* 
-=======
-
-
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
 test('Fake Test', () => {
   expect(true).toBeTruthy();
 });
 
-<<<<<<< HEAD
-
-=======
-/* 
->>>>>>> 17a5a07d9bc6167e99e13d0a35dd5507e59ef0d9
 test('Fake Two', () => {
   expect(false).toBeFalsy();
 }); */
