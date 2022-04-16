@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Col, Container, Row, Button } from 'react-bootstrap'
 import Carousel from './Carousel';
 
@@ -6,6 +6,7 @@ const MovieUI = ({imdbID}) => {
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
     var userId = ud.userId;    
+    const [message,setMessage] = useState('');
     
 
     let bp = require('./Path.js'); 
@@ -61,9 +62,32 @@ const MovieUI = ({imdbID}) => {
         const queryParams = new URLSearchParams(window.location.search);
 
         const imdbID = queryParams.get('imdbID');
-        
-        var obj = {userid:userId,ID:imdbID};
+        var obj = {ID:userId};
         var js = JSON.stringify(obj);
+        
+        try
+        {
+            const response = await fetch(bp.buildPath('api/loadprofile'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            console.log(res)
+            for(var i = 0; i < res.watchList.length; i++) {
+                if(res.watchList[i] == imdbID) {
+                    setMessage("Already in watchlist")
+                    return;
+                }
+            }
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
+        }
+
+        obj = {userid:userId,ID:imdbID};
+        js = JSON.stringify(obj);
         
         try
         {
@@ -94,6 +118,7 @@ const MovieUI = ({imdbID}) => {
                         <Col >
                             <h3 id="title">Title</h3>
                             <Button onClick={addToWatchlist}>Add to Watchlist</Button>
+                            <div>{message}</div>
                         </Col>
                         <Col md={{ yoffset:10, span: 10, offset: 5}}>
                             Rating
