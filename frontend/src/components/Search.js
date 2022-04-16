@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Button, CardImg } from 'react-bootstrap';
 
 export default function Search() {
@@ -64,8 +64,9 @@ export default function Search() {
   return (
     <div className='primaryBackground' id="cardUIDiv">
             <br />
-            <input autoComplete='false' onChange={searchMovie} type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
-                ref={(c) => search = c} /><br/>
+
+            <h1 className='resultsText'>{'Showing results for \'' + imdbID + '\'.'}</h1>
+
             {/* <Button type="button" id="searchCardButton" class="buttons" 
                 onClick={searchMovie}> Search Media</Button> */}<br />
                 <div className='container py-4'>
@@ -73,7 +74,7 @@ export default function Search() {
                         {movies.map(
                             (movie) =>    
                                     <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
-                                        <div id='movie' className='card bg-dark border-0'>
+                                        <div id='movie' className='card bg-dark border-0' style={{color:'#AAAAAA'}}>
                                             <CardImg
                                                 className={`row_poster ${"row_posterLarge"}`}
                                                 src={movie.poster}
@@ -82,7 +83,7 @@ export default function Search() {
                                                 onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
                                                 style={{width:"auto", height:"auto"}}
                                             />
-                                            <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
+                                            <h3 className='d-flex my-2 p-2' style={{fontSize:'18px'}}>{movie.title}</h3>
                                         </div>
                                     </div>                    
                         )}

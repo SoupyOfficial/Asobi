@@ -49,10 +49,6 @@ function NavBar() {
               Home
             </a>
 
-            <a href="/search">
-              Search
-            </a>
-
             <form className='navSearch' id='search-form' method='get' action={buildPathToSearch()}>
               <input className='navSearchBar' id='search-input' type="search" name='search-key' placeholder='&#x1F50D;' /><br />
               <button type='submit'> Search </button>
