@@ -57,7 +57,7 @@ export default function Search() {
                 onClick={searchMovie}> Search Media</Button> */}<br />
                 <div className='container py-4'>
                     <div id="movies" className="row">
-                        {movies.map(
+                        {movies.slice(0,35).map(
                             (movie) =>    
                                     <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                                         <div id='movie' className='card bg-dark border-0'>

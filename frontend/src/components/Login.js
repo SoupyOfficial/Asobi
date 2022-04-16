@@ -33,7 +33,8 @@ function Login()
             }
             else
             {
-                var user = {userId:res.userId,firstName:res.firstName,lastName:res.lastName}
+                console.log(res.id)
+                var user = {userId:res.id,firstName:res.firstName,lastName:res.lastName}
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/profile';
             }
