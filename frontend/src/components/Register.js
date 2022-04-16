@@ -95,9 +95,9 @@ function Register()
 
     return(
         <>
-       <div class="row d-flex justify-content-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
+       <div className="row d-flex justify-content-center h-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div className="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
             <Formik
               initialValues={{firstName: "", lastName: "", email: "", password: "", username: "", confirmPassword: "", phone: "" }}
               validationSchema={validate}
@@ -119,15 +119,15 @@ function Register()
                     <Form>
 
                       {/* First and Last Name */}
-                      <div class="row">
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                          <label class="form-label" for="form3Example1"
+                      <div className="row">
+                        <div className="col-md-6 mb-2">
+                          <div className="form-outline">
+                          <label className="form-label" htmlFor="first name"
                                     >First Name</label>
                             <Field
                               type="firstName"
                               name="firstName"
-                              placeholder="Fisrt Name"
+                              placeholder="First Name"
                               autoComplete="off"
                               className={`mt-2 form-control
                               ${
@@ -143,9 +143,9 @@ function Register()
                             />
                           </div>
                         </div>
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                            <label class="form-label" for="form3Example1"
+                        <div className="col-md-6 mb-2">
+                          <div className="form-outline">
+                            <label className="form-label" htmlFor="form3Example1"
                                     >Last Name</label>
                             <Field
                               type="lastName"
@@ -169,7 +169,7 @@ function Register()
                       </div>
 
                       {/* Username */}
-                    <div class="form-outline mb-2">
+                    <div className="form-outline mb-2">
                       <label htmlFor="username">Username</label>
                         <Field
                           type="username"
@@ -200,6 +200,7 @@ function Register()
                         />
   
                         <ErrorMessage
+                          data-testid="emailError"
                           component="div"
                           name="email"
                           className="invalid-feedback"
@@ -207,7 +208,7 @@ function Register()
                       </div>
 
                       {/* Phone Number */}
-                    <div class="form-outline mb-2">
+                    <div className="form-outline mb-2">
                       <label htmlFor="phone">Phone Number</label>
                         <Field
                           type="phone"
@@ -271,8 +272,8 @@ function Register()
                       <button
                               type="submit"
                               id="registerButton"
-                              class="btn btn-primary btn-block mb-4">
-                          Sign up
+                              className="btn btn-primary btn-block mb-4">
+                          Submit
                     </button>
                     </Form>
                   </div>
