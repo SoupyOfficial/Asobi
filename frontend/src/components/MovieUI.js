@@ -64,6 +64,29 @@ const MovieUI = ({imdbID}) => {
         const imdbID = queryParams.get('imdbID');
         var obj = {ID:userId};
         var js = JSON.stringify(obj);
+        try
+        {
+            const response = await fetch(bp.buildPath('api/loadprofile'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            console.log(res.watchList)
+            for(var i = 0; i < res.watchList.length; i++) {
+                if(res.watchList[i] == imdbID) {
+                    setMessage("Already in watchlist")
+                    return;
+                }
+            }
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
+        }
+        
+        obj = {userid:userId,ID:imdbID};
+        js = JSON.stringify(obj);
         
         try
         {

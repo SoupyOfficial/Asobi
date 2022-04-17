@@ -7,6 +7,7 @@ export default function Profile() {
   var ud = JSON.parse(_ud);
   var userId = ud.userId;    
   var firstName = ud.firstName;
+  console.log(ud)
 
   var obj = {ID:userId};
   var js = JSON.stringify(obj);
