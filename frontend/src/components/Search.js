@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, CardImg } from 'react-bootstrap';
+import { CardImg } from 'react-bootstrap';
 
 export default function Search() {
     
@@ -16,7 +16,7 @@ export default function Search() {
     const searchMovie = async event => 
     {
         event.preventDefault();
-        document.querySelector('#movies').innerHTML = ''
+        document.querySelector('#movies').innerHTML = null
 
         var obj = {Title:search.value};
         var js = JSON.stringify(obj);
@@ -59,16 +59,15 @@ export default function Search() {
                     <div id="movies" className="row">
                         {movies.map(
                             (movie) =>    
-                                    <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+                                    <div key={movie.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                                         <div id='movie' className='card bg-dark border-0'>
                                             <CardImg
                                                 className={`row_poster ${"row_posterLarge"}`}
                                                 src={movie.poster}
                                                 alt={movie.title}
-                                                key={movie.imdbID}
                                                 onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
-                                                style={{width:"auto", height:"auto"}}
-                                            />
+                                                style={{ height:"255px", width:"170px", objectFit:"cover"}}
+                                                />
                                             <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
                                         </div>
                                     </div>                    

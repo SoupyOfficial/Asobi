@@ -24,7 +24,7 @@ function LoggedInName()
     </div>
 
     <div className="col">
-      <Button type="button" id="logoutButton" class="buttons" 
+      <Button type="button" id="logoutButton" className="buttons" 
      onClick={doLogout}> Log Out </Button>
     </div>
    

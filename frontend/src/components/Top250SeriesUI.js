@@ -39,7 +39,7 @@ export default function Top250SeriesUI() {
                     (movie) =>                        
                         <>
                             
-                             <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+                             <div key={movie.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                                 <div className='card bg-dark border-0'>
                                     <CardImg
                                         className={`row_poster ${"row_posterLarge"}`}
@@ -47,7 +47,7 @@ export default function Top250SeriesUI() {
                                         alt={movie.title}
                                         key={movie.imdbID}
                                         onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
-                                        style={{width:"auto", height:"auto"}}
+                                        style={{ height:"255px", width:"170px", objectFit:"cover"}}
                                     />
                                     <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
                                 </div>

@@ -5,8 +5,6 @@ import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
 import Asobi from '../Asobi.png';
-import PageTitle from './PageTitle';
-
 function NavBar() {    
 
   return (
@@ -14,7 +12,7 @@ function NavBar() {
     <div className='NavBackground'>
         <Navbar fluid="true">
                 <Navbar.Brand href='/home'>
-                    <img src={Asobi} alt={PageTitle} style={{ height:"3rem", width: "10rem"}}/>
+                    <img src={Asobi} alt={<h1 style={{ color: "blue"}}>Asobi</h1>} style={{ height:"3rem", width: "10rem"}}/>
                 </Navbar.Brand>            
             
                 <Dropdown>

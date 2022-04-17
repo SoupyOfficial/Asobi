@@ -35,14 +35,14 @@ const MovieUI = ({imdbID}) => {
             
             var txt = await response.text();
             var res = JSON.parse(txt);
-            console.log(res)
+            //console.log(res)
             document.querySelector("#title").innerHTML = res.title
             document.querySelector("#poster").src = res.poster
             document.querySelector("#plot").innerHTML = res.plot
             document.querySelector("#released").innerHTML = res.released
             document.querySelector("#director").innerHTML = res.director
             document.querySelector("#genre").innerHTML = res.genre
-            console.log(res.ratings)
+            //console.log(res.ratings)
             res.ratings.map((rating) => {
                 document.querySelector('#ratings').innerHTML += rating.Source + ': ' + rating.Value + "<br/>";
                 return true;
@@ -72,9 +72,9 @@ const MovieUI = ({imdbID}) => {
             
             var txt = await response.text();
             var res = JSON.parse(txt);
-            console.log(res)
+            //console.log(res)
             for(var i = 0; i < res.watchList.length; i++) {
-                if(res.watchList[i] == imdbID) {
+                if(res.watchList[i] === imdbID) {
                     setMessage("Already in watchlist")
                     return;
                 }
@@ -94,9 +94,10 @@ const MovieUI = ({imdbID}) => {
             const response = await fetch(bp.buildPath('api/addtowatchlist'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            console.log(res)
+            txt = await response.text();
+            res = JSON.parse(txt);
+            //console.log(res)
+            setMessage("Added to watchlist")
             
         }
         catch(e)
@@ -109,23 +110,25 @@ const MovieUI = ({imdbID}) => {
     <div className='primaryBackground' style={{textAlign:"left"}}>
         
         <Container>
-            <Row style={{ paddingTop: '25px' }}>
-                <Col className='px-4 m-1 ms-md-auto rounded' style={{backgroundColor:"#484848"}}>
-                    <img src='' id="poster" alt='Movie Poster' width={400} height={600}/>
+            <Row className='' style={{ paddingTop: '25px' }}>
+                <Col className=' rounded'>
+                    <img src='' id="poster" alt='Movie Poster' width="100%" height="100%" style={{borderRadius:"25px"}}/>
                 </Col>
                 <Col>
                     <Row>
                         <Col >
                             <h3 id="title">Title</h3>
-                            <Button onClick={addToWatchlist}>Add to Watchlist</Button>
-                            <div>{message}</div>
+                            <Row>
+                                <Col><Button onClick={addToWatchlist}>Add to Watchlist</Button></Col>
+                                <Col><div>{message}</div></Col>
+                            </Row>
                         </Col>
-                        <Col md={{ yoffset:10, span: 10, offset: 5}}>
+                        <Col md={{ yoffset:10, span: 10}}>
                             Rating
                             <div id="ratings"></div>
                         </Col>
                     </Row>
-                    <Col className=' px-4 m-1 ms-md-auto rounded' style={{backgroundColor:"#484848"}}>
+                    <Col className=' px-4 m-1 rounded' style={{backgroundColor:"#484848"}}>
                         <Row>
                             Released:
                             <div id="released"></div>
@@ -145,7 +148,7 @@ const MovieUI = ({imdbID}) => {
                     </Col>
                     
                 </Col>
-                <Col className='px-4 ms-md-auto rounded' style={{backgroundColor:"#484848"}}>
+                <Col className='px-4 rounded' style={{backgroundColor:"#484848"}}>
                     Streaming on:
                 </Col>
             </Row>
