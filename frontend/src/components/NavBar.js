@@ -5,10 +5,6 @@ import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
 import Asobi from '../Asobi.png';
-import PageTitle from './PageTitle';
-import Search from './Search';
-import setSearch from './Search';
-import {Button} from 'react-bootstrap';
 
 //var search = '';
 

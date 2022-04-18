@@ -7,6 +7,8 @@ const MovieUI = ({imdbID}) => {
     var ud = JSON.parse(_ud);
     var userId = ud.userId;    
     const [message,setMessage] = useState('');
+
+    let bp = require('./Path.js');
     
 
     const app_name = 'asobi-1'
