@@ -5,7 +5,7 @@ export default function Profile() {
 
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.userId;    
+  var userId = ud.id;    
   var firstName = ud.firstName;
   console.log(ud)
 
@@ -25,14 +25,12 @@ export default function Profile() {
       }
   }
 
- const load = async event =>
- {
   try
   {
-      const response = await fetch(buildPath('api/loadprofile'),
+      const response = fetch(buildPath('api/loadprofile'),
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       
-      var txt = await response.text();
+      var txt = response.text();
       var res = JSON.parse(txt);
       console.log(res)
       
@@ -41,8 +39,6 @@ export default function Profile() {
   {
       console.log(e.toString());
   }
- }
-window.onload = load;
 
   return (
     <>
@@ -52,7 +48,7 @@ window.onload = load;
         <div class="container-fluid d-flex align-items-center justify-content-center">
           <div class="picture-container">
             <div class="picture">
-              <img alt="placeholder" src="https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2021/08/blank-profile-picture-png.png" class="picture-src" id="picturePreview" title=""></img>
+              <img src="https://militaryhealthinstitute.org/wp-content/uploads/sites/37/2021/08/blank-profile-picture-png.png" class="picture-src" id="picturePreview" title=""></img>
             </div>
           </div>
         </div>
@@ -76,7 +72,7 @@ window.onload = load;
               <div class="card-body" id="card1">
                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Watchlist</i></h6>
                 <div class="p-4">
-                  <a href="/" class="text-underline-hover">Add</a>
+                  <a href="#" class="text-underline-hover">Add</a>
                 </div>
               </div>
             </div>
@@ -86,7 +82,7 @@ window.onload = load;
               <div class="card-body" id="card2">
                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">My Top Rated</i></h6>      
                 <div class="p-4">
-                  <a href="/" class="text-underline-hover">Add</a>
+                  <a href="#" class="text-underline-hover">Add</a>
                 </div>
               </div>
             </div>

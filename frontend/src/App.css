@@ -271,3 +271,124 @@
   text-align: center;
   margin: 10px;
 }
+
+nav {
+  position: sticky;
+
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+       
+  min-height:8vh;
+  background-color: #484848;
+  font-family:Poppins, sans-serif;
+  font-size: 18px;
+}
+
+nav li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  margin: 0px 3px;
+}
+
+.logo {
+  padding: 0 2vh;
+}
+.logo img{
+  width: 8rem;
+  height: 2rem;
+}
+
+.navLinks {
+  float: left;
+  display: flex;
+  align-items: baseline;
+  padding: 3px;
+  
+  min-height: 20px;
+
+  flex: none;
+  flex-grow: 1;
+  margin: 0px 5px;
+}
+
+.navLinks a{
+  flex: none;
+  flex-grow: 0;
+  padding: 3px 7px;
+  margin: 3px;
+  
+  color:#AAAAAA; 
+  text-decoration:none; 
+  display:block;
+  border-radius: 5px;
+}
+
+.navLinks a:hover{
+  color:white; 
+  background-color: #212121;
+}
+
+.navSearch {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 5vh;
+  border-radius: 10px;
+}
+
+.navSearch:hover {
+  background-color: #212121;
+  color: white !important;
+}
+
+.navSearch button {
+  min-width: 20px;
+  min-height: 20px;
+
+  border-color: #48484800; 
+  background-color: #48484800; 
+  color: #AAAAAA;
+}
+
+.navSearch button:hover {
+  color: white;
+}
+
+.navSearchBar {
+  min-width: 12vh;
+  min-height: 4vh;
+  border-radius: 10px;
+  background-color: #c7c7c7;
+  font-size: 16px;
+}
+
+.navSearchBar::placeholder {
+  text-align: left;
+  color: #333333;
+  padding: 10px;
+}
+nav input[type=text] {
+  padding: 6px;
+
+  border: none;
+}
+.navUserName {
+  color:white;
+  margin:0px 10px;
+  text-decoration:none;
+  font-size:20px;
+}
+.navUserName:hover{
+  color: #3d60ac;
+}
+
+.resultsText {
+  font-size: 16px;
+  color: #AAAAAA;
+}
+
+
+

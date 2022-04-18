@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import MoviePage from './pages/MoviePage';
 import ProfilePage from './pages/ProfilePage';
 import CardPage from './pages/CardPage';
-import HomePage from './pages/HomePage';
+import DiscoverPage from './pages/DiscoverPage';
 import SearchPage from './pages/SearchPage';
 import CarouselPage from './pages/CarouselPage';
 import SettingsPage from './pages/SettingsPage';
@@ -22,7 +22,7 @@ function App() {
     <Router >
       <Switch>
         <Route path="/" exact>
-          <HomePage/>
+          <SearchPage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
@@ -39,8 +39,8 @@ function App() {
         <Route path="/profile" exact>
           <ProfilePage/>
         </Route>
-        <Route path="/home" exact>
-          <HomePage/>
+        <Route path="/discover" exact>
+          <DiscoverPage/>
         </Route>
         <Route path="/movie">
           <MoviePage/>
@@ -53,18 +53,6 @@ function App() {
         </Route>
         <Route path="/settings" exact>
           <SettingsPage/>
-        </Route>
-        <Route path="/top100movies" exact>
-          <Top100MoviesPage/>
-        </Route>
-        <Route path="/top100series" exact>
-          <Top100SeriesPage/>
-        </Route>
-        <Route path="/top250movies" exact>
-          <Top250MoviesPage/>
-        </Route>
-        <Route path="/top250series" exact>
-          <Top250SeriesPage/>
         </Route>
         <Redirect to="/" />
       </Switch>  

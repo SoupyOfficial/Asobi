@@ -1,3 +1,4 @@
+
 const app_name = 'asobi-1'
 exports.buildPath =
     function buildPath(route)

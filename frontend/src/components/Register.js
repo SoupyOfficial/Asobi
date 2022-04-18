@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
+import validator from 'validator';
 import emailjs from 'emailjs-com';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
@@ -13,7 +14,18 @@ function Register()
     const [message,setMessage] = useState('');
     const formRef = useRef();
 
-    let bp = require('./Path.js'); 
+    const app_name = 'asobi-1'
+    function buildPath(route)
+    {   
+        if (process.env.NODE_ENV === 'production') 
+        {
+            return 'https://' + app_name +  '.herokuapp.com/' + route;
+        }
+        else
+        {        
+            return 'http://localhost:5000/' + route;
+        }
+    }
 
     const doRegister = async event => 
     {
@@ -39,7 +51,7 @@ function Register()
 
         try
         {    
-            const response = await fetch(bp.buildPath('api/register'),
+            const response = await fetch(buildPath('api/register'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());
