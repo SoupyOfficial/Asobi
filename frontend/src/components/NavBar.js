@@ -41,7 +41,7 @@ function NavBar() {
 
           <li>
 
-            <a href="/discover">
+            <a href="/top250movies">
               Home
             </a>
 
