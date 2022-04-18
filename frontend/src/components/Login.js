@@ -44,7 +44,7 @@ function Login()
             }
             else
             {
-                var user = {firstName:res.firstName,lastName:res.lastName,id:res.id}
+                var user = {userId:res.id,firstName:res.firstName,lastName:res.lastName}
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/profile';
             }

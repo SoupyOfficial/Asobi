@@ -118,6 +118,31 @@
   width: calc(100% / 4);
 }
 
+.carousel-content.show-5 > * {
+  width: calc(100% / 5);
+}
+
+.carousel-content.show-6 > * {
+  width: calc(100% / 6);
+}
+
+.carousel-content.show-7 > * {
+  width: calc(100% / 7);
+}
+
+.carousel-content.show-8 > * {
+  width: calc(100% / 8);
+}
+
+.carousel-content.show-9 > * {
+  width: calc(100% / 9);
+}
+
+.carousel-content.show-10 > * {
+  width: calc(100% / 10);
+}
+
+
 .left-arrow, .right-arrow {
   position: absolute;
   z-index: 1;
@@ -218,7 +243,7 @@
 }
 
 .row_poster:hover {
-  transform: scale(1.18);
+  transform: scale(1.08);
 }
 
 .row_posterLarge {
@@ -226,7 +251,7 @@
 }
 
 .row_posterLarge:hover {
-  transform: scale(1.19);
+  transform: scale(1.08);
 }
 
 #cardTitle { 
