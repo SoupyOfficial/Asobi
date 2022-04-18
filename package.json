@@ -5,14 +5,12 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-        "test": "jest --watchAll --env=jest-environment-jsdom"
-
+        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "body-parser": "^1.19.2",
+        "body-parser": "^1.20.0",
         "bootstrap": "^5.1.3",
         "cors": "^2.8.5",
         "dotenv": "^16.0.0",
@@ -34,9 +32,5 @@
     },
     "devDependencies": {
         "sass": "^1.49.10"
-    },
-    "engines" : { 
-        "npm" : ">=7.0.0",
-        "node" : ">=16.0.0"
-      }
+    }
 }
