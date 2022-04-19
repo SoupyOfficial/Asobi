@@ -58,36 +58,36 @@ function Login()
 
     return(
         <>
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-12 col-md-8 col-lg-6 col-xl-5" style={{width:'100%'}}>
-                <div class="card bg-light text-white" style={{borderRadius: "1rem"}}>
-                  <div class="card-body p-5 text-center">
+        <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-12 col-md-8 col-lg-6 col-xl-5" style={{width:'100%'}}>
+                <div className="card bg-light text-white" style={{borderRadius: "1rem"}}>
+                  <div className="card-body p-5 text-center">
 
-                    <div class="mb-md-5 mt-md-4">
+                    <div className="mb-md-5 mt-md-4">
 
-                      <h2 class="fw-bold mb-2">Login</h2>
-                      <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                      <h2 className="fw-bold mb-2">Login</h2>
+                      <p className="text-white-50 mb-5">Please enter your login and password!</p>
 
                       <form onSubmit={doLogin}>
-                        <div class="form-outline form-white mb-4">
-                            <input type="username" ref={(c) => loginName = c} id="typeEmailX" class="form-control form-control-lg" />
-                            <label class="form-label" >Username</label>
+                        <div className="form-outline form-white mb-4">
+                            <input type="username" ref={(c) => loginName = c} id="typeEmailX" className="form-control form-control-lg" />
+                            <label className="form-label" >Username</label>
                         </div>
 
-                        <div class="form-outline form-white mb-4">
-                            <input type="password" ref={(c) => loginPassword = c} id="typePasswordX" class="form-control form-control-lg" />
-                            <label class="form-label">Password</label>
+                        <div className="form-outline form-white mb-4">
+                            <input type="password" ref={(c) => loginPassword = c} id="typePasswordX" className="form-control form-control-lg" />
+                            <label className="form-label">Password</label>
                         </div>
 
                         
 
-                        <Button class="btn btn-outline-light btn-lg px-5" type="submit">Login</Button><br/>
+                        <Button className="btn btn-outline-light btn-lg px-5" type="submit">Login</Button><br/>
                         <div className='pt-3'>{message}</div>
                       </form>
                     </div>
                     <div>
-                      <p class="mb-0">Don't have an account? <a href="/register" class="text-white-50 fw-bold">Sign Up</a></p>
+                      <p className="mb-0">Don't have an account? <a href="/register" className="text-white-50 fw-bold">Sign Up</a></p>
                     </div>
                   </div>
                 </div>
