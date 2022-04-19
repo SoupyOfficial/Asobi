@@ -26,6 +26,7 @@ exports.setApp = function ( app, client )
     }
 
     var ret = {results:_ret, error:error};
+    console.log(ret)
     res.status(200).json(ret);
     });
 

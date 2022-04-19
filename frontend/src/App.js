@@ -16,13 +16,14 @@ import Top100SeriesPage from './pages/Top100SeriesPage';
 import Top250SeriesPage from './pages/Top250SeriesPage';
 import Top250MoviesPage from './pages/Top250MoviesPage';
 import VerifyPage from './pages/VerifyPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <Router >
       <Switch>
         <Route path="/" exact>
-          <SearchPage/>
+          <HomePage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>

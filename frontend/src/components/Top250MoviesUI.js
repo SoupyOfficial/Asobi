@@ -36,9 +36,10 @@ export default function Top250MoviesUI() {
         <div className='container py-4'>
             <div id="movies" className="row">
                 {movies.map(
-                    (movie) =>     
+                    (movie, index) =>     
                              <div key={movie.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                                 <div className='card bg-dark border-0'>
+                                    <h4 className='d-flex my-2 p-2 justify-content-center'>#{index+1}</h4>
                                     <CardImg
                                         className={`row_poster ${"row_posterLarge"}`}
                                         src={movie.poster}
