@@ -34,14 +34,14 @@ function NavBar() {
     </><nav>
 
         <div className="logo">
-          <img src={Asobi} />
+          <img src={Asobi} href="/home" />
         </div>
 
         <ul className="navLinks">
 
           <li>
 
-            <a href="/discover">
+            <a href="/home">
               Home
             </a>
 
