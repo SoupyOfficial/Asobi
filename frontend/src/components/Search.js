@@ -2,13 +2,28 @@ import React, { useState } from 'react'
 import { CardImg } from 'react-bootstrap';
 
 export default function Search() {
-    
-
-    var search = '';
 
     //Number of Search Results
     //const [searchResults,setResults] = useState('');
     const [movies, setMovies] = useState([]);
+    var search = new URLSearchParams(window.location.search);
+    const imdbID = search.get('search-key');
+
+    console.log(imdbID);
+
+    const app_name = 'asobi-1'
+    function buildPath(route)
+    {
+        if (process.env.NODE_ENV === 'production') 
+        {
+            return 'https://' + app_name +  '.herokuapp.com/' + route;
+        }
+        else
+        {        
+            return 'http://localhost:5000/' + route;
+        }
+
+    }
 
     let bp = require('./Path.js'); 
     
@@ -18,18 +33,15 @@ export default function Search() {
         event.preventDefault();
         document.querySelector('#movies').innerHTML = null
 
-        var obj = {Title:search.value};
+        var obj = {Title:imdbID};
         var js = JSON.stringify(obj);
-        if(search.value === "") {
-            return;
-        }
         
         try
         {
             //console.log(search.value)
 
             document.querySelector('#movies').innerHTML = ''
-            const response = await fetch(bp.buildPath('api/searchmovie'),
+            const response = await fetch(bp.buildPath('api/search'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
@@ -47,12 +59,14 @@ export default function Search() {
             //setResults(e.toString());
         }
     };
+    window.onload = searchMovie;
 
   return (
     <div className='primaryBackground' id="cardUIDiv">
             <br />
-            <input autoComplete='false' onChange={searchMovie} type="text" id="searchText" className='form-control-lg' placeholder="Movie To Search For" 
-                ref={(c) => search = c} /><br/>
+
+            <h1 className='resultsText'>{'Showing results for \'' + imdbID + '\'.'}</h1>
+
             {/* <Button type="button" id="searchCardButton" class="buttons" 
                 onClick={searchMovie}> Search Media</Button> */}<br />
                 <div className='container py-4'>

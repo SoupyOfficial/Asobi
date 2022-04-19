@@ -7,9 +7,24 @@ const MovieUI = ({imdbID}) => {
     var ud = JSON.parse(_ud);
     var userId = ud.userId;    
     const [message,setMessage] = useState('');
+
+    let bp = require('./Path.js');
     
 
-    let bp = require('./Path.js'); 
+    const app_name = 'asobi-1'
+    function buildPath(route)
+    {
+        if (process.env.NODE_ENV === 'production') 
+        {
+            return 'https://' + app_name +  '.herokuapp.com/' + route;
+        }
+        else
+        {        
+            return 'http://localhost:5000/' + route;
+        }
+    }
+
+    const [searchResults,setResults] = useState('');
 
     const searchMovie = async event => 
     {
@@ -30,7 +45,7 @@ const MovieUI = ({imdbID}) => {
         
         try
         {
-            const response = await fetch(bp.buildPath('api/loadmovie'),
+            const response = await fetch(buildPath('api/loadmovie'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var txt = await response.text();
@@ -52,6 +67,7 @@ const MovieUI = ({imdbID}) => {
         catch(e)
         {
             console.log(e.toString());
+            setResults(e.toString());
         }
     };
     window.onload = searchMovie;
