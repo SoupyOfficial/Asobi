@@ -141,3 +141,64 @@
       display: none;
   }
 }
+.row {
+  color: #fff;
+  margin-left: 20px;
+}
+.row_posters {
+  display: flex;
+  overflow-y: hidden;
+
+  padding: 40px;
+}
+
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row_poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+
+
+.row_poster:hover {
+  transform: scale(1.08);
+  cursor: pointer;
+  
+}
+
+
+
+.row_posterLarge {
+  max-height: 300px;
+  border-radius: 3px;
+  margin: 1rem;
+  box-shadow: 3 px 3 px 5px rgba(0, 0, 0, 0.1);
+}
+
+.row_posterLarge:hover {
+  transform: scale(1.09);
+  
+}
+
+#cardTitle { 
+  display: relative;
+  max-width: auto;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 100px;
+  font-family: Courier, Lucidatypewriter, monospace;
+  font-size: 90%;
+  font-weight: 800;
+  margin: 1rem;
+  margin-bottom: 1px;
+  box-shadow: 3 px 3 px 5px rgba(0, 0, 0, 0.1);
+}
+

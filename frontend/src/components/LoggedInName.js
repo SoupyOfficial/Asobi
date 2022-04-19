@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 function LoggedInName()
 {
@@ -8,7 +9,6 @@ function LoggedInName()
     var userId = ud.id;
     var firstName = ud.firstName;
     var lastName = ud.lastName;
-    console.log(firstName);
 
     const doLogout = event => 
     {
@@ -20,10 +20,16 @@ function LoggedInName()
     };  
       
   return(
-   <div id="loggedInDiv">
-   <span id="userName">Logged In As {firstName}</span><br />
-   <button type="button" id="logoutButton" class="buttons" 
-     onClick={doLogout}> Log Out </button>
+   <div className="loggedInDiv" id="loggedInDiv"style=
+   {{
+     display: "flex",
+     flexDirection: "row",
+     alignItems: "center",
+     padding: "10px",
+   }}>
+   <a className="navUserName" id="userName" href='/profile'>{firstName + " " + lastName}</a><br />
+   <Button type="button" id="logoutButton" className="buttons" 
+     onClick={doLogout}> Log Out </Button>
    </div>
   );
 
