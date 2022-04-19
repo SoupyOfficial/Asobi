@@ -25,7 +25,6 @@ function Home(){
             var txt = await response.text();
             var res = JSON.parse(txt);
             var _results = res.results;
-            console.log(_results)
             //Number of Search Results
             //setResults(`${_results.length} results found`);
             setPopular100Movies(_results)

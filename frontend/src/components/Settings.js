@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 function Settings() {
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.userId;
+  var userId = ud.id;
 
   var newLogin = '';
   var newPassword = '';
