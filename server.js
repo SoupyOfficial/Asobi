@@ -124,6 +124,7 @@ app.post('/api/search', async (req, res, next) =>
   var error = '';
   var imdbID = '';
   var title = '';
+  var poster = '';
 
   const { Title } = req.body;
   
@@ -139,7 +140,8 @@ app.post('/api/search', async (req, res, next) =>
   {
     _ret.push( {
       title:movieResults[i].Title, 
-      imdbID:movieResults[i].imdbID 
+      imdbID:movieResults[i].imdbID,
+      poster: movieResults[i].Poster
     });
   }
   for( var i=0; i < actorResults.length; i++ )
@@ -219,6 +221,54 @@ app.post('/api/editemail', async (req, res, next) =>
   res.status(200).json(ret);
 });
 
+app.post('/api/addtowatchlist', async (req, res, next) =>
+{
+  var error = '';
+
+  const { userid, ID } = req.body;
+  
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$push:{WatchList:ID}},{returnNewDocument: "true"} );
+
+  var ret = {imdbId:ID,error:''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/addtoreviews', async (req, res, next) =>
+{
+  var error = '';
+
+  const { userid, ID } = req.body;
+  
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$push:{Reviews:ID}},{returnNewDocument: "true"} );
+
+  var ret = {imdbId:ID, error:''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/addtofollowing', async (req, res, next) =>
+{
+  var error = '';
+
+  const { userid, userid2 } = req.body;
+  
+  var _search = userid.trim();
+
+  const db = client.db();
+  const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+  {$push:{Following:userid2}},{returnNewDocument: "true"} );
+
+  var ret = {Following:userid2,error:''};
+  res.status(200).json(ret);
+});
+
 app.post('/api/loadmovie', async (req, res, next) => 
 {
 
@@ -283,6 +333,31 @@ app.post('/api/loadmovie', async (req, res, next) =>
   }
 
   var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
+  res.status(200).json(ret);
+});
+
+app.post('/api/loadactor', async (req, res, next) => 
+{
+
+ var error = '';
+
+ const { ID } = req.body;
+
+ const db = client.db();
+ const results = await db.collection('Actors').findOne({actorID:ID});
+
+  var ascharacter = '';
+  var image = '';
+  var name = '';
+
+  if(true)
+  {
+    ascharacter = results.asCharacter;
+    image = results.Image;
+    name = results.name;
+  }
+
+  var ret = { asCharacter:ascharacter, image:image, name:name, error:''};
   res.status(200).json(ret);
 });
 
