@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 const MovieUI = ({imdbID}) => {
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.userId;    
+    var userId = ud.id;    
     const [message,setMessage] = useState('');
 
     let bp = require('./Path.js');
@@ -75,34 +75,12 @@ const MovieUI = ({imdbID}) => {
     const addToWatchlist = async event =>
     {
         event.preventDefault();
+        
         const queryParams = new URLSearchParams(window.location.search);
-
         const imdbID = queryParams.get('imdbID');
+        
         var obj = {ID:userId};
         var js = JSON.stringify(obj);
-        try
-        {
-            const response = await fetch(bp.buildPath('api/loadprofile'),
-            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
-            
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            console.log(res.watchList)
-            for(var i = 0; i < res.watchList.length; i++) {
-                if(res.watchList[i] == imdbID) {
-                    setMessage("Already in watchlist")
-                    return;
-                }
-            }
-            
-        }
-        catch(e)
-        {
-            console.log(e.toString());
-        }
-        
-        obj = {userid:userId,ID:imdbID};
-        js = JSON.stringify(obj);
         
         try
         {
@@ -111,7 +89,7 @@ const MovieUI = ({imdbID}) => {
             
             var txt = await response.text();
             var res = JSON.parse(txt);
-            //console.log(res)
+            console.log(res)
             for(var i = 0; i < res.watchList.length; i++) {
                 if(res.watchList[i] === imdbID) {
                     setMessage("Already in watchlist")
@@ -125,7 +103,7 @@ const MovieUI = ({imdbID}) => {
             console.log(e.toString());
         }
 
-        obj = {userid:userId,ID:imdbID};
+        obj = {userId:userId,ID:imdbID};
         js = JSON.stringify(obj);
         
         try
