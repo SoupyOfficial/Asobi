@@ -294,11 +294,15 @@ nav li {
 }
 
 .logo {
-  padding: 0 2vh;
+  margin: 0 10px;
+  min-width: 8rem;
+  min-height: 2rem;
+
+  filter: hue-rotate(10deg) brightness(1.5);
 }
 .logo img{
-  width: 8rem;
-  height: 2rem;
+  width: 16rem;
+  height: 4rem;
 }
 
 .navLinks {
@@ -358,7 +362,7 @@ nav li {
   border-color: #39bbcc;
 }
 
-.loginButton:hover{
+.button:hover{
   color: #AAAAAA; 
   border-color: #39bbcc;
 }
@@ -371,6 +375,7 @@ nav li {
 .navSearch {
   display: flex;
   align-items: center;
+  align-self: flex-end;
   padding: 0 10px;
   min-height: 5vh;
   border-radius: 10px;
@@ -391,6 +396,25 @@ nav li {
 }
 
 .navSearch button:hover {
+  color: #AAAAAA; 
+  border-color: #39bbcc;
+}
+
+.loggedInDiv button {
+  min-width: 20px;
+  min-height: 20px;
+  padding: 6px 15px;
+  margin: 10px;
+
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #3d60ac; 
+  background-color: #48484800; 
+  color: #AAAAAA;
+}
+
+.loggedInDiv button:hover {
   color: #AAAAAA; 
   border-color: #39bbcc;
 }

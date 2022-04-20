@@ -5,6 +5,7 @@ import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
 import Asobi from '../Asobi.png';
+import AsobiTransparent from '../Asobi-logos (2)/AsobiLogo2.png';
 
 //var search = '';
 
@@ -34,7 +35,7 @@ function NavBar() {
     </><nav>
 
         <div className="logo">
-          <img src={Asobi} href="/home" />
+          <img src={AsobiTransparent} href="/home" />
         </div>
 
         <ul className="navLinks">
@@ -44,34 +45,35 @@ function NavBar() {
             <a href="/home">
               Home
             </a>
+          </li>
 
+        </ul>
+
+        <div style={{display:"flex", alignItems:"center"}}>
             <form className='navSearch' id='search-form' method='get' action={buildPathToSearch()}>
               <input className='navSearchBar' id='search-input' type="search" name='search-key' placeholder='&#x1F50D;' /><br />
               <button type='submit'> Search </button>
             </form>
 
-          </li>
+            <div className="navbar-nav ms-auto">
+              {/* Check Login Status */}
+              <div className='LoggedIn'>
+                {localStorage.getItem('user_data') ? <LoggedInName /> :
+                  <div className="navbar-nav ms-auto" style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    padding: "0px 10px"
+                  }}>
 
-        </ul>
+                    {/* Login Button */}
+                    <a className='loginButton' href='/login'>Login</a>
 
-        <div className="navbar-nav ms-auto">
-          {/* Check Login Status */}
-          <div className='LoggedIn'>
-            {localStorage.getItem('user_data') ? <LoggedInName /> :
-              <div className="navbar-nav ms-auto" style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                padding: "0px 10px",
-              }}>
-
-                {/* Login Button */}
-                <a className='loginButton' href='/login'>Login</a>
-
-                {/* Register Button */}
-                <a className='registerButton' href='/register'>Register</a>
-              </div>}
-          </div>
+                    {/* Register Button */}
+                    <a className='registerButton' href='/register'>Register</a>
+                  </div>}
+              </div>
+            </div>
         </div>
 
       </nav>
