@@ -62,27 +62,14 @@ function NavBar() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                padding: "0px",
+                padding: "0px 10px",
               }}>
 
                 {/* Login Button */}
-                <Dropdown align='end'>
-                  <Dropdown.Toggle style={{ borderRadius: 10, margin: 5 }}>Login</Dropdown.Toggle>
-                  <Dropdown.Menu style={{
-                    backgroundColor: '#fff0', borderWidth: '0', minWidth: '50vh', borderRadius: 10,
-                    borderColor: '484848', padding: '0px'
-                  }}>
-                    <Login />
-                  </Dropdown.Menu>
-                </Dropdown>
+                <a className='loginButton' href='/login'>Login</a>
 
                 {/* Register Button */}
-                <Dropdown align='end' style={{ position: 'sticky' }}>
-                  <Dropdown.Toggle style={{ borderRadius: 10, margin: 5, backgroundColor: '#fff0' }}>Sign Up</Dropdown.Toggle>
-                  <Dropdown.Menu style={{ backgroundColor: '#fff0', borderWidth: '0', minWidth: '50vh', padding: '0px' }}>
-                    <Register style={{ flexGrow: '1', minWidth: '100vh' }} />
-                  </Dropdown.Menu>
-                </Dropdown>
+                <a className='registerButton' href='/register'>Register</a>
               </div>}
           </div>
         </div>

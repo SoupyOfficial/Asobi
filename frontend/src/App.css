@@ -320,15 +320,52 @@ nav li {
   padding: 3px 7px;
   margin: 3px;
   
-  color:#AAAAAA; 
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
   text-decoration:none; 
   display:block;
-  border-radius: 5px;
+}
+
+.loginButton{
+  flex: none;
+  flex-grow: 0;
+  padding: 6px 15px;
+  margin: 5px;
+  
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
+  text-decoration:none; 
+  display:block;
+}
+
+.registerButton{
+  flex: none;
+  flex-grow: 0;
+  padding: 6px 15px;
+  margin: 5px;
+  
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
+  text-decoration:none; 
+  display:block;
 }
 
 .navLinks a:hover{
-  color:white; 
-  background-color: #212121;
+  color: #AAAAAA; 
+  border-color: #39bbcc;
+}
+
+.loginButton:hover{
+  color: #AAAAAA; 
+  border-color: #39bbcc;
+}
+
+.registerButton:hover{
+  color: #AAAAAA; 
+  border-color: #39bbcc;
 }
 
 .navSearch {
@@ -339,22 +376,23 @@ nav li {
   border-radius: 10px;
 }
 
-.navSearch:hover {
-  background-color: #212121;
-  color: white !important;
-}
-
 .navSearch button {
   min-width: 20px;
   min-height: 20px;
+  padding: 6px 15px;
+  margin: 10px;
 
-  border-color: #48484800; 
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #3d60ac; 
   background-color: #48484800; 
   color: #AAAAAA;
 }
 
 .navSearch button:hover {
-  color: white;
+  color: #AAAAAA; 
+  border-color: #39bbcc;
 }
 
 .navSearchBar {
