@@ -5,7 +5,7 @@ import Register from './Register';
 import '../App.css'
 import LoggedInName from './LoggedInName';
 import Asobi from '../Asobi.png';
-import AsobiTransparent from '../Asobi-logos (2)/AsobiLogo2.png';
+import AsobiTransparent from "../Asobi-logos (4)/Asobi-logos_transparent.png";
 
 //var search = '';
 
