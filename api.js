@@ -156,6 +156,29 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);
     });
 
+    app.post('/api/passwordrecovery', async (req, res, next) =>
+    {
+    var error = '';
+
+    const { userid, newpassword } = req.body;
+
+    var _search = userid.trim();
+
+    try
+    {
+        const db = client.db();
+        const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+        {$set:{Password:newpassword}},{returnNewDocument: "true"} );
+    }
+    catch(e)
+    {
+        error = e.toString();
+    }
+
+    var ret = { userid:userid, error:'' };
+    res.status(200).json(ret);
+    });
+
     app.post('/api/login', async (req, res, next) =>
     {
     // incoming: login, password
@@ -531,6 +554,40 @@ exports.setApp = function ( app, client )
     following = results.Following;
 
     var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:watchList, reviews:reviews, following:following, error:''};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/loadprofileemail', async (req, res, next) =>
+    {
+
+    var error = '';
+
+    const { email } = req.body;
+
+    const db = client.db();
+    const results = await db.collection('Users').findOne({Email:email});
+
+    var login = '';
+    var password = '';
+    var firstName = '';
+    var lastName = '';
+    var phoneNumber = '';
+    var id = -1;
+    var watchList = [];
+    var reviews = [];
+    var following = [];
+
+    login = results.Login;
+    password = results.Password;
+    firstName = results.FirstName;
+    lastName = results.LastName;
+    phoneNumber = results.PhoneNumber;
+    id = results.UserId;
+    watchList = results.WatchList;
+    reviews = results.Reviews;
+    following = results.Following;
+
+    var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, id:id, watchList:watchList, reviews:reviews, following:following, error:''};
     res.status(200).json(ret);
     });
 
