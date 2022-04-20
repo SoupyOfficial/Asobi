@@ -29,6 +29,7 @@ function PasswordRecovery()
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());
+            console.log(ud);
 
             if(recoveryCode.value == userId)
             {
@@ -36,7 +37,6 @@ function PasswordRecovery()
             }
             else
             {
-              console.log(ud);
               setMessage('Recovery code incorrect');
             }
         }
