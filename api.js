@@ -492,6 +492,7 @@ exports.setApp = function ( app, client )
     var production = '';
     var website = '';
     var totalseasons = '';
+    var streaming = '';
 
 
         title = results.Title;
@@ -502,7 +503,7 @@ exports.setApp = function ( app, client )
         imdbrating = results.imdbRating;
         type = results.Type;
         released = results.Released;
-        actors = results.Acotrs;
+        actors = results.Actors;
         plot = results.Plot;
         year = results.Year;
         director = results.Director;
@@ -518,8 +519,9 @@ exports.setApp = function ( app, client )
         production = results.Production;
         website = results.Website;
         totalseasons = results.totalSeasons;
+        streaming = results.streamingAvailability;
 
-    var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
+    var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, streaming:streaming, error:''};
     res.status(200).json(ret);
     });
 
