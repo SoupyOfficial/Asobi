@@ -78,6 +78,9 @@ function Login()
                     <div>
                       <p class="mb-0">Don't have an account? <a href="/register" class="text-white-50 fw-bold">Sign Up</a></p>
                     </div>
+                    <div>
+                      <p class="mb-0">Forgot password? <a href="/enteremail" class="text-white-50 fw-bold">Reset Password</a></p>
+                    </div>
                   </div>
                 </div>
               </div>
