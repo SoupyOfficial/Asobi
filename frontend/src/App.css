@@ -358,17 +358,22 @@ nav li {
 }
 
 .navLinks a:hover{
-  color: #AAAAAA; 
+  color: white; 
   border-color: #39bbcc;
 }
 
 .button:hover{
-  color: #AAAAAA; 
+  color: white; 
   border-color: #39bbcc;
 }
 
 .registerButton:hover{
-  color: #AAAAAA; 
+  color: white; 
+  border-color: #39bbcc;
+}
+
+.loginButton:hover{
+  color: white; 
   border-color: #39bbcc;
 }
 
@@ -396,7 +401,7 @@ nav li {
 }
 
 .navSearch button:hover {
-  color: #AAAAAA; 
+  color: white; 
   border-color: #39bbcc;
 }
 
@@ -417,6 +422,11 @@ nav li {
 .loggedInDiv button:hover {
   color: #AAAAAA; 
   border-color: #39bbcc;
+}
+
+.loggedInDiv a:hover{
+  text-decoration: underline;
+  color: #39bbcc !important;
 }
 
 .navSearchBar {
