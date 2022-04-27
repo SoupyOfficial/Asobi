@@ -42,8 +42,10 @@
 .primaryBackground {
   background-color: #212121;
   color: white;
-  min-height: 91vh;
+  min-height: 98vh;
   text-align: center;
+
+  padding-top: 80px;
 }
 
 .secondaryBackground {
@@ -273,7 +275,10 @@
 }
 
 nav {
-  position: sticky;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 
   display:flex;
   flex-direction: row;
