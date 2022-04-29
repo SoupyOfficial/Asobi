@@ -43,9 +43,11 @@
   background-color: #212121;
   color: white;
   min-height: 98vh;
+  min-width: 100%;
   text-align: center;
 
-  padding-top: 80px;
+  padding-top: 65px;
+  padding: 15px;
 }
 
 .secondaryBackground {
@@ -275,7 +277,7 @@
 }
 
 nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 2;
