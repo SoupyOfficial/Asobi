@@ -557,6 +557,29 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);
     });
 
+    app.post('/api/checkprofile', async (req, res, next) =>
+    {
+
+    var error = '';
+    var login = '';
+
+    const { ID } = req.body;
+    
+    try
+    {
+        const db = client.db();
+        const results = await db.collection('Users').findOne({UserId:ID});
+        login = results.Login;
+    }
+    catch(e)
+    {
+        error = e.toString();
+    }
+
+    var ret = { login:login, error:''};
+    res.status(200).json(ret);
+    });
+
     app.post('/api/loadprofileemail', async (req, res, next) =>
     {
 
