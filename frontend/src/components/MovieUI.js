@@ -25,6 +25,8 @@ const MovieUI = ({imdbID}) => {
     }
 
     const [searchResults,setResults] = useState('');
+    const [title,setTitle] = useState('');
+    const [poster,setPoster] = useState('');
 
     const searchMovie = async event => 
     {
@@ -52,7 +54,9 @@ const MovieUI = ({imdbID}) => {
             var res = JSON.parse(txt);
             //console.log(res)
             document.querySelector("#title").innerHTML = res.title
+            setTitle(res.title);
             document.querySelector("#poster").src = res.poster
+            setPoster(res.poster);
             document.querySelector("#plot").innerHTML = res.plot
             document.querySelector("#released").innerHTML = res.released
             document.querySelector("#director").innerHTML = res.director
@@ -103,7 +107,7 @@ const MovieUI = ({imdbID}) => {
             console.log(e.toString());
         }
 
-        obj = {userId:userId,ID:imdbID};
+        obj = {userId:userId,ID:{ID:imdbID, Title:title, Poster:poster}};
         js = JSON.stringify(obj);
         
         try
