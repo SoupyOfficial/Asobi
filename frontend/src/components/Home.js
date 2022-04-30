@@ -165,7 +165,7 @@ function Home(){
     window.onload = load;
     
     return(
-        <div className='p-2'>
+        <div className='p-2' style={{margin:'0px 15px'}}>
             
             
                 

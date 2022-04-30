@@ -42,8 +42,12 @@
 .primaryBackground {
   background-color: #212121;
   color: white;
-  min-height: 91vh;
+  min-height: 98vh;
+  min-width: 100%;
   text-align: center;
+
+  padding-top: 65px;
+  padding: 15px;
 }
 
 .secondaryBackground {
@@ -274,6 +278,9 @@
 
 nav {
   position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 
   display:flex;
   flex-direction: row;
@@ -294,11 +301,15 @@ nav li {
 }
 
 .logo {
-  padding: 0 2vh;
+  margin: 0 10px;
+  min-width: 8rem;
+  min-height: 2rem;
+
+  filter: hue-rotate(10deg) brightness(1.5);
 }
 .logo img{
-  width: 8rem;
-  height: 2rem;
+  width: 13rem;
+  height: 4rem;
 }
 
 .navLinks {
@@ -320,41 +331,109 @@ nav li {
   padding: 3px 7px;
   margin: 3px;
   
-  color:#AAAAAA; 
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
   text-decoration:none; 
   display:block;
-  border-radius: 5px;
+}
+
+.loginButton{
+  flex: none;
+  flex-grow: 0;
+  padding: 6px 15px;
+  margin: 5px;
+  
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
+  text-decoration:none; 
+  display:block;
+}
+
+.registerButton{
+  flex: none;
+  flex-grow: 0;
+  padding: 6px 15px;
+  margin: 5px;
+  
+  border-color:#3d60ac;
+  border-bottom-style: solid;
+  color: #AAAAAA; 
+  text-decoration:none; 
+  display:block;
 }
 
 .navLinks a:hover{
-  color:white; 
-  background-color: #212121;
+  color: white; 
+  border-color: #39bbcc;
+}
+
+.button:hover{
+  color: white; 
+  border-color: #39bbcc;
+}
+
+.registerButton:hover{
+  color: white; 
+  border-color: #39bbcc;
+}
+
+.loginButton:hover{
+  color: white; 
+  border-color: #39bbcc;
 }
 
 .navSearch {
   display: flex;
   align-items: center;
+  align-self: flex-end;
   padding: 0 10px;
   min-height: 5vh;
   border-radius: 10px;
 }
 
-.navSearch:hover {
-  background-color: #212121;
-  color: white !important;
-}
-
 .navSearch button {
   min-width: 20px;
   min-height: 20px;
+  padding: 6px 15px;
+  margin: 10px;
 
-  border-color: #48484800; 
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #3d60ac; 
   background-color: #48484800; 
   color: #AAAAAA;
 }
 
 .navSearch button:hover {
-  color: white;
+  color: white; 
+  border-color: #39bbcc;
+}
+
+.loggedInDiv button {
+  min-width: 20px;
+  min-height: 20px;
+  padding: 6px 15px;
+  margin: 10px;
+
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #3d60ac; 
+  background-color: #48484800; 
+  color: #AAAAAA;
+}
+
+.loggedInDiv button:hover {
+  color: #AAAAAA; 
+  border-color: #39bbcc;
+}
+
+.loggedInDiv a:hover{
+  text-decoration: underline;
+  color: #39bbcc !important;
 }
 
 .navSearchBar {

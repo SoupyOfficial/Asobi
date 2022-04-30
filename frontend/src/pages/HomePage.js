@@ -7,7 +7,7 @@ function HomePage() {
   
     return (
       <>
-          <div><NavBar/></div>
+          <NavBar/>
           <div className="primaryBackground">
             <Home/>
           </div>

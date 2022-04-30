@@ -61,6 +61,13 @@ const MovieUI = ({imdbID}) => {
             document.querySelector("#released").innerHTML = res.released
             document.querySelector("#director").innerHTML = res.director
             document.querySelector("#genre").innerHTML = res.genre
+
+            //console.log(res.streaming)
+            res.streaming.map((streamingon) => {
+                document.querySelector('#streamingon').innerHTML += streamingon.platform + ': ' + '<a href=' + streamingon.url + '> Link <a/>' + "<br/>";
+                return true;
+            })
+
             //console.log(res.ratings)
             res.ratings.map((rating) => {
                 document.querySelector('#ratings').innerHTML += rating.Source + ': ' + rating.Value + "<br/>";
@@ -171,6 +178,7 @@ const MovieUI = ({imdbID}) => {
                 </Col>
                 <Col className='px-4 rounded' style={{backgroundColor:"#484848"}}>
                     Streaming on:
+                    <div id="streamingon"></div>
                 </Col>
             </Row>
             <Row className='p-2 my-2 rounded' style={{backgroundColor:"#484848"}}>
