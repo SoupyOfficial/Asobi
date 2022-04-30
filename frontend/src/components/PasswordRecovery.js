@@ -5,10 +5,6 @@ import '../custom.scss'
 
 function PasswordRecovery()
 {
-    var _ud = localStorage.getItem('user_data');
-    var ud = JSON.parse(_ud);
-    var userId = ud.id; 
-
     var recoveryCode;
     var newPassword;
     
@@ -30,15 +26,30 @@ function PasswordRecovery()
             
             var res = JSON.parse(await response.text());
 
-            if(recoveryCode.value == userId)
-            {
-              window.location.href = '/login';
+            var obj = {ID:recoveryCode.value};
+            var js = JSON.stringify(obj);
+
+            try
+            {    
+                const response = await fetch(bp.buildPath('api/checkprofile'),
+                    {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+                
+                var res = JSON.parse(await response.text());
+
+                if(res.login != "")
+                {
+                  window.location.href = '/login';
+                }
+                else
+                {
+                  setMessage('Recovery code incorrect');
+                }
             }
-            else
+            catch(e)
             {
-              console.log(ud);
-              setMessage('Recovery code incorrect');
-            }
+                console.log(e.toString());
+                return;
+            }    
         }
         catch(e)
         {
