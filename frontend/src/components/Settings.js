@@ -1,5 +1,5 @@
 //import React from 'react';
-import './App.css';
+import '../App.css';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
@@ -19,7 +19,7 @@ function Settings() {
   var LastUpdated = document.lastModified;
     
   let bp = require('./Path.js'); 
-  const [searchResults,setMessage] = useState('');
+  const [message,setMessage] = useState('');
 
   const load = async event => 
   {
@@ -80,6 +80,7 @@ function Settings() {
           }
           else
           {
+            setMessage('Profile Updated');
               //add loca
               //var user = {userId:userId,firstName:firstName.value,lastName:lastName.value}
               //localStorage.setItem('user_data', JSON.stringify(user));
@@ -123,11 +124,12 @@ function Settings() {
         <p className="card-text">&emsp;</p>
         <h2>Profile Settings</h2>
         <p className="card-text">Edit Profile Information</p>
-        <button href="/profile" type="button" className="btn btn-info">Back to Profile</button>
+        <a href="/profile" type="button" className="btn btn-info">Back to Profile</a>
         <p className="card-text"><small className="text-muted">Last updated {LastUpdated} </small></p>
 
 
-                  <form onSubmit={doEdit}>         
+                  <form onSubmit={doEdit}>     
+                    {message}    
                     <div className='d-flex'>
 
                     <label>&emsp;</label>

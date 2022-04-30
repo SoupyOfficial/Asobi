@@ -329,16 +329,16 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid, newemail, newphone, newpassword, newlogin, newfn, newln } = req.body;
+    const { userId, email, phoneNumber, password, login, firstName, lastName } = req.body;
 
-    var _search = userid.trim();
+    var _search = userId.trim();
 
     const db = client.db();
 
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-    {$set:{Email:newemail, PhoneNumber:newphone, Login:newlogin, Password:newpassword, FirstName:newfn, LastName:newln}},{returnNewDocument: "true"} );
+    {$set:{Email:email, PhoneNumber:phoneNumber, Login:login, Password:password, FirstName:firstName, LastName:lastName}},{returnNewDocument: "true"} );
 
-    var ret = {FirstName:newfn, LastName:newln, Login:newlogin, Password:newpassword, PhoneNumber:newphone, Email:newemail, error: ''};
+    var ret = { error: ''};
     res.status(200).json(ret);
     });
 
