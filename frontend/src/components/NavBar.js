@@ -37,7 +37,7 @@ function NavBar() {
     </><nav>
 
         <div className="logo">
-          <img src={AsobiTransparent} href="/home" />
+          <img src={Asobi} href="/home" />
         </div>
 
         <ul className="navLinks">
