@@ -1,8 +1,11 @@
 //import React from 'react';
+import './App.css';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
+
 function Settings() {
+  
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
   var userId = ud.id;
@@ -12,7 +15,9 @@ function Settings() {
   var newFirst = '';
   var newLast = '';
   var newEmail = '';
-  var newPhone = '';    
+  var newPhone = '';
+  var LastUpdated = document.lastModified;
+    
   let bp = require('./Path.js'); 
   const [searchResults,setMessage] = useState('');
 
@@ -92,64 +97,85 @@ function Settings() {
     <>
     <div className='primaryBackground'>
       <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">              
-          <div className="card bg-light">
+
+        <div className="row d-flex justify-content-center align-items-center h-100"> 
+
+          <div className="card bg-transparent shadow">
             <div className="row g-0">
-              <div className="col-md-4">
-                <img src="https://raw.githubusercontent.com/rebeccacasii/picturerepo/8eae73a0f0ac6f81f487eb31f0c32cb2e0dd0203/Asobi%20(1).png" className="img-fluid rounded-start" alt="..."/>
+
+              <div className="col-md-2">
               </div>
    
               <div className="col-md-8">
                 <div className="card-body">
-                  <h2 className="card-title">Profile Settings &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp;  
-                  <Button href="/profile" type="button" className="btn btn-link">Back to Profile</Button></h2>
-                  <p className="card-text">Edit Profile Information</p>
-                  <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+
+
+        <div className="container-fluid d-flex align-items-center justify-content-center">
+
+            <div className="picture-container">
+                  <div className="picture">
+
+                    <img src="https://raw.githubusercontent.com/rebeccacasii/picturerepo/main/Black%20%26%20White%20Gear%20Cloud%20Brand%20Logo.png" className="picture-src" id="picturePreview" title=""></img>
+                  </div>
+              </div>
+        </div>
+
+        <p className="card-text">&emsp;</p>
+        <h2>Profile Settings</h2>
+        <p className="card-text">Edit Profile Information</p>
+        <button href="/profile" type="button" className="btn btn-info">Back to Profile</button>
+        <p className="card-text"><small className="text-muted">Last updated {LastUpdated} </small></p>
+
 
                   <form onSubmit={doEdit}>         
                     <div className='d-flex'>
-                      <label>Username:</label>
+
+                    <label>&emsp;</label>
                     </div>
                     <div className='d-flex'>
-                      <input id="username" ref={(c) => newLogin = c} type="text" className="form-control" aria-label="Change Username"/>
+                      <input id="username" ref={(c) => newLogin = c} type="text" className="form-control" placeholder="Username" aria-label="Change Username"/>
                     </div>
 
                     <div className='d-flex'>
-                      <label>Password:</label>
+                      <label>&emsp;</label>
                     </div>
                     <div className='d-flex'>
-                      <input id="password" ref={(c) => newPassword = c} type="text" className="form-control" aria-label="Change password" aria-describedby="button-addon2"/>
-                    </div>
-                      
-                    <div className='d-flex'>
-                      <label>Email:</label>
-                    </div>
-                    <div className='d-flex'>
-                      <input id="email" ref={(c) => newEmail = c} type="text" className="form-control"   aria-label="Change Email" aria-describedby="button-addon2"/>
+                      <input id="password" ref={(c) => newPassword = c} type="text" className="form-control" placeholder="Password" aria-label="Change password" aria-describedby="button-addon2"/>
                     </div>
                       
                     <div className='d-flex'>
-                      <label>First Name:</label>
+                      <label>&emsp;</label>
                     </div>
                     <div className='d-flex'>
-                      <input id="first" ref={(c) => newFirst = c} type="text" className="form-control" aria-label="Change First Name" aria-describedby="button-addon2"/>
+                      <input id="email" ref={(c) => newEmail = c} type="text" className="form-control" placeholder="Email"  aria-label="Change Email" aria-describedby="button-addon2"/>
+                    </div>
+                      
+                    <div className='d-flex'>
+                      <label>&emsp;</label>
+                    </div>
+                    <div className='d-flex'>
+                      <input id="first" ref={(c) => newFirst = c} type="text" className="form-control" placeholder="First Name" aria-label="Change First Name" aria-describedby="button-addon2"/>
                     </div>
 
                     <div className='d-flex'>
-                      <label>Last Name:</label>
+                      <label>&emsp;</label>
                     </div>
                     <div className='d-flex'>
-                      <input id="last" ref={(c) => newLast = c} type="text" className="form-control" aria-label="Change Last Name" aria-describedby="button-addon2"/>
+                      <input id="last" ref={(c) => newLast = c} type="text" className="form-control" placeholder="Last Name" aria-label="Change Last Name" aria-describedby="button-addon2"/>
                     </div>
                       
                     <div className='d-flex'>
-                      <label>Phone Number:</label>
+                      <label>&emsp;</label>
                     </div>
                     <div className='d-flex'>
-                      <input id="phone" ref={(c) => newPhone = c} type="text" className="form-control" aria-label="Change Phone Number" aria-describedby="button-addon2"/>
+                      <input id="phone" ref={(c) => newPhone = c} type="text" className="form-control" placeholder="Phone Number" aria-label="Change Phone Number" aria-describedby="button-addon2"/>
                     </div>
 
-                    <Button className="m-3" type="submit" >Save</Button>
+                    <div className='d-flex'>
+                      <label>&emsp;</label>
+                    </div>
+
+                    <Button className="btn btn-info" type="submit" >Save</Button>
                   </form>
 
                   <div className="card-body">
