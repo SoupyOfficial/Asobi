@@ -1,16 +1,22 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
+import { Row } from 'react-bootstrap'
+import Carousel from '../components/Carousel';
+import { useState } from 'react';
+import { CardImg } from 'react-bootstrap';
 
 export default function Profile() {
 
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.id;    
+  const userId = ud.id;    
   var firstName = ud.firstName;
-  console.log(ud)
+  //console.log(ud)
 
-  var obj = {ID:userId};
-  var js = JSON.stringify(obj);
+  
+
+  
+  const [watchlist, setWatchlist] = useState([]);
   
   const app_name = 'asobi-1'
   function buildPath(route)
@@ -25,20 +31,42 @@ export default function Profile() {
       }
   }
 
-  try
+  const load = async event => {
+    var obj = {ID:userId};
+    var js = JSON.stringify(obj);
+    
+    try
   {
-      const response = fetch(buildPath('api/loadprofile'),
+      const response = await fetch(buildPath('api/loadprofile'),
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
-      
-      var txt = response.text();
+      var txt = await response.text();
       var res = JSON.parse(txt);
-      console.log(res)
+      setWatchlist(res.watchList);
       
   }
   catch(e)
   {
       console.log(e.toString());
   }
+  }
+  window.onload = load; 
+  
+  const watchlistcarouselItemData = watchlist.map((watchlist) => {
+    return (
+        <div key={watchlist.ID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div className='card bg-dark border-0'>
+                <CardImg
+                    className={`row_poster ${"row_posterLarge"}`}
+                    src={watchlist.Poster}
+                    alt={watchlist.Title}
+                    key={watchlist.ID}
+                    onClick={() => window.location.href = `/movie?imdbID=${watchlist.ID}`}
+                    style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
+                    />
+            </div>
+        </div>
+    );
+});
 
   return (
     <>
@@ -67,26 +95,17 @@ export default function Profile() {
         </div>
       
         <div className="row gutters-sm">
-          <div className="col-sm-6 mb-3">
-            <div className="card h-100 border-0 bg-transparent">
-              <div className="card-body" id="card1">
-                <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">Watchlist</i></h6>
-                <div className="p-4">
-                  <a href="#" className="text-underline-hover">Add</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 mb-3">
-            <div className="card h-100 border-0 bg-transparent">
-              <div className="card-body" id="card2">
-                <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">My Top Rated</i></h6>      
-                <div className="p-4">
-                  <a href="#" className="text-underline-hover">Add</a>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <Row className='my-5 rounded bg-dark'>
+                      <div onClick={() => window.location.href = `/watchlist`}><h2>Watchlist</h2></div>
+                      <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+                          <Carousel
+                                  show={5}
+                                  infiniteLoop={true}
+                              >
+                                  {watchlistcarouselItemData}
+                          </Carousel>
+                      </div>
+                  </Row>
         </div>
 
       </div>

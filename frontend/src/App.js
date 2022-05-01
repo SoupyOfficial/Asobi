@@ -18,6 +18,7 @@ import Top250MoviesPage from './pages/Top250MoviesPage';
 import VerifyPage from './pages/VerifyPage';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 import EnterEmailPage from './pages/EnterEmailPage';
+import WatchlistPage from './pages/WatchlistPage';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
+        </Route>
+        <Route path="/watchlist" exact>
+          <WatchlistPage/>
         </Route>
         <Route path="/login" exact>
           <LoginPage/>
