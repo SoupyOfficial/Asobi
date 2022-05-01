@@ -24,7 +24,7 @@ function App() {
     <Router >
       <Switch>
         <Route path="/" exact>
-          <HomePage/>
+          <LoginPage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>

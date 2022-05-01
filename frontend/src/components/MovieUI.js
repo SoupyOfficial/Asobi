@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import { Col, Container, Row, Button } from 'react-bootstrap'
 import Carousel from './Carousel';
 
-const MovieUI = ({imdbID}) => {
+const MovieUI = () => {
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.id;    
+    const userId = ud.id;    
     const [message,setMessage] = useState('');
 
     let bp = require('./Path.js');
@@ -27,6 +27,9 @@ const MovieUI = ({imdbID}) => {
     const [searchResults,setResults] = useState('');
     const [title,setTitle] = useState('');
     const [poster,setPoster] = useState('');
+    const [list, setList] = useState(false);
+    const queryParams = new URLSearchParams(window.location.search);
+    const imdbID = queryParams.get('imdbID');
 
     const searchMovie = async event => 
     {
@@ -40,7 +43,7 @@ const MovieUI = ({imdbID}) => {
             window.location = '/search'
         }
 
-        console.log(imdbID)
+        //console.log(imdbID)
         
         var obj = {ID:imdbID};
         var js = JSON.stringify(obj);
@@ -80,15 +83,7 @@ const MovieUI = ({imdbID}) => {
             console.log(e.toString());
             setResults(e.toString());
         }
-    };
-    window.onload = searchMovie;
 
-    const addToWatchlist = async event =>
-    {
-        event.preventDefault();
-        
-        const queryParams = new URLSearchParams(window.location.search);
-        const imdbID = queryParams.get('imdbID');
         
         var obj = {ID:userId};
         var js = JSON.stringify(obj);
@@ -100,10 +95,39 @@ const MovieUI = ({imdbID}) => {
             
             var txt = await response.text();
             var res = JSON.parse(txt);
-            console.log(res)
             for(var i = 0; i < res.watchList.length; i++) {
-                if(res.watchList[i] === imdbID) {
-                    setMessage("Already in watchlist")
+                if(res.watchList.ID === imdbID) {
+                    setList(true)
+                    return;
+                }
+            }
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
+        }
+    };
+    window.onload = searchMovie;
+
+    const addToWatchlist = async event =>
+    {
+        event.preventDefault();
+        
+        var obj = {ID:userId};
+        var js = JSON.stringify(obj);
+        
+        try
+        {
+            const response = await fetch(bp.buildPath('api/loadprofile'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            console.log(res.watchList[0].ID)
+            for(var i = 0; i < res.watchList.length; i++) {
+                if(res.watchList.ID === imdbID) {
+                    setMessage('Already in watchlist')
                     return;
                 }
             }
@@ -126,6 +150,35 @@ const MovieUI = ({imdbID}) => {
             res = JSON.parse(txt);
             //console.log(res)
             setMessage("Added to watchlist")
+            setList(true)
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
+        }
+    }
+
+    const removeFromWatchlist = async event =>
+    {
+        event.preventDefault();
+        
+        var obj = {ID:userId};
+        var js = JSON.stringify(obj);
+
+        obj = {userId:userId,ID:imdbID};
+        js = JSON.stringify(obj);
+        
+        try
+        {
+            const response = await fetch(bp.buildPath('api/deletefromwatchlist'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            //console.log(res)
+            setMessage("Removed from watchlist")
+            setList(false)
             
         }
         catch(e)
@@ -147,7 +200,7 @@ const MovieUI = ({imdbID}) => {
                         <Col >
                             <h3 id="title">Title</h3>
                             <Row>
-                                <Col><Button onClick={addToWatchlist}>Add to Watchlist</Button></Col>
+                                <Col><div>{list == false ? <Button onClick={addToWatchlist}>Add to Watchlist</Button> : <Button onClick={removeFromWatchlist}>Remove from Watchlist</Button>}</div></Col>
                                 <Col><div>{message}</div></Col>
                             </Row>
                         </Col>

@@ -1,14 +1,17 @@
 //import React from 'react';
 import '../App.css';
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import './LoggedInName'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import LoggedInName from './LoggedInName';
 
 
 function Settings() {
   
   var _ud = localStorage.getItem('user_data');
   var ud = JSON.parse(_ud);
-  var userId = ud.id;
+  const userId = ud.id;
 
   var newLogin = '';
   var newPassword = '';
@@ -93,7 +96,57 @@ function Settings() {
       }    
   };
   
+  const handleDeactivate = async event => 
+  {
+    event.preventDefault();
+    const options = {
+      title: 'Deactivate Account',
+      message: 'Are you sure you want to deactivate your account? This cannot be undone.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: deactivate
+        },
+        {
+          label: 'No',
+          onClick: () => {}
+        }
+      ],
+      childrenElement: () => <div />,
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      keyCodeForClose: [8, 32],
+      willUnmount: () => {},
+      afterClose: () => {},
+      onClickOutside: () => {},
+      onKeypressEscape: () => {},
+      overlayClassName: "overlay-custom-class-name"
+    };
+    
+    confirmAlert(options);
 
+    
+  }
+  
+  const deactivate = async event => {
+
+    console.log(userId);
+    var obj = {ID:userId};
+    var js = JSON.stringify(obj);
+
+    try
+    {
+        const response = await fetch(bp.buildPath('api/deactivate'),
+        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        
+        localStorage.removeItem("user_data")
+        window.location.href = '/';
+    }
+    catch(e)
+    {
+        console.log(e.toString());
+    }
+  }
   return (
     <>
     <div className='primaryBackground'>
@@ -177,11 +230,11 @@ function Settings() {
                       <label>&emsp;</label>
                     </div>
 
-                    <Button className="btn btn-info" type="submit" >Save</Button>
+                    <button className="btn btn-info" type="submit" >Save</button>
                   </form>
 
                   <div className="card-body">
-                    <button type="button" className="btn btn-link">Deactivate</button>
+                    <button onClick={handleDeactivate} type="button" className="btn btn-link">Deactivate</button>
                   </div>
                 </div>      
               </div>

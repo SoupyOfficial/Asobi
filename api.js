@@ -346,9 +346,9 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid } = req.body;
+    const { ID } = req.body;
 
-    var _search = userid.trim();
+    var _search = ID.trim();
 
     const db = client.db();
     const results = await db.collection('Users').findOneAndDelete({"UserId":{$regex:_search+'.*', $options:'ri'}});
@@ -377,13 +377,13 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid, ID } = req.body;
+    const { userId, ID } = req.body;
 
-    var _search = userid.trim();
+    var _search = userId.trim();
 
     const db = client.db();
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-    {$pull:{WatchList:ID}},{returnNewDocument: "true"} );
+    {$pull:{WatchList:{ID:ID}}},{returnNewDocument: "true"} );
 
     var ret = {imdbId:ID,error:''};
     res.status(200).json(ret);
