@@ -190,7 +190,7 @@ const MovieUI = () => {
         }
     }
 
-    const actorscarouselItemData = actors.slice(0,25).map((actors) => {
+    const actorscarouselItemData = actors.map((actors) => {
         return (
             <div key={actors.id} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
@@ -255,23 +255,15 @@ const MovieUI = () => {
                     <div id="streamingon"></div>
                 </Col>
             </Row>
-            <Row className='p-2 my-2 rounded' style={{backgroundColor:"#484848"}}>
+            
+            <Row className='my-5 rounded bg-dark'>
                 <div>Actors</div>
-                <div style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto'}}>
-                    <Carousel
-                            show={4}
-                            infiniteLoop={true}
-                        >
-                            <Row className='my-5 rounded bg-dark'>
-                                <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
-                                    <Carousel
-                                            show={10}
-                                            infiniteLoop={true}
-                                        >
-                                            {actorscarouselItemData}
-                                    </Carousel>
-                                </div>
-                            </Row>
+                <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Carousel
+                    show={10}
+                    infiniteLoop={true}
+                    >
+                        {actorscarouselItemData}
                     </Carousel>
                 </div>
             </Row>
