@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Col, Container, Row, Button } from 'react-bootstrap'
+import { Col, Container, Row, Button, CardImg } from 'react-bootstrap'
 import Carousel from './Carousel';
 
 const MovieUI = () => {
@@ -7,6 +7,7 @@ const MovieUI = () => {
     var ud = JSON.parse(_ud);
     const userId = ud.id;    
     const [message,setMessage] = useState('');
+    const [actors, setActors] = useState([]);
 
     let bp = require('./Path.js');
     
@@ -56,6 +57,7 @@ const MovieUI = () => {
             var txt = await response.text();
             var res = JSON.parse(txt);
             //console.log(res)
+            setActors(res.actors)
             document.querySelector("#title").innerHTML = res.title
             setTitle(res.title);
             document.querySelector("#poster").src = res.poster
@@ -187,6 +189,23 @@ const MovieUI = () => {
         }
     }
 
+    const actorscarouselItemData = actors.slice(0,25).map((actors) => {
+        return (
+            <div key={actors.actorID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+                <div className='card bg-dark border-0'>
+                    <CardImg
+                        className={`row_poster ${"row_posterLarge"}`}
+                        src={actors.Image}
+                        alt={actors.Name}
+                        key={actors.actorID}
+                        style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
+                        />
+                    <h3 className='d-flex my-2 p-2'>{actors.Name}</h3>
+                </div>
+            </div>
+        );
+    });
+
   return (
     <div className='primaryBackground' style={{textAlign:"left"}}>
         
@@ -235,102 +254,22 @@ const MovieUI = () => {
                 </Col>
             </Row>
             <Row className='p-2 my-2 rounded' style={{backgroundColor:"#484848"}}>
-                <div>Trailers/Images</div>
-                <div style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto'}}>
-                    <Carousel
-                            show={4}
-                            infiniteLoop={true}
-                        >
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                    </Carousel>
-                </div>
-            </Row>
-            <Row className='p-2 my-2 rounded' style={{backgroundColor:"#484848"}}>
                 <div>Actors</div>
                 <div style={{ maxWidth: 1200, marginLeft: 'auto', marginRight: 'auto'}}>
                     <Carousel
                             show={4}
                             infiniteLoop={true}
                         >
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
+                            <Row className='my-5 rounded bg-dark'>
+                                <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
+                                    <Carousel
+                                            show={10}
+                                            infiniteLoop={true}
+                                        >
+                                            {actorscarouselItemData}
+                                    </Carousel>
                                 </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{padding: 8}}>
-                                    <img src="https://via.placeholder.com/300x300" alt="placeholder" style={{width: '100%'}} />
-                                </div>
-                            </div>
+                            </Row>
                     </Carousel>
                 </div>
             </Row>
