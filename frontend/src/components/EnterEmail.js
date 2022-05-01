@@ -28,7 +28,7 @@ function EnterEmail()
             
             var res = JSON.parse(await response.text()); 
     
-            emailjs.send("service_f0xdcct","template_x56wsrj",{
+            await emailjs.send("service_f0xdcct","template_x56wsrj",{
                 firstName: res.firstName,
                 email:email.value,
                 code: res.id,
