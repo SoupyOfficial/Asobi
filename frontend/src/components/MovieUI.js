@@ -36,12 +36,34 @@ const MovieUI = () => {
     {
         
         event.preventDefault();
-        const queryParams = new URLSearchParams(window.location.search);
-
-        const imdbID = queryParams.get('imdbID');
 
         if(imdbID == null) {
             window.location = '/search'
+        }
+        
+        var obj = {ID:userId};
+        var js = JSON.stringify(obj);
+        
+        try
+        {
+            const response = await fetch(bp.buildPath('api/loadprofile'),
+            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+            
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            //console.log(res.watchList.length)
+            for(var i = 0; i < res.watchList.length; i++) {
+                if(res.watchList[i].ID == imdbID) {
+                    setList(true)
+                    return;
+                }
+                else {setList(false)}
+            }
+            
+        }
+        catch(e)
+        {
+            console.log(e.toString());
         }
 
         //console.log(imdbID)
@@ -88,28 +110,6 @@ const MovieUI = () => {
         }
 
         
-        var obj = {ID:userId};
-        var js = JSON.stringify(obj);
-        
-        try
-        {
-            const response = await fetch(bp.buildPath('api/loadprofile'),
-            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
-            
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            for(var i = 0; i < res.watchList.length; i++) {
-                if(res.watchList.ID === imdbID) {
-                    setList(true)
-                    return;
-                }
-            }
-            
-        }
-        catch(e)
-        {
-            console.log(e.toString());
-        }
     };
     window.onload = searchMovie;
 
@@ -127,10 +127,11 @@ const MovieUI = () => {
             
             var txt = await response.text();
             var res = JSON.parse(txt);
-            console.log(res.watchList[0].ID)
             for(var i = 0; i < res.watchList.length; i++) {
-                if(res.watchList.ID === imdbID) {
+                if(res.watchList[i].ID === imdbID) {
+                    console.log(res.watchList[i].ID)
                     setMessage('Already in watchlist')
+                    setList(true)
                     return;
                 }
             }
