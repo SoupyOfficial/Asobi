@@ -58,6 +58,7 @@ const MovieUI = () => {
             var res = JSON.parse(txt);
             //console.log(res)
             setActors(res.actors)
+            console.log(res.actors)
             document.querySelector("#title").innerHTML = res.title
             setTitle(res.title);
             document.querySelector("#poster").src = res.poster
@@ -191,16 +192,17 @@ const MovieUI = () => {
 
     const actorscarouselItemData = actors.slice(0,25).map((actors) => {
         return (
-            <div key={actors.actorID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div key={actors.id} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
                     <CardImg
                         className={`row_poster ${"row_posterLarge"}`}
-                        src={actors.Image}
-                        alt={actors.Name}
-                        key={actors.actorID}
+                        src={actors.image}
+                        alt={actors.name}
+                        key={actors.id}
                         style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
                         />
-                    <h3 className='d-flex my-2 p-2'>{actors.Name}</h3>
+                    <h3 className='d-flex my-2 p-2'>{actors.name}</h3>
+                    <h4 className='d-flex my-2 p-2'>As: {actors.asCharacter}</h4>
                 </div>
             </div>
         );
