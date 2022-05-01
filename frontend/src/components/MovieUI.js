@@ -257,7 +257,7 @@ const MovieUI = () => {
             </Row>
             
             <Row className='my-5 rounded bg-dark'>
-                <div>Actors</div>
+                <h2>Actors</h2>
                 <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
                 <Carousel
                     show={10}
