@@ -146,7 +146,7 @@ const MovieUI = () => {
             console.log(e.toString());
         }
 
-        obj = {userId:userId,ID:{ID:imdbID, Title:title, Poster:poster, Plot:plot}};
+        obj = {userId:userId,ID:{ID:imdbID, Title:title, Poster:poster, Plot:plot, Genre:genre}};
         js = JSON.stringify(obj);
         
         try
