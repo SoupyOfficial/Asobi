@@ -55,7 +55,7 @@ const MovieUI = () => {
             for(var i = 0; i < res.watchList.length; i++) {
                 if(res.watchList[i].ID == imdbID) {
                     setList(true)
-                    return;
+                    break;
                 }
                 else {setList(false)}
             }
