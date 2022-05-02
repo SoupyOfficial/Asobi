@@ -213,46 +213,46 @@ const MovieUI = () => {
     <div className='primaryBackground' style={{textAlign:"left"}}>
         
         <Container>
-            <Row className='' style={{ paddingTop: '25px' }}>
+            <Row className='' style={{ paddingTop: '5px' }}>
                 <Col className=' rounded'>
-                    <img src='' id="poster" alt='Movie Poster' width="100%" height="100%" style={{borderRadius:"25px"}}/>
+                    <img src='' id="poster" alt='Movie Poster' width="100%" height="" style={{borderRadius:"25px"}}/>
                 </Col>
                 <Col>
                     <Row>
                         <Col >
-                            <h3 id="title">Title</h3>
+                            <h1 className='text-center' id="title">Title</h1>
                             <Row>
-                                <Col><div>{list == false ? <Button onClick={addToWatchlist}>Add to Watchlist</Button> : <Button onClick={removeFromWatchlist}>Remove from Watchlist</Button>}</div></Col>
-                                <Col><div>{message}</div></Col>
+                                <div className='text-center'>{list == false ? <Button className='text-center' onClick={addToWatchlist}>Add to Watchlist</Button> : <Button className='text-center' onClick={removeFromWatchlist}>Remove from Watchlist</Button>}</div>
+                                <div className='py-2 text-center'>{message}</div>
                             </Row>
                         </Col>
                         <Col md={{ yoffset:10, span: 10}}>
-                            Rating
-                            <div id="ratings"></div>
+                        <div className='h5 pt-3'>Ratings:</div>
+                            <div className='px-3 pb-2' id="ratings"></div>
                         </Col>
                     </Row>
-                    <Col className=' px-4 m-1 rounded' style={{backgroundColor:"#484848"}}>
+                    <Col className=' px-2 py-2 rounded' style={{backgroundColor:"#484848"}}>
                         <Row>
-                            Released:
-                            <div id="released"></div>
+                            <div className='h5'>Released:</div>
+                            <div className='px-4 pb-2 font-weight-normal' id="released"></div>
                         </Row>
                         <Row>
-                            Genre:
-                            <div id="genre"></div>
+                            <div className='h5'>Genre:</div>
+                            <div className='px-4 pb-2 font-weight-normal' id="genre"></div>
                         </Row>
                         <Row>
-                            Directed By:
-                            <div id="director"></div>
+                            <div className='h5'>Directed By:</div>
+                            <div className='px-4 pb-2 font-weight-normal' id="director"></div>
                         </Row>
                     </Col>
-                    <Col className='px-3 m-1 ms-md-auto rounded' style={{backgroundColor:"#484848"}}>
-                        Synopsis:
-                        <div id="plot"></div>
+                    <Col className='p-2 my-2 ms-md-auto rounded' style={{backgroundColor:"#484848"}}>
+                        <div className='h5'>Synopsis:</div>
+                        <div className='px-3' id="plot"></div>
                     </Col>
                     
                 </Col>
                 <Col className='px-4 rounded' style={{backgroundColor:"#484848"}}>
-                    Streaming on:
+                    <div className='h5 py-2'>Streaming on:</div>
                     <div id="streamingon"></div>
                 </Col>
             </Row>
