@@ -43,7 +43,7 @@ function Register()
             phoneNumber:formRef.current.values.phone};
         var js = JSON.stringify(obj);
 
-        emailjs.send("service_f0xdcct","template_9zrlzdr",{
+        await emailjs.send("service_f0xdcct","template_9zrlzdr",{
             firstName: formRef.current.values.firstName,
             email: formRef.current.values.email,
             code: ID,
