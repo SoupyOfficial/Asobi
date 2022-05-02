@@ -41,7 +41,9 @@ export default function Profile() {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       var txt = await response.text();
       var res = JSON.parse(txt);
+      if(res.watchList != null) {
       setWatchlist(res.watchList);
+      }
       
   }
   catch(e)
@@ -87,7 +89,6 @@ export default function Profile() {
             <div className="row justify-content-center">
               <div className="col-lg-100 col-md-20">
                 <h1 className="display-2 text-white">Hello, {firstName}</h1>
-                <p className="text-white mt-0 mb-5">Welcome to Your Profile</p>
                 <a href="/settings" className="btn btn-info">Edit Profile</a>
               </div>
             </div>
@@ -95,14 +96,14 @@ export default function Profile() {
         </div>
       
         <div className="row gutters-sm">
-                  <Row className='my-5 rounded bg-dark'>
+                  <Row className='my-1 rounded bg-dark'>
                       <div onClick={() => window.location.href = `/watchlist`}><h2>Watchlist</h2></div>
                       <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
                           <Carousel
                                   show={5}
                                   infiniteLoop={true}
                               >
-                                  {watchlistcarouselItemData}
+                                  {watchlist != null ? watchlistcarouselItemData : "Add somethin to you watchlist!"}
                           </Carousel>
                       </div>
                   </Row>

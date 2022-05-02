@@ -65,7 +65,7 @@ function Register()
             }
             else
             {
-                var user = {userId:ID,firstName:formRef.current.values.firstName,lastName:formRef.current.values.lastName}
+                var user = {id:ID,firstName:formRef.current.values.firstName,lastName:formRef.current.values.lastName}
                 console.log(ID)
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/verify';
@@ -116,7 +116,6 @@ function Register()
               innerRef={formRef}
               onSubmit={(values) => {
                 console.log(values);
-                alert("Form is validated! Submitting the form...");
                 doRegister(); 
               }}
             >
@@ -290,20 +289,7 @@ function Register()
                     </Form>
                   </div>
                 ) : (
-                  <div>
-                    <h1 className="p-3 mt-5">Form Submitted</h1>
-  
-                    <div className="alert alert-success mt-3">
-                      Here's what we got from
-                      you !
-                    </div>
-                    <ul className="list-group">
-                      <li className="list-group-item">Email: {values.email}</li>
-                      <li className="list-group-item">
-                        Password: {values.password}
-                      </li>
-                    </ul>
-                  </div>
+                  <div>Rerouting...</div>
                 )
               }
             </Formik>
