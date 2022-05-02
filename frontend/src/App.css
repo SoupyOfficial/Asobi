@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+* {
+  font-family: Poppins, sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -46,7 +50,7 @@
   min-width: 100%;
   text-align: center;
 
-  padding-top: 65px;
+  padding-top: 55px;
   padding: 15px;
 }
 
@@ -286,7 +290,7 @@ nav {
   flex-direction: row;
   align-items: center;
        
-  min-height:8vh;
+  min-height:5vh;
   background-color: #484848;
   font-family:Poppins, sans-serif;
   font-size: 18px;
@@ -303,13 +307,13 @@ nav li {
 .logo {
   margin: 0 10px;
   min-width: 8rem;
-  min-height: 2rem;
-
-  filter: hue-rotate(10deg) brightness(1.5);
+  min-height: 1rem;
 }
 .logo img{
-  width: 13rem;
-  height: 4rem;
+  width: 8rem;
+  height: 2rem;
+
+  filter: brightness(1.5);
 }
 
 .navLinks {
