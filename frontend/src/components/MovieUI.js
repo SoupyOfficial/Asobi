@@ -28,6 +28,8 @@ const MovieUI = () => {
     const [searchResults,setResults] = useState('');
     const [title,setTitle] = useState('');
     const [poster,setPoster] = useState('');
+    const [plot,setPlot] = useState('');
+    const [genre,setGenre] = useState([]);
     const [list, setList] = useState(false);
     const queryParams = new URLSearchParams(window.location.search);
     const imdbID = queryParams.get('imdbID');
@@ -86,9 +88,11 @@ const MovieUI = () => {
             document.querySelector("#poster").src = res.poster
             setPoster(res.poster);
             document.querySelector("#plot").innerHTML = res.plot
+            setPlot(res.plot);
             document.querySelector("#released").innerHTML = res.released
             document.querySelector("#director").innerHTML = res.director
             document.querySelector("#genre").innerHTML = res.genre
+            setGenre(res.genre)
 
             //console.log(res.streaming)
             res.streaming.map((streamingon) => {
@@ -142,7 +146,7 @@ const MovieUI = () => {
             console.log(e.toString());
         }
 
-        obj = {userId:userId,ID:{ID:imdbID, Title:title, Poster:poster}};
+        obj = {userId:userId,ID:{ID:imdbID, Title:title, Poster:poster, Plot:plot}};
         js = JSON.stringify(obj);
         
         try
