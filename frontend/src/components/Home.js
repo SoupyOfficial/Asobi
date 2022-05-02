@@ -94,9 +94,9 @@ function Home(){
         }
     };
 
-    const popular100carouselItemData = popular100movies.slice(0,10).map((popular100movie) => {
+    const popular100carouselItemData = popular100movies.slice(0,25).map((popular100movie) => {
         return (
-            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div key={popular100movie.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
                     <CardImg
                         className={`row_poster ${"row_posterLarge"}`}
@@ -104,16 +104,16 @@ function Home(){
                         alt={popular100movie.title}
                         key={popular100movie.imdbID}
                         onClick={() => window.location.href = `/movie?imdbID=${popular100movie.imdbID}`}
-                        style={{width:"auto", height:"auto"}}
-                    />
+                        style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
+                        />
                 </div>
             </div>
         );
     });
 
-    const top250carouselItemData = top250movies.slice(0,10).map((top250movie) => {
+    const top250carouselItemData = top250movies.slice(0,25).map((top250movie) => {
         return (
-            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div key={top250movie.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
                     <CardImg
                         className={`row_poster ${"row_posterLarge"}`}
@@ -121,16 +121,16 @@ function Home(){
                         alt={top250movie.title}
                         key={top250movie.imdbID}
                         onClick={() => window.location.href = `/movie?imdbID=${top250movie.imdbID}`}
-                        style={{width:"auto", height:"auto"}}
+                        style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
                     />
                 </div>
             </div>
         );
     });
 
-    const popular100TVcarouselItemData = popular100tv.slice(0,10).map((popular100series) => {
+    const popular100TVcarouselItemData = popular100tv.slice(0,25).map((popular100series) => {
         return (
-            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div key={popular100series.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
                     <CardImg
                         className={`row_poster ${"row_posterLarge"}`}
@@ -138,16 +138,16 @@ function Home(){
                         alt={popular100series.title}
                         key={popular100series.imdbID}
                         onClick={() => window.location.href = `/movie?imdbID=${popular100series.imdbID}`}
-                        style={{width:"auto", height:"auto"}}
+                        style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
                     />
                 </div>
             </div>
         );
     });
 
-    const top250TVcarouselItemData = top250tv.slice(0,10).map((top250series) => {
+    const top250TVcarouselItemData = top250tv.slice(0,25).map((top250series) => {
         return (
-            <div className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
+            <div key={top250series.imdbID} className='col p-2 ms-md-auto' style={{alignContent:"center", justifyContent:"center", maxWidth:"11rem", minWidth:"11rem"}}>                                
                 <div className='card bg-dark border-0'>
                     <CardImg
                         className={`row_poster ${"row_posterLarge"}`}
@@ -155,7 +155,7 @@ function Home(){
                         alt={top250series.title}
                         key={top250series.imdbID}
                         onClick={() => window.location.href = `/movie?imdbID=${top250series.imdbID}`}
-                        style={{width:"auto", height:"auto"}}
+                        style={{ height:"255px", width:"170px", objectFit:"cover", borderRadius:"25px"}}
                     />
                 </div>
             </div>
@@ -165,15 +165,15 @@ function Home(){
     window.onload = load;
     
     return(
-        <div className='p-5'>
+        <div className='p-2' style={{margin:'0px 15px'}}>
             
-            <Container>
+            
                 
-                <Row className='p-2 my-2 rounded bg-light'>
-                    <div onClick={() => window.location.href = `/top100movies`}>Popular Movies</div>
-                    <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Row className='my-5 rounded bg-dark'>
+                    <div onClick={() => window.location.href = `/top100movies`}><h2>Popular Movies</h2></div>
+                    <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
                         <Carousel
-                                show={4}
+                                show={10}
                                 infiniteLoop={true}
                             >
                                 {popular100carouselItemData}
@@ -182,11 +182,11 @@ function Home(){
                 </Row>
 
                 <div>
-                <Row className='p-2 my-2 rounded bg-light'>
-                    <div onClick={() => window.location.href = `/top250movies`}>Top Movies</div>
-                    <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Row className='my-5 rounded bg-dark'>
+                    <div onClick={() => window.location.href = `/top250movies`}><h2>Top Movies</h2></div>
+                    <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
                         <Carousel
-                                show={4}
+                                show={10}
                                 infiniteLoop={true}
                             >
                                 {top250carouselItemData}
@@ -196,11 +196,11 @@ function Home(){
                 </div>
 
                 <div>
-                <Row className='p-2 my-2 rounded bg-light'>
-                    <div onClick={() => window.location.href = `/top100series`}>Popular Series</div>
-                    <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Row className='my-5 rounded bg-dark'>
+                    <div onClick={() => window.location.href = `/top100series`}><h2>Popular Series</h2></div>
+                    <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
                         <Carousel
-                                show={4}
+                                show={10}
                                 infiniteLoop={true}
                             >
                                 {popular100TVcarouselItemData}
@@ -210,11 +210,11 @@ function Home(){
                 </div>
 
                 <div>
-                <Row className='p-2 my-2 rounded bg-light'>
-                    <div onClick={() => window.location.href = `/top250series`}>Top Series</div>
-                    <div style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Row className='my-5 rounded bg-dark'>
+                    <div onClick={() => window.location.href = `/top250series`}><h2>Top Series</h2></div>
+                    <div style={{ maxWidth: 2000, marginLeft: 'auto', marginRight: 'auto'}}>
                         <Carousel
-                                show={4}
+                                show={10}
                                 infiniteLoop={true}
                             >
                                 {top250TVcarouselItemData}
@@ -223,7 +223,7 @@ function Home(){
                 </Row>
                 </div>
                 
-            </Container>
+            
             
         </div>
         

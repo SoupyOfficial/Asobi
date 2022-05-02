@@ -16,22 +16,34 @@ import Top100SeriesPage from './pages/Top100SeriesPage';
 import Top250SeriesPage from './pages/Top250SeriesPage';
 import Top250MoviesPage from './pages/Top250MoviesPage';
 import VerifyPage from './pages/VerifyPage';
+import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
+import EnterEmailPage from './pages/EnterEmailPage';
+import WatchlistPage from './pages/WatchlistPage';
 
 function App() {
   return (
     <Router >
       <Switch>
         <Route path="/" exact>
-          <HomePage/>
+          <LoginPage/>
         </Route>
         <Route path="/cards" exact>
           <CardPage/>
+        </Route>
+        <Route path="/watchlist" exact>
+          <WatchlistPage/>
         </Route>
         <Route path="/login" exact>
           <LoginPage/>
         </Route>
         <Route path ="/verify" exact>
           <VerifyPage/>
+        </Route>
+        <Route path = "/passwordrecovery" exact>
+          <PasswordRecoveryPage/>
+        </Route>
+        <Route path = "/enteremail" exact>
+          <EnterEmailPage/>
         </Route>
         <Route path="/register" exact>
           <RegisterPage />

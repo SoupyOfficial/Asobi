@@ -33,7 +33,7 @@ function Login()
             }
             else
             {
-                var user = {userId:res.userId,firstName:res.firstName,lastName:res.lastName}
+                var user = {id:res.id,firstName:res.firstName,lastName:res.lastName}
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/profile';
             }
@@ -56,7 +56,7 @@ function Login()
                     <div class="mb-md-5 mt-md-4">
 
                       <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                      <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                      <p class="text-white-50 mb-5">Welcome back</p>
 
                       <form onSubmit={doLogin}>
                         <div class="form-outline form-white mb-4">
@@ -77,6 +77,9 @@ function Login()
                     </div>
                     <div>
                       <p class="mb-0">Don't have an account? <a href="/register" class="text-white-50 fw-bold">Sign Up</a></p>
+                    </div>
+                    <div>
+                      <p class="mb-0">Forgot password? <a href="/enteremail" class="text-white-50 fw-bold">Reset Password</a></p>
                     </div>
                   </div>
                 </div>

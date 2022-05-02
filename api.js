@@ -116,6 +116,7 @@ exports.setApp = function ( app, client )
     const { userId, login, password, firstName, lastName, phoneNumber, email } = req.body;
 
     const newUser = { UserId:userId,Login:login,Password:password,FirstName:firstName,LastName:lastName,PhoneNumber:phoneNumber,Email:email,Validated:false};
+
     var error = '';
 
     try
@@ -152,6 +153,29 @@ exports.setApp = function ( app, client )
     }
 
     var ret = { error:'' };
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/passwordrecovery', async (req, res, next) =>
+    {
+    var error = '';
+
+    const { userid, newpassword } = req.body;
+
+    var _search = userid.trim();
+
+    try
+    {
+        const db = client.db();
+        const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
+        {$set:{Password:newpassword}},{returnNewDocument: "true"} );
+    }
+    catch(e)
+    {
+        error = e.toString();
+    }
+
+    var ret = { userid:userid, error:'' };
     res.status(200).json(ret);
     });
 
@@ -305,16 +329,16 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid, newemail, newphone, newpassword, newlogin, newfn, newln } = req.body;
+    const { userId, email, phoneNumber, password, login, firstName, lastName } = req.body;
 
-    var _search = userid.trim();
+    var _search = userId.trim();
 
     const db = client.db();
 
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-    {$set:{Email:newemail, PhoneNumber:newphone, Login:newlogin, Password:newpassword, FirstName:newfn, LastName:newln}},{returnNewDocument: "true"} );
+    {$set:{Email:email, PhoneNumber:phoneNumber, Login:login, Password:password, FirstName:firstName, LastName:lastName}},{returnNewDocument: "true"} );
 
-    var ret = {FirstName:newfn, LastName:newln, Login:newlogin, Password:newpassword, PhoneNumber:newphone, Email:newemail, error: ''};
+    var ret = { error: ''};
     res.status(200).json(ret);
     });
 
@@ -322,9 +346,9 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid } = req.body;
+    const { ID } = req.body;
 
-    var _search = userid.trim();
+    var _search = ID.trim();
 
     const db = client.db();
     const results = await db.collection('Users').findOneAndDelete({"UserId":{$regex:_search+'.*', $options:'ri'}});
@@ -337,9 +361,9 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid, ID } = req.body;
+    const { userId, ID } = req.body;
 
-    var _search = userid.trim();
+    var _search = userId.trim();
 
     const db = client.db();
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
@@ -353,13 +377,13 @@ exports.setApp = function ( app, client )
     {
     var error = '';
 
-    const { userid, ID } = req.body;
+    const { userId, ID } = req.body;
 
-    var _search = userid.trim();
+    var _search = userId.trim();
 
     const db = client.db();
     const results = await db.collection('Users').findOneAndUpdate({"UserId":{$regex:_search+'.*', $options:'ri'}},
-    {$pull:{WatchList:ID}},{returnNewDocument: "true"} );
+    {$pull:{WatchList:{ID:ID}}},{returnNewDocument: "true"} );
 
     var ret = {imdbId:ID,error:''};
     res.status(200).json(ret);
@@ -468,6 +492,7 @@ exports.setApp = function ( app, client )
     var production = '';
     var website = '';
     var totalseasons = '';
+    var streaming = '';
 
 
         title = results.Title;
@@ -478,7 +503,7 @@ exports.setApp = function ( app, client )
         imdbrating = results.imdbRating;
         type = results.Type;
         released = results.Released;
-        actors = results.Acotrs;
+        actors = results.Actors;
         plot = results.Plot;
         year = results.Year;
         director = results.Director;
@@ -494,8 +519,9 @@ exports.setApp = function ( app, client )
         production = results.Production;
         website = results.Website;
         totalseasons = results.totalSeasons;
+        streaming = results.streamingAvailability;
 
-    var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, error:''};
+    var ret = { title:title, poster:poster, genre:genre, rated:rated, runtime:runtime, imdbRating:imdbrating, type:type, released:released, actors:actors, plot:plot, year:year, director:director, writer:writer, language:language, country:country, awards:awards, ratings:ratings, metascore:metascore, imdbVotes:imdbvotes, dvd:dvd, boxOffice:boxoffice, production:production, website:website, totalSeasons:totalseasons, streaming:streaming, error:''};
     res.status(200).json(ret);
     });
 
@@ -530,6 +556,63 @@ exports.setApp = function ( app, client )
     following = results.Following;
 
     var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, email:email, watchList:watchList, reviews:reviews, following:following, error:''};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/checkprofile', async (req, res, next) =>
+    {
+
+    var error = '';
+    var login = '';
+
+    const { ID } = req.body;
+    
+    try
+    {
+        const db = client.db();
+        const results = await db.collection('Users').findOne({UserId:ID});
+        login = results.Login;
+    }
+    catch(e)
+    {
+        error = e.toString();
+    }
+
+    var ret = { login:login, error:''};
+    res.status(200).json(ret);
+    });
+
+    app.post('/api/loadprofileemail', async (req, res, next) =>
+    {
+
+    var error = '';
+
+    const { email } = req.body;
+
+    const db = client.db();
+    const results = await db.collection('Users').findOne({Email:email});
+
+    var login = '';
+    var password = '';
+    var firstName = '';
+    var lastName = '';
+    var phoneNumber = '';
+    var id = -1;
+    var watchList = [];
+    var reviews = [];
+    var following = [];
+
+    login = results.Login;
+    password = results.Password;
+    firstName = results.FirstName;
+    lastName = results.LastName;
+    phoneNumber = results.PhoneNumber;
+    id = results.UserId;
+    watchList = results.WatchList;
+    reviews = results.Reviews;
+    following = results.Following;
+
+    var ret = { login:login, password:password, firstName:firstName, lastName:lastName, phoneNumber:phoneNumber, id:id, watchList:watchList, reviews:reviews, following:following, error:''};
     res.status(200).json(ret);
     });
 

@@ -3,16 +3,11 @@ import Home from '../components/Home'
 import NavBar from '../components/NavBar'
 
 
-
-
-
-
-
 function HomePage() {
   
     return (
       <>
-          <div><NavBar/></div>
+          <NavBar/>
           <div className="primaryBackground">
             <Home/>
           </div>

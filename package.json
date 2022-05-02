@@ -5,8 +5,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-        "test": "jest --watchAll"
+        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
     },
     "author": "",
     "license": "ISC",
@@ -24,6 +23,7 @@
         "mongodb": "^4.5.0",
         "react": "^17.0.2",
         "react-bootstrap": "^2.2.1",
+        "react-confirm-alert": "^2.8.0",
         "react-dom": "^17.0.2",
         "react-router-dom": "^6.2.2",
         "react-scripts": "^2.1.3",

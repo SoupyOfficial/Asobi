@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
+import validator from 'validator';
 import emailjs from 'emailjs-com';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
@@ -13,7 +14,18 @@ function Register()
     const [message,setMessage] = useState('');
     const formRef = useRef();
 
-    let bp = require('./Path.js'); 
+    const app_name = 'asobi-1'
+    function buildPath(route)
+    {   
+        if (process.env.NODE_ENV === 'production') 
+        {
+            return 'https://' + app_name +  '.herokuapp.com/' + route;
+        }
+        else
+        {        
+            return 'http://localhost:5000/' + route;
+        }
+    }
 
     const doRegister = async event => 
     {
@@ -31,7 +43,7 @@ function Register()
             phoneNumber:formRef.current.values.phone};
         var js = JSON.stringify(obj);
 
-        emailjs.send("service_f0xdcct","template_9zrlzdr",{
+        await emailjs.send("service_f0xdcct","template_9zrlzdr",{
             firstName: formRef.current.values.firstName,
             email: formRef.current.values.email,
             code: ID,
@@ -39,7 +51,7 @@ function Register()
 
         try
         {    
-            const response = await fetch(bp.buildPath('api/register'),
+            const response = await fetch(buildPath('api/register'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
             
             var res = JSON.parse(await response.text());
@@ -53,7 +65,7 @@ function Register()
             }
             else
             {
-                var user = {userId:ID,firstName:formRef.current.values.firstName,lastName:formRef.current.values.lastName}
+                var user = {id:ID,firstName:formRef.current.values.firstName,lastName:formRef.current.values.lastName}
                 console.log(ID)
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/verify';
@@ -66,7 +78,7 @@ function Register()
         }    
     };
 
-    const phoneRegExp = (/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/);
+    const phoneRegExp = (/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/);
       
     const validate = Yup.object({
           username: Yup.string()
@@ -95,16 +107,15 @@ function Register()
 
     return(
         <>
-       <div class="row d-flex justify-content-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
+       <div className="row d-flex justify-content-center h-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div className="card-body bg-light mt-5 py-5 px-md-5" style={{borderRadius: "1rem"}}>
             <Formik
               initialValues={{firstName: "", lastName: "", email: "", password: "", username: "", confirmPassword: "", phone: "" }}
               validationSchema={validate}
               innerRef={formRef}
               onSubmit={(values) => {
                 console.log(values);
-                alert("Form is validated! Submitting the form...");
                 doRegister(); 
               }}
             >
@@ -119,15 +130,15 @@ function Register()
                     <Form>
 
                       {/* First and Last Name */}
-                      <div class="row">
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                          <label class="form-label" for="form3Example1"
+                      <div className="row">
+                        <div className="col-md-6 mb-2">
+                          <div className="form-outline">
+                          <label className="form-label" htmlFor="first name"
                                     >First Name</label>
                             <Field
                               type="firstName"
                               name="firstName"
-                              placeholder="Fisrt Name"
+                              placeholder="First Name"
                               autoComplete="off"
                               className={`mt-2 form-control
                               ${
@@ -143,9 +154,9 @@ function Register()
                             />
                           </div>
                         </div>
-                        <div class="col-md-6 mb-2">
-                          <div class="form-outline">
-                            <label class="form-label" for="form3Example1"
+                        <div className="col-md-6 mb-2">
+                          <div className="form-outline">
+                            <label className="form-label" htmlFor="form3Example1"
                                     >Last Name</label>
                             <Field
                               type="lastName"
@@ -169,7 +180,7 @@ function Register()
                       </div>
 
                       {/* Username */}
-                    <div class="form-outline mb-2">
+                    <div className="form-outline mb-2">
                       <label htmlFor="username">Username</label>
                         <Field
                           type="username"
@@ -200,6 +211,7 @@ function Register()
                         />
   
                         <ErrorMessage
+                          data-testid="emailError"
                           component="div"
                           name="email"
                           className="invalid-feedback"
@@ -207,7 +219,7 @@ function Register()
                       </div>
 
                       {/* Phone Number */}
-                    <div class="form-outline mb-2">
+                    <div className="form-outline mb-2">
                       <label htmlFor="phone">Phone Number</label>
                         <Field
                           type="phone"
@@ -271,26 +283,13 @@ function Register()
                       <button
                               type="submit"
                               id="registerButton"
-                              class="btn btn-primary btn-block mb-4">
-                          Sign up
+                              className="btn btn-primary btn-block mb-4">
+                          Submit
                     </button>
                     </Form>
                   </div>
                 ) : (
-                  <div>
-                    <h1 className="p-3 mt-5">Form Submitted</h1>
-  
-                    <div className="alert alert-success mt-3">
-                      Here's what we got from
-                      you !
-                    </div>
-                    <ul className="list-group">
-                      <li className="list-group-item">Email: {values.email}</li>
-                      <li className="list-group-item">
-                        Password: {values.password}
-                      </li>
-                    </ul>
-                  </div>
+                  <div>Rerouting...</div>
                 )
               }
             </Formik>
