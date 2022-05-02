@@ -82,7 +82,7 @@ export default function Search() {
                                                 onClick={() => window.location.href = `/movie?imdbID=${movie.imdbID}`}
                                                 style={{ height:"255px", width:"170px", objectFit:"cover"}}
                                                 />
-                                            <h3 className='d-flex my-2 p-2'>{movie.title}</h3>
+                                            <p className='d-flex my-2 p-2' style={{color:"#AAAAAA"}}>{movie.title}</p>
                                         </div>
                                     </div>                    
                         )}
